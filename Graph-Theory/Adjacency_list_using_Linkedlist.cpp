@@ -41,13 +41,13 @@ int main()
 }
 
 /** Sample Input **
-*   5 4
-*   1 5
-*   5 4
-*   4 3
-*   3 2
-*
+    5 4
+    1 5
+    5 4
+    4 3
+    3 2
+
 *   -------------
-*   Sample Output **
-*   Visited Nodes : 1 5 4 3 2
+	Sample Output **
+	Visited Nodes : 1 5 4 3 2
 **/
