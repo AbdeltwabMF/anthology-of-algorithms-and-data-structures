@@ -1,5 +1,3 @@
-/** other ways to detect a cycle in undirected graph : Topological sort, Disjoint-set Union **/
-
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -18,11 +16,10 @@ void addEdge(int _from, int _to)
 
 void DFS(int _node, int parent)
 {
-	/** if any node has been visited more than once then graph has a cycle **/
 	if(hasCycle |= visited[_node]) return;
     visited[_node] = true;
 	
-    for (int e = Head[_node]; e; e = Next[e]) if(To[e] != parent) /** if neighbour is not parent -> dfs **/
+    for (int e = Head[_node]; e; e = Next[e]) if(To[e] != parent)
         DFS(To[e], _node);
 }
 
@@ -33,26 +30,11 @@ int main()
     while(m--)
     {
         cin >> u >> v;
-        addEdge(u, v); addEdge(v, u);
+		addEdge(u, v); addEdge(v, u);
     }
 
-    for (int node = 1; node <= n; ++node) if(!visited[node]) /** go to the next component it may have a cycle **/
-        DFS(node, -1);
+    for (int node = 1; node <= n; ++node) if(!visited[node])
+        DFS(node, -1); 
 	
 	cout << (hasCycle ? "YES" : "NO") << endl;
 }
-
-/** Sample Input **
-	10 9
-	1 2
-	2 3
-	3 4
-	3 5
-	1 6
-	6 7
-	6 10
-	7 8
-	8 1
-** Sample Output **
-	YES
-**/

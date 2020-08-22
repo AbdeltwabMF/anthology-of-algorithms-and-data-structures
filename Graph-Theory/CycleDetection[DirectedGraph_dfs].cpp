@@ -41,19 +41,3 @@ int main()
 	
 	cout << (hasCycle ? "YES" : "NO") << endl;
 }
-
-/** Sample Input **
-	7 9
-	1 2
-	1 4
-	2 3
-	3 4
-	3 5
-	5 6
-	6 3
-	4 7
-	7 6
-
-** 	Sample Output **
-	YES
-**/

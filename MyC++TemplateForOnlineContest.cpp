@@ -111,7 +111,6 @@ template <class T> T    ModExp(T a, T n)
 template <class T> using indexed_set = tree <T, null_type, less <T>, rb_tree_tag, tree_order_statistics_node_update >;
 template <class T> using min_heap = priority_queue < T, vector <T>, greater <T> >;
 template <class T> using matrix = vector < vector <T> >;
-#endif
 
 /** for Debugging purpose **/
 template <typename F, typename S>
@@ -133,6 +132,7 @@ ostream & operator << (ostream & os, const set <T> & _st)
 template <typename T>
 ostream & operator << (ostream & os, const indexed_set <T> & _ist) 
 { os << "["; foreach(_ist, it) { if(it != _ist.begin() ) os << ", "; os << "(" << _ist.indexOf(*it) << ", " << *it << ")"; } return os << "]"; }
+#endif
 
 #ifdef BFS
 int dx8[8] = { 1, -1, 0, 0, 1, 1, -1, -1 }, dx4[4] = { 0, 0, 1,-1};

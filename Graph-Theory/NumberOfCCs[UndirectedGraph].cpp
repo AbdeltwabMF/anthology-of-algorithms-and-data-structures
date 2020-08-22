@@ -4,7 +4,7 @@ using namespace std;
 
 const int N = 1e5 + 9, M = 1e6 + 9;
 
-int Head[N], Next[M], To[M], ne, u, v, n, m, numberOfComponents;
+int Head[N], Next[M], To[M], ne, u, v, n, m, CCs;
 bool visited[N];
 
 void addEdge(int _from, int _to)
@@ -33,24 +33,9 @@ int main()
 
     for (int node = 1; node <= n; ++node) if(!visited[node])
     {
-        ++numberOfComponents;
+        ++CCs;
         DFS(node);
     }
 
-    cout << numberOfComponents << endl;
+    cout << CCs << endl;
 }
-
-/** Sample Input **
-	10 9
-	1 2
-	2 3
-	3 4
-	3 5
-	1 6
-	6 7
-	6 10
-	7 8
-	7 9
-** Sample Output **
-	1
-**/
