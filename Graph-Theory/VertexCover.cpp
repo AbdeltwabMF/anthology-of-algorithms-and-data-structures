@@ -16,10 +16,12 @@ void addEdge(int _from, int _to)
 bool DFS(int _node, int parent)
 {
 	bool black = false;
-    for (int e = Head[_node]; e; e = Next[e]) if(To[e] != parent)
-        black |= DFS(To[e], _node);
+	
+	for (int e = Head[_node]; e; e = Next[e]) if(To[e] != parent)
+		black |= DFS(To[e], _node);
 	
 	minBlackNds += black;
+	
 	return !black;
 }
 

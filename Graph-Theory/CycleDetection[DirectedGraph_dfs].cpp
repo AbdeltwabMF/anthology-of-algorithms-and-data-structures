@@ -17,13 +17,17 @@ void addEdge(int _from, int _to)
 
 void DFS(int _node)
 {
-	if(hasCycle |= visited[_node] == 1) return; /** Oops, revisiting active node **/
-    visited[_node] = 1; /** current node legend mode has been activated **/
+	/** Oops, revisiting active node **/
+	if(hasCycle |= visited[_node] == 1) return; 
+    
+	/** current node legend mode has been activated **/
+	visited[_node] = 1; 
 	
     for (int e = Head[_node]; e; e = Next[e]) if(visited[To[e]] != 2)
         DFS(To[e]);
 		
-	visited[node] = 2; /** done with this node and mark it as visited **/
+	/** done with this node and mark it as visited **/
+	visited[node] = 2; 
 }
 
 int main()

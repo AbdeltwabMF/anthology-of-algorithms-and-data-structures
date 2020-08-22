@@ -31,11 +31,8 @@ int main()
         addEdge(u, v); addEdge(v, u);
     }
 
-    DFS(1, -1, 0);    
-	from = at, diameter = 0; 
-    
-	DFS(from, -1, 0);   
-	to = at;          
+    DFS(1, -1, 0);    from = at, diameter = 0; 
+	DFS(from, -1, 0);   to = at;          
 	
     cout << diameter << " " << from << " " << to << endl;
 }
