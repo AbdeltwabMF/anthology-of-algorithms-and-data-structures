@@ -36,41 +36,41 @@ void addEdge(int _from, int _to)
 
 int main()
 {
-    cin >> n >> m;
-    _clear();
+    	cin >> n >> m;
+    	_clear();
 
-    while(m--)
-    {
-        cin >> u >> v;
-        addEdge(u, v);
+    	while(m--)
+   	{
+        	cin >> u >> v;
+        	addEdge(u, v);
 		++in[v];
-    }
+    	}
 
-    /** Topological Order usig DFS **/
+    	/** Topological Order usig DFS **/
 	for(int i = 0; i < n; ++i) if(!vis[i])
         DFS(i);
 
-    while(!topoList_dfs.empty())
-        cout << topoList_dfs.top() << ' ', topoList_dfs.pop();
+    	while(!topoList_dfs.empty())
+        	cout << topoList_dfs.top() << ' ', topoList_dfs.pop();
 	
 	/**----------------------------------------------------**/
 	
 	/** Topological Order usig inDegree method **/
 	for(int i = 0; i < n; ++i) if(!in[i])
-        ready.push_back(i);
+        	ready.push_back(i);
 	
-    while(!ready.empty())
-    {
-        int tmp = ready.back(); ready.pop_back();
+ 	while(!ready.empty())
+    	{
+        	int tmp = ready.back(); ready.pop_back();
         
 		topoList_in.push(tmp);
 
-        for(int i = Head[tmp]; ~i; i = Next[i])
-        {
-            if(--in[To[i]] == 0) ready.push_back(To[i]);
-        }
-    }
+		for(int i = Head[tmp]; ~i; i = Next[i])
+		{
+			if(--in[To[i]] == 0) ready.push_back(To[i]);
+		}
+    	}
 
-    while(!topoList_in.empty())
-        cout << topoList_in.front() << ' ', topoList_in.pop();
+    	while(!topoList_in.empty())
+        	cout << topoList_in.front() << ' ', topoList_in.pop();
 }
