@@ -20,8 +20,8 @@
 #endif
 #include "bits/stdc++.h"
 
-#define  rforeach(c, _it)    for(__typeof((c).rbegin()) _it = (c).rbegin(); _it != (c).rend(); ++_it)
-#define  foreach(c, _it)     for(__typeof((c).begin()) _it = (c).begin(); _it != (c).end(); ++_it)
+#define  rforeach(_it, c)    for(__typeof((c).rbegin()) _it = (c).rbegin(); _it != (c).rend(); ++_it)
+#define  foreach(_it, c)     for(__typeof((c).begin()) _it = (c).begin(); _it != (c).end(); ++_it)
 #define  print(_a, _l, _r)   for(int _i = (_l); _i < (_r); cout << _a[_i++] << " \n"[_i == (_r)])
 #define  read(_a, _l, _r)    for(int _i = (_l); _i < (_r); cin >> _a[_i++])
 #define  dbg(x)              cerr << #x << " = " << x << endl;
@@ -54,14 +54,12 @@ typedef __int128            lll;
 const double    Pi      = 2 * acos(0.0),    Euler = 2.71828182845904523536;
 const double    Epsln   = 1e-9,           GoldenR = (1 + sqrtl(5.0)) / 2;
 
-const int       N       = (int)1e5 + 9,         M = (int)1e6 + 6;       
+const int       N       = (int)1e5 + 9,         M = (int)1e6 + 6;
 const int       Mod     = (int)1e9 + 7,        oo = 0x3f3f3f3f;
 
 /**---------------->>  Functions & Shortcuts  <<-----------------**/
 
 #if __cplusplus >= 201402L
-
-/** Random Generator **/
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 template <class T> T Rand(T a, T b) { return uniform_int_distribution <ll> (a, b)(rng); /** [a, b] **/}
 
@@ -79,7 +77,6 @@ auto str_to_int(string x)
     return (x[0] == '-' ? -1 * (lll)ret : ret);
 }
 
-/** Overloading operator << and >> to accept an __int128 **/
 istream & operator >> (istream & in, lll & i) noexcept { string s; in >> s; i = str_to_int(s); return in; }
 ostream & operator << (ostream & os, const lll i) noexcept { os << to_string(i); return os; }
 istream & operator >> (istream & in, ulll & i) noexcept { string s; in >> s; i = str_to_int(s); return in; }
@@ -113,48 +110,43 @@ template <class T> T    ModExp(T a, T n)
     return result;
 }
 
-/** Data Structures **/
 template <class T> using indexed_set = tree <T, null_type, less <T>, rb_tree_tag, tree_order_statistics_node_update >;
 template <class T> using min_heap = priority_queue < T, vector <T>, greater <T> >;
 template <class T> using matrix = vector < vector <T> >;
 
-/** for Debugging purposes **/
 template <typename F, typename S>
-ostream & operator << (ostream & os, const pair <F, S> & p) 
+ostream & operator << (ostream & os, const pair <F, S> & p)
 { return os << "(" << p.first << ", " << p.second << ")"; }
 
 template <typename F, typename S>
-ostream & operator << (ostream & os, const map <F, S> & _mp) 
-{ os << "["; foreach(_mp, it) { if(it != _mp.begin()) os << ", "; os << it->first << " = " << it->second; } return os << "]"; }
+ostream & operator << (ostream & os, const map <F, S> & _mp)
+{ os << "["; foreach(it, _mp) { if(it != _mp.begin()) os << ", "; os << it->first << " = " << it->second; } return os << "]"; }
 
 template <typename T>
-ostream & operator << (ostream & os, const vector <T> & _v) 
-{ os << "{"; foreach(_v, it) { if(it != _v.begin()) os << ", "; os << *it; } return os << "}"; }
+ostream & operator << (ostream & os, const vector <T> & _v)
+{ os << "{"; foreach(it, _v) { if(it != _v.begin()) os << ", "; os << *it; } return os << "}"; }
 
 template <typename T>
-ostream & operator << (ostream & os, const set <T> & _st) 
-{ os << "["; foreach(_st, it) { if(it != _st.begin() ) os << ", "; os << *it; } return os << "]"; }
+ostream & operator << (ostream & os, const set <T> & _st)
+{ os << "["; foreach(it, _st) { if(it != _st.begin() ) os << ", "; os << *it; } return os << "]"; }
 
 template <typename T>
-ostream & operator << (ostream & os, const indexed_set <T> & _ist) 
-{ os << "["; foreach(_ist, it) { if(it != _ist.begin() ) os << ", "; os << "(" << _ist.indexOf(*it) << ", " << *it << ")"; } return os << "]"; }
+ostream & operator << (ostream & os, const indexed_set <T> & _ist)
+{ os << "["; foreach(it, _ist) { if(it != _ist.begin() ) os << ", "; os << "(" << _ist.indexOf(*it) << ", " << *it << ")"; } return os << "]"; }
 
 void shandomRuffleSort(int arr [], int l, int r)
 { for (int i = l; i < r; ++i) swap(arr[i], arr[Rand(l, r - 1)]); sort(arr + l, arr + r); }
 #endif
 
-#ifndef BFS
-int dx8[8] = { 1, -1, 0, 0, 1, 1, -1, -1 }, dx4[4] = { 0, 0, 1,-1};
-int dy8[8] = { 0, 0, 1, -1, 1, -1, 1, -1 }, dy4[4] = { 1,-1, 0, 0};
-#endif
+int dx[] = { 1, -1, 0, 0, 1, 1, -1, -1 };
+int dy[] = { 0, 0, 1, -1, 1, -1, 1, -1 };
 
-/** intput / output Control **/
 void Fast() { cin.sync_with_stdio(0); cin.tie(0); cout.tie(0); }
 void File()
 {
     #ifdef FIO
     freopen("input.in", "r", stdin);
-    freopen("o.out", "w", stdout);
+    freopen("output.out", "w", stdout);
     #endif
 }
 
@@ -165,22 +157,10 @@ string _in, _table = "WAKJSD";
 set <int> neighbours;
 char IDs[40010];
 
-map <char, string> Hex_Bin =  {{'0', "0000"},
-                               {'1', "0001"}, 
-                               {'2', "0010"},
-                               {'3', "0011"},
-                               {'4', "0100"},
-                               {'5', "0101"},
-                               {'6', "0110"},
-                               {'7', "0111"},
-                               {'8', "1000"},
-                               {'9', "1001"},
-                               {'a', "1010"},
-                               {'b', "1011"},
-                               {'c', "1100"},
-                               {'d', "1101"},
-                               {'e', "1110"},
-                               {'f', "1111"}};
+map <char, string> Hex_Bin =  {{'0', "0000"}, {'1', "0001"}, {'2', "0010"}, {'3', "0011"},
+							   {'4', "0100"}, {'5', "0101"}, {'6', "0110"}, {'7', "0111"},
+							   {'8', "1000"}, {'9', "1001"}, {'a', "1010"}, {'b', "1011"},
+                               {'c', "1100"}, {'d', "1101"}, {'e', "1110"}, {'f', "1111"}};
 
 void ___clear()
 {
@@ -193,16 +173,6 @@ bool valid_1(int r, int c)
     return r != -1 && c != -1 && r != H && c != W && image[r][c] == 1;
 }
 
-void FloodFill_1(int r, int c)
-{
-    if(!valid_1(r, c)) return;
-
-    image[r][c] = id;
-
-    for(int i = 0; i < 4; ++i)
-        FloodFill_1(r + dx4[i], c + dy4[i]);
-}
-
 bool valid_0(int r, int c)
 {
     if(r == -1 || r == H || c == -1 || c == W) // zero beside edges does not belong to a cycle
@@ -212,29 +182,32 @@ bool valid_0(int r, int c)
     }
 
     if(image[r][c] == -2) return false; // visited
-    if(image[r][c] != 0) 
+    if(image[r][c] != 0)
     {
-        neighbours.insert(image[r][c]); // its neighbour is neither edge nor -2 so, add it to set
+        neighbours.insert(image[r][c]); // its neighbour is neither boarder nor -2 so, add it to set
         return false;
     }
     return true;
 }
 
-void FloodFill_0(int r, int c)
+void FloodFill(int r, int c, int _01)
 {
-    if(!valid_0(r, c)) return;
+	if(_01 == 1)
+		if(!valid_1(r, c)) return;
+	else
+		if(!valid_0(r, c)) return;
 
-    image[r][c] = id; // visited = -2
-    
+    image[r][c] = id;
+
     for(int i = 0; i < 4; ++i)
-        FloodFill_0(r + dx4[i], c + dy4[i]);
+        FloodFill(r + dx[i], c + dy[i], _01);
 }
 
 void decode(int row, int st, char ch)
 {
     string _s = Hex_Bin[ch];
     int idx = 0;
-    
+
     for(int i = st; i < st + 4; ++i)
         image[row][i] = _s[idx++] - '0';
 }
@@ -256,47 +229,47 @@ void Solve()
         if(image[i][j] == 1)  // Label each hieroglyph character with a unique color
         {
             ++id; ++CCs;
-            FloodFill_1(i, j);
+            FloodFill(i, j, 1);
         }
     }
 
     id = -2;
 
     for(int i = 0; i < H; ++i)
-    for(int j = 0; j < W; ++j) 
+    for(int j = 0; j < W; ++j)
         if(image[i][j] == 0)  // if this connected area belongs to one id and only, then increase that id by one
         {
             neighbours.clear();
-            
-            FloodFill_0(i, j);
-            
-            if(sz(neighbours) > 1) 
+
+            FloodFill(i, j, 0);
+
+            if(sz(neighbours) > 1)
                 continue;
-            else 
+            else
                 IDs[*neighbours.begin()]++;
         }
-    
-    string ret = "";
-    
-    for(int i = 0; i < 40000; ++i)
-        if(IDs[i] > 0) 
-            ret.push_back(_table[(int)IDs[i]]); // each id is an integer [0, 5] that denotes one of the six hieroglyphs characters
-    
-    for(int i = sz(ret); i < CCs; ++i) 
-        ret.push_back('W'); // If the number of hieroglyphs characters is less than the actual number, then the number of 'W'  = CCs - ret.size() 
 
-    sort(all(ret)); 
+    string ret = "";
+
+    for(int i = 0; i < 40000; ++i)
+        if(IDs[i] > 0)
+            ret.push_back(_table[(int)IDs[i]]); // each id is an integer [0, 5] that denotes one of the six hieroglyph characters
+
+    for(int i = sz(ret); i < CCs; ++i)
+        ret.push_back('W'); // If the number of hieroglyph characters is less than the actual number, then the number of 'W'  = CCs - ret.size()
+
+    sort(all(ret));
     cout << ret << endl;
 }
 
-void MultiTest(bool Tests)
+void MultiTest()
 {
-    int _tc = 1; (Tests) && (cin >> _tc); 
-    
-    while(cin >> H >> W && (H || W)) 
+    int _tc = 1;
+
+    while(cin >> H >> W && (H || W))
     {
         cout << "Case " << _tc++ << ": ";
-        
+
         Solve();
         ___clear();
     }
@@ -306,5 +279,5 @@ void MultiTest(bool Tests)
 
 int main()
 {
-    Fast(); File(); MultiTest(0);
+    Fast(); File(); MultiTest();
 }
