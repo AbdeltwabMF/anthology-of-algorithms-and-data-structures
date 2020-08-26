@@ -144,7 +144,7 @@ int dy[] = { 0, 0, 1, -1, 1, -1, 1, -1 };
 void Fast() { cin.sync_with_stdio(0); cin.tie(0); cout.tie(0); }
 void File()
 {
-    #ifdef FIO
+    #ifdef DEBUG
     freopen("input.in", "r", stdin);
     freopen("output.out", "w", stdout);
     #endif
@@ -193,9 +193,13 @@ bool valid_0(int r, int c)
 void FloodFill(int r, int c, int _01)
 {
 	if(_01 == 1)
+	{
 		if(!valid_1(r, c)) return;
+	}
 	else
+	{
 		if(!valid_0(r, c)) return;
+	}
 
     image[r][c] = id;
 
