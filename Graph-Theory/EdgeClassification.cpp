@@ -22,7 +22,7 @@ void edgeClassification(int node, int par = -1)
 			cout << "Edge from " << par << " to " << node << " is a Back Edge 'Cycle' " << endl;
 		if(in_time[par] < in_time[node] && out_time[node])  /** child **/
 			cout << "Edge from " << par << " to " << node << " is a Forward Edge" << endl;
-		if(in_time[par] > in_time[node] && out_time[node])  /** neither Ancestor nor child **/
+		if(in_time[par] > in_time[node] && out_time[node])  /** neither Ancestor nor child. cross edges only occur in directed graph **/
 			cout << "Edge from " << par << " to " << node << " is a Cross Edge" << endl;
 
 		return;
