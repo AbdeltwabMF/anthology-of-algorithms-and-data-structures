@@ -20,19 +20,14 @@ void DFS(int node)
 
 vector <int> topological_sort(int n)
 {
-    vector <int> ret;
     t_sort.clear();
 
     for(int i = 1; i <= n; ++i) if(!vis[i])
         DFS(i);
 
-    if((int)t_sort.size() == n)
-    {
-        ret = t_sort;
-        reverse(ret.begin(), ret.end());
-    }
+    reverse(t_sort.begin(), t_sort.end());
 
-    return ret;
+    return t_sort;
 }
 
 void addEdge(int from, int to)
@@ -54,8 +49,6 @@ int main()
 
     vector <int> v = topological_sort(n);
 
-    if((int)v.size() == n) for(int i : v)
+    for(int i : v)
         cout << i << ' ';
-    else
-        cout << "not a DAG!" << endl;
 }
