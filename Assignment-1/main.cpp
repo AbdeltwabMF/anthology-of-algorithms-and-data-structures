@@ -13,7 +13,7 @@ bool isEaten(int r, int c)
         return false;
 }
 
-bool isEscaped(int r, int c, int boardSize)
+bool isEscaped(int r, int c)
 {
     if(getBoardCell(r, c) == 'B')
     	return true;
@@ -63,7 +63,7 @@ int main() {
                 ok = true;
                 break;
             }
-            else if(isEscaped(animals[i].getRow(), animals[i].getColumn(), boardSize))
+            else if(isEscaped(animals[i].getRow(), animals[i].getColumn()))
             {
                 cout << animals[i].getName() << ": Escaped through the bridge." << endl;
                 ok = true;
