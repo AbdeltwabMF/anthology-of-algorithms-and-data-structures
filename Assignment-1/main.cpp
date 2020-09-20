@@ -7,7 +7,7 @@ using namespace std;
 
 bool isEaten(int r, int c)
 {
-    if(getBoardCell(r, c) == 'C')
+    if(board().getBoardCell(r, c) == 'C')
     	return true;
     else
         return false;
@@ -15,7 +15,7 @@ bool isEaten(int r, int c)
 
 bool isEscaped(int r, int c)
 {
-    if(getBoardCell(r, c) == 'B')
+    if(board().getBoardCell(r, c) == 'B')
     	return true;
     else
         return false;
