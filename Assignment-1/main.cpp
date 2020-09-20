@@ -15,8 +15,8 @@ bool isEaten(int r, int c)
 
 bool isEscaped(int r, int c, int boardSize)
 {
-    if(c == boardSize - 1 && r == (boardSize / 2))
-        return true;
+    if(getBoardCell(r, c) == 'B')
+    	return true;
     else
         return false;
 }
