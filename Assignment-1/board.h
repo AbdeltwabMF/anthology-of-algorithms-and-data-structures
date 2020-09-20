@@ -1,7 +1,6 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-
 class board {
   public:
     board() {};
@@ -23,12 +22,13 @@ class board {
     }
 
     char getBoardCell(int r, int c) {
+
         return Board[r][c];
     }
-
+    
   private:
     int boardSize;
     char Board[12][12];
 };
 
-#endif // BOARD_H
+#endif
