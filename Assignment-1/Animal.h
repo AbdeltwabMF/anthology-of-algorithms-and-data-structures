@@ -1,5 +1,6 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
+
 #include "board.h"
 
 using namespace std;
@@ -7,15 +8,15 @@ using namespace std;
 class Animal {
   public:
     Animal() {
+    	name = "";
         rowPosition = 0;
         columnPosition = 0;
-        name = "";
     }
 
-    Animal(int r, int c, string _name) {
+    Animal(string _name, int r, int c) {
+        name = _name;
         rowPosition = r;
         columnPosition = c;
-        name = _name;
     }
 
     bool move(char c) {
@@ -25,7 +26,7 @@ class Animal {
             if(++rowPosition >= board().getBoardSize()) return false;
         } else if(c == 'R') {
             if(++columnPosition >= board().getBoardSize()) return false;
-        } else {
+        } else if(c == 'L') {
             if(--columnPosition < 0) return false;
         }
 
@@ -49,4 +50,4 @@ class Animal {
     int columnPosition;
 };
 
-#endif // ANIMAL_H
+#endif
