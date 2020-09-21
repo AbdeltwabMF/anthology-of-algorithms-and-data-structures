@@ -16,10 +16,14 @@ class UnionFind
 			assert(n > 0);
 			disjoint_sets = sz = n;
 			
-			par.resize(n + 2);
-			siz.resize(n + 2, 1);
+			par.resize(n + 1);
+			siz.resize(n + 1);
 			
-			for(size_t i = 0; i <= n; ++i) par[i] = i; 
+			for(size_t i = 0; i <= n; ++i) 
+			{
+				par[i] = i;
+				siz[i] = 1;
+			} 
 		}
 		
 		int find_set(int u) {
@@ -29,7 +33,7 @@ class UnionFind
 			for(leader = u; leader != par[leader]; leader = par[leader]);
 			
 			// path compression
-			for(int next = par[u]; u ^ leader; next = par[next]) {
+			for(int next = par[u]; u != leader; next = par[next]) {
 				par[u] = leader;
 				u = next;
 			}
