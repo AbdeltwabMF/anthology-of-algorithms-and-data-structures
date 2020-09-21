@@ -1,11 +1,8 @@
-/** CodeChef
-	Contest Code:PRACTICE Problem Code:STABLEMP
-**/
 #include "bits/stdc++.h"
 
 using namespace std;
 
-const int N = (int)505;
+const int N = 5e2 + 9;
 
 /**----------------->>  Quality Over Quantity  <<----------------**/
 

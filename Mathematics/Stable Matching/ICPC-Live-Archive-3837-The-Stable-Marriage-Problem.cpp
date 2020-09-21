@@ -1,10 +1,6 @@
-/** Quality Over Quantity
+#include <bits/stdc++.h>
 
-	ICPC Live Archive
-	3837 - The Stable Marriage Problem
-**/
-
-#include "bits/stdc++.h"
+#define endl    '\n'
 
 using namespace std;
 
