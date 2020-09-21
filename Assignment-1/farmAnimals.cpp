@@ -66,21 +66,21 @@ class animal {
         return true;
     }
 	
-	bool isEaten() {
-		return Board.getBoardCell(rowPosition, columnPosition) == 'C';
-	}
+    bool isEaten() {
+	return Board.getBoardCell(rowPosition, columnPosition) == 'C';
+    }
 
-	bool isEscaped() {
-		return Board.getBoardCell(rowPosition, columnPosition) == 'B';
-	}
+    bool isEscaped() {
+	return Board.getBoardCell(rowPosition, columnPosition) == 'B';
+    }
 
-	bool isDrowned(bool status) {
-		return !status;
-	}
+    bool isDrowned(bool status) {
+	return !status;
+    }
 
-	bool isStuck() {
-		return instructions == 0;
-	}
+    bool isStuck() {
+	return instructions == 0;
+    }
 	
     int getRow() {
         return rowPosition;
@@ -98,8 +98,7 @@ class animal {
     string name;
     int rowPosition;
     int columnPosition;
-	int instructions;
-	
+    int instructions;
 };
 
 
@@ -152,8 +151,8 @@ int main() {
                 break;
             }
             else if(animals[i].isStuck()) {
-				cout << name << ": Starved… Stuck inside the board." << endl;
-			}
+		cout << name << ": Starved… Stuck inside the board." << endl;
+	    }
         }
     }
 }
