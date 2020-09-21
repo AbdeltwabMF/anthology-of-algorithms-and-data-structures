@@ -16,17 +16,17 @@ class UnionFind
 			assert(n > 0);
 			disjoint_sets = sz = n;
 			
-			for(size_t i = 0; i <= n; ++i) {
-				par[i] = i; 
-				siz[i] = 1;
-			}
+			par.resize(n + 2);
+			siz.resize(n + 2, 1);
+			
+			for(size_t i = 0; i <= n; ++i) par[i] = i; 
 		}
 		
 		int find_set(int u) {
 			
 			// find representative (leader) item
 			int leader;
-			for(leader = u; leader != par[leader]; leader = par[leader])
+			for(leader = u; leader != par[leader]; leader = par[leader]);
 			
 			// path compression
 			for(int next = par[u]; u ^ leader; next = par[next]) {
@@ -41,6 +41,7 @@ class UnionFind
 			return find_set(u) == find_set(v);
 		}
 		
+		// union by size
 		void union_set(int u, int v) {
 			
 			if(same_set(u, v)) return;
@@ -69,8 +70,8 @@ class UnionFind
 		}
 					
 	private:
-		int par[N];
-		int siz[N];
+		vector <int> par;
+		vector <int> siz;
 		int disjoint_sets;
 		size_t sz;
 };
