@@ -40,15 +40,19 @@ class animal {
         rowPosition = 0;
         columnPosition = 0;
         name = "";
+        instructions = 0;
     }
 
     animal(string _name, int r, int c) {
         rowPosition = r;
         columnPosition = c;
         name = _name;
+        instructions = 4;
     }
 
     bool move(char c) {
+        --instructions;
+        
         if(c == 'U') {
             if(--rowPosition < 0) return false;
         } else if(c == 'D') {
@@ -61,7 +65,23 @@ class animal {
 
         return true;
     }
+	
+	bool isEaten() {
+		return Board.getBoardCell(rowPosition, columnPosition) == 'C';
+	}
 
+	bool isEscaped() {
+		return Board.getBoardCell(rowPosition, columnPosition) == 'B';
+	}
+
+	bool isDrowned(bool status) {
+		return !status;
+	}
+
+	bool isStuck() {
+		return instructions == 0;
+	}
+	
     int getRow() {
         return rowPosition;
     }
@@ -78,23 +98,10 @@ class animal {
     string name;
     int rowPosition;
     int columnPosition;
-
+	int instructions;
+	
 };
 
-bool isEaten(int r, int c)
-{
-    return (Board.getBoardCell(r, c) == 'C');
-}
-
-bool isEscaped(int r, int c)
-{
-    return (Board.getBoardCell(r, c) == 'B');
-}
-
-bool isDrowned(bool ok)
-{
-    return !ok;
-}
 
 int main() {
 
@@ -106,13 +113,13 @@ int main() {
 
     Board = board(c1r, c1c, c2r, c2c, boardSize);
 
-    int numOfFarmAnimals;
-    cin >> numOfFarmAnimals;
+    int nAnimals;
+    cin >> nAnimals;
 
 
-    animal animals[numOfFarmAnimals];
+    animal animals[nAnimals];
 
-    for(int i = 0; i < numOfFarmAnimals; ++i) {
+    for(int i = 0; i < nAnimals; ++i) {
 
         int r, c;
         string name;
@@ -121,41 +128,33 @@ int main() {
         animals[i] = animal(name, r, c);
     }
 
-    for(int i = 0; i < numOfFarmAnimals; ++i) {
+    for(int i = 0; i < nAnimals; ++i) {
 
         string movement;
         cin >> movement;
 
-        bool ok = false;
         string name = animals[i].getName();
 
-        for(int j = 0; j < movement.size(); ++j)
-        {
+        for(int j = 0; j < (int)movement.size(); ++j) {
+            
             bool status = animals[i].move(movement[j]);
-            int r = animals[i].getRow();
-            int c = animals[i].getColumn();
-
-            if(isDrowned(status))
-            {
+        
+            if(animals[i].isDrowned(status)) {
                 cout << name << ": Drowned outside the island." << endl;
-                ok = true;
                 break;
             }
-            else if(isEaten(r, c))
-            {
+            else if(animals[i].isEaten()) {
                 cout << name << ": Eaten by the cat." << endl;
-                ok = true;
                 break;
             }
-            else if(isEscaped(r, c))
-            {
+            else if(animals[i].isEscaped()) {
                 cout << name << ": Escaped through the bridge." << endl;
-                ok = true;
                 break;
             }
+            else if(animals[i].isStuck()) {
+				cout << name << ": Starved… Stuck inside the board." << endl;
+			}
         }
-
-        if(!ok)
-            cout << name << ": Starved… Stuck inside the board." << endl;
     }
 }
+
