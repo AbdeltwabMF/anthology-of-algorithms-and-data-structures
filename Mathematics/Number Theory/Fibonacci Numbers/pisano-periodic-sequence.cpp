@@ -3,7 +3,8 @@
 	Where CR stands for your computing resources. In my case,
 	CR ≈ 100,000,000
 	----------------
-	The algorithm is constructed around the ideas that a Pisano sequence always starts with 0 and 1, and that this sequence of Fibonacci 		numbers taken modulo n can be constructed for each number by adding the previous remainders and taking into account the modulo n.
+	The algorithm is constructed around the ideas that a Pisano sequence always starts with 0 and 1, and that this sequence of Fibonacci 		
+	numbers taken modulo n can be constructed for each number by adding the previous remainders and taking into account the modulo n.
 	----------------
 
 	definition:
