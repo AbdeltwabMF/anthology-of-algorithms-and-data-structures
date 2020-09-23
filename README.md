@@ -2,9 +2,12 @@
  Common Code for Competitive Programming in C++
  
 ## Contents
- - [Data Structures](Data-Structures)
+ 1. [Data Structures](Data-Structures)
    - [Union Find Disjoint Sets](Data-Structures/UnionFindDisjointSets.cpp)
- - [Graph Theory](Graph-Theory)
+
+---
+
+ 2. [Graph Theory](Graph-Theory)
    - [Graph Traversal](Graph-Theory/Graph-Traversal)
      - [AdjacencyList using linked list implementation](Graph-Theory/Graph-Traversal/AdjacencyList[LinkedLlist].cpp)
      - [Graph Traversal using bfs](Graph-Theory/Graph-Traversal/graph_traversal[BFS].cpp)
@@ -22,9 +25,12 @@
      - [Tree Diameter](Graph-Theory/Graph-Traversal/TreeDiameter.cpp)
    - [Single-Source Shortest Paths (SSSP)](Graph-Theory/Single-Source-Shortest-Paths-(SSSP))
      - [BFS](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS)
-       - [0-1-BFS](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/0-1-BFS.cpp)
-       - [0-1-BFS via Edge Splitting](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/0-1-BFS-via-EdgeSplitting.cpp)
- - [Mathematics](Mathematics)
+       - [0-1 BFS](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/0-1-BFS.cpp)
+       - [0-1 BFS via Edge Splitting](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/0-1-BFS-via-EdgeSplitting.cpp)
+
+---
+
+ 3. [Mathematics](Mathematics)
    - [Number Theory](Mathematics/Number-Theory)
      - [Prime Generation](Mathematics/Number-Theory/Prime-Generation)
        - [Optimized Sieve of Eratosthenes](Mathematics/Number-Theory/Prime-Generation/Optimized_Sieve_Eratosthenes.cpp)
@@ -35,7 +41,9 @@
      - [The Stable Marriage Problem](Mathematics/Stable-Matching/ICPC-Live-Archive-3837-The-Stable-Marriage-Problem.cpp)
      - [CodeChef problem STABLEMP](Mathematics/Stable-Matching/CodeChef[STABLEMP].cpp)
      - [Ladies' Optimal Matching](Mathematics/Stable-Matching/UVa-1175-Ladies'-Choice.cpp)
- 
- - [Miscellaneous](Miscellaneous)
+
+---
+
+ 4. [Miscellaneous](Miscellaneous)
    - [Next/Prev Greater/Smaller Element](Miscellaneous/Next-Prev-Greater-Smaller-Element[using_stack].cpp)
   
