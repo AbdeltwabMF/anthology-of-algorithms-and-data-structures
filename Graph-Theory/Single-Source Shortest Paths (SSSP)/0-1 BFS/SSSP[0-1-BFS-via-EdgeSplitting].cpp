@@ -1,5 +1,5 @@
-/** resources:
-	2. https://onlinejudge.org/board/viewtopic.php?t=7281&start=15
+/** 	resources:
+        1. https://onlinejudge.org/board/viewtopic.php?t=7281&start=15
 **/
 #include <bits/stdc++.h>
 
@@ -23,15 +23,15 @@ void addEdge(int from, int to, int cost)
 
 void splitEdge(int u, int v, int w, int & edge)
 {
-	addEdge(u, edge, 1);
+    addEdge(u, edge, 1);
     addEdge(edge, u, 1);
-	
-	// make chain
-	for(int next = edge; next - edge + 2 < w; ++next)
+
+    // make chain
+    for(int next = edge; next - edge + 2 < w; ++next)
     {
-		addEdge(next, next + 1, 1);
-	    addEdge(next + 1, next, 1);        		
-   	}
+        addEdge(next, next + 1, 1);
+        addEdge(next + 1, next, 1);
+    }
 
     edge += w - 2;
     addEdge(v, edge, 1);
@@ -49,7 +49,8 @@ void BFS(int src)
     int node;
     while(Q.size())
     {
-        node = Q.front(); Q.pop_front();
+        node = Q.front();
+        Q.pop_front();
         for(int i = Head[node]; i; i = Next[i]) if(dis[node] + Cost[i] < dis[To[i]])
         {
             dis[To[i]] = dis[node] + Cost[i];
@@ -61,16 +62,16 @@ void BFS(int src)
 
 int main()
 {
-    cin >> n >> m >> start >> target; 
+    cin >> n >> m >> start >> target;
     edge = n + 1;
-    
+
     while(m--)
     {
         cin >> u >> v >> w;
-        if(w > 1) 
-        	splitEdge(u, v, w, edge);
-        else 
-        	addEdge(u, v, w), addEdge(v, u, w);
+        if(w > 1)
+            splitEdge(u, v, w, edge);
+        else
+            addEdge(u, v, w), addEdge(v, u, w);
     }
 
     BFS(start);
