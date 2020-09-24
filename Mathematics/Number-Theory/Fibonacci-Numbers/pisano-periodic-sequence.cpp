@@ -3,7 +3,7 @@
 	Where CR stands for your computing resources. In my case,
 	CR ≈ 100,000,000
 	----------------
-	The algorithm is constructed around the ideas that a Pisano sequence always starts with 0 and 1, and that this sequence of Fibonacci 		
+	The algorithm is constructed around the ideas that a Pisano sequence always starts with 0 and 1, and that this sequence of Fibonacci
 	numbers taken modulo n can be constructed for each number by adding the previous remainders and taking into account the modulo n.
 	----------------
 
@@ -22,69 +22,38 @@
 	resources :
 	1. https://webbox.lafayette.edu/~reiterc/nt/qr_fib_ec_preprint.pdf
 	2. https://www.youtube.com/watch?v=Nu-lW-Ifyec&ab_channel=Numberphile
-	3. https://www.youtube.com/watch?v=o1eLKODSCqw&list=WL&index=3&ab_channel=JacobYatsko
 	4. http://webspace.ship.edu/msrenault/fibonacci/fib.htm
 	5. https://www.theoremoftheday.org/Binomial/PeriodicFib/TotDPeriodic.pdf
-	6. https://www.hackerearth.com/problem/algorithm/mozart-numbers/editorial/
 	7. http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibmaths.html#fibmod
 	8. http://webspace.ship.edu/msrenault/fibonacci/FibThesis.pdf
 	9. https://www.fq.math.ca/Scanned/1-2/vinson.pdf
 **/
 
-#pragma  GCC optimize ("Ofast")
-
 #include <bits/stdc++.h>
-
-#define  endl    '\n'
 
 using namespace std;
 
-typedef long long ll;
-
-void Fast()
-{
-    cin.sync_with_stdio(0); cin.tie(0); cout.tie(0);
-}
-
-/**----------------->>  Quality Over Quantity  <<----------------**/
-
 int n;
 
-vector <int> pisano_periodic_sequence(int n)
-{
+vector <int> pisano_periodic_sequence(int n) {
     vector <int> period;
 
     int current = 0, next = 1;
     period.push_back(current);
 
-    if (n < 2) return period;
+    if(n < 2) return period;
     current = (next += current) - current;
 
-    while (current != 0 || next != 1)
-    {
+    while(current != 0 || next != 1) {
         period.push_back(current);
         current = current + next >= n ? (next += current - n) + (n - current) : (next += current) - current;
     }
     return period;
 }
 
-void Solve()
-{
+int main() {
     cin >> n;
     cout << pisano_periodic_sequence(n).size() << endl;
 }
 
-void MultiTest(bool Tests = 0)
-{
-    int tc = 1; (Tests) && (cin >> tc);
-    for(int i = 1; i <= tc; ++i)
-        Solve();
-}
-
-/**------------------------->>  Main  <<-------------------------**/
-
-int main()
-{
-    Fast(); MultiTest();
-}
 

@@ -6,14 +6,10 @@
 
 using namespace std;
 
-
-void Fast() { cin.sync_with_stdio(0); cin.tie(0); cout.tie(0); }
-void File()
-{
-    #ifndef ONLINE_JUDGE
-    freopen("input.in", "r", stdin);
-    //freopen("output.out", "w", stdout);
-    #endif
+void Fast() {
+    cin.sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 }
 
 /**----------------->>  Quality Over Quantity  <<----------------**/
@@ -26,13 +22,11 @@ string line;
 stringstream ss;
 
 
-bool valid(int r, int c)
-{
+bool valid(int r, int c) {
     return r >= 1 && r <= 8 && c >= 1 && c <= 8 && dis[r][c] == oo;
 }
 
-void BFS(int sr, int sc)
-{
+void BFS(int sr, int sc) {
     memset(dis, 0x3f, sizeof dis);
     queue <array <int, 2>> Q;
     Q.push({sr, sc});
@@ -40,8 +34,7 @@ void BFS(int sr, int sc)
 
     array <int, 2> cell;
     int r, c;
-    while(Q.size())
-    {
+    while(Q.size()) {
         cell = Q.front(); Q.pop();
         for(int i = 0; i < 8; ++i)
         {
@@ -54,8 +47,7 @@ void BFS(int sr, int sc)
     }
 }
 
-void Solve()
-{
+void Solve() {
     BFS((int)si, (int)sj);
     cout << dis[ti][tj];
 }
@@ -63,14 +55,16 @@ void Solve()
 void MultiTest(bool Tests = 0)
 {
     int tc = 1; (Tests) && (cin >> tc);
-    for(int i = 1; getline(cin, line) && line.size(); ++i)
-    {
+    for(int i = 1; getline(cin, line) && line.size(); ++i) {
         ss.clear();
         ss.str(line);
         ss >> si >> sj >> ti >> tj;
 
         cout << "To get from " << si << sj << " to " << ti << tj << " takes ";
-        si -= 96; sj -= 48; ti -= 96; tj -= 48;
+        si -= 96;
+        sj -= 48;
+        ti -= 96;
+        tj -= 48;
 
         Solve();
         cout << " knight moves." << endl;
@@ -83,3 +77,4 @@ int main()
 {
     Fast(); File(); MultiTest();
 }
+
