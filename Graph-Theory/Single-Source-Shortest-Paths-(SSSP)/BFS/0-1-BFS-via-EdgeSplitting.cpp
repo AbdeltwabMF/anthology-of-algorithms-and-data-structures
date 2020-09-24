@@ -3,32 +3,24 @@
 **/
 #include <bits/stdc++.h>
 
-#define  endl   '\n'
-
 using namespace std;
 
 const int N = 2e5 + 9, M = 4e5 + 9;
 
-/**----------------->>  Quality Over Quantity  <<----------------**/
-
 int Head[N], Next[M], To[M], Cost[M], dis[N], ne, n, m, u, v, w, start, target, edge;
 
-void addEdge(int from, int to, int cost)
-{
+void addEdge(int from, int to, int cost) {
     Next[++ne] = Head[from];
     To[ne] = to;
     Cost[ne] = cost;
     Head[from] = ne;
 }
 
-void splitEdge(int u, int v, int w, int & edge)
-{
+void splitEdge(int u, int v, int w, int & edge) {
     addEdge(u, edge, 1);
     addEdge(edge, u, 1);
 
-    // make chain
-    for(int next = edge; next - edge + 2 < w; ++next)
-    {
+    for(int next = edge; next - edge + 2 < w; ++next) {
         addEdge(next, next + 1, 1);
         addEdge(next + 1, next, 1);
     }
@@ -39,20 +31,16 @@ void splitEdge(int u, int v, int w, int & edge)
     ++edge;
 }
 
-void BFS(int src)
-{
+void BFS(int src) {
     memset(dis, 0x3f, sizeof dis);
     deque <int> Q;
     Q.push_front(src);
     dis[src] = 0;
 
     int node;
-    while(Q.size())
-    {
-        node = Q.front();
-        Q.pop_front();
-        for(int i = Head[node]; i; i = Next[i]) if(dis[node] + Cost[i] < dis[To[i]])
-        {
+    while(Q.size()) {
+        node = Q.front(); Q.pop_front();
+        for(int i = Head[node]; i; i = Next[i]) if(dis[node] + Cost[i] < dis[To[i]]) {
             dis[To[i]] = dis[node] + Cost[i];
             if(Cost[i]) Q.push_back(To[i]);
             else Q.push_front(To[i]);
@@ -60,13 +48,12 @@ void BFS(int src)
     }
 }
 
-int main()
-{
+int main() {
+
     cin >> n >> m >> start >> target;
     edge = n + 1;
 
-    while(m--)
-    {
+    while(m--) {
         cin >> u >> v >> w;
         if(w > 1)
             splitEdge(u, v, w, edge);

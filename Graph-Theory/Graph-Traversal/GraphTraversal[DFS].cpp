@@ -4,8 +4,8 @@ using namespace std;
 
 const int N = 1e5 + 9, M = 1e6 + 9;
 
-int Head[N], Next[M], To[M], ne, u, v, n, m, CCs;
-bool visited[N];
+int Head[N], Next[M << 1], To[M << 1], ne, n, m, u, v;
+bool vis[N];
 
 void addEdge(int from, int to) {
     Next[++ne] = Head[from];
@@ -14,9 +14,9 @@ void addEdge(int from, int to) {
 }
 
 void DFS(int node) {
-    visited[node] = true;
-    for(int e = Head[node]; e; e = Next[e]) if(!visited[To[e]])
-        DFS(To[e]);
+    vis[node] = true;
+    for(int i = Head[node]; i; i = Next[i]) if(!vis[To[i]])
+            DFS(To[i]);
 }
 
 int main() {
@@ -29,9 +29,7 @@ int main() {
         addEdge(v, u);
     }
 
-    for(int node = 1; node <= n; ++node) if(!visited[node])
-        ++CCs, DFS(node);
-
-    cout << CCs << endl;
+    for(int i = 1; i <= n; ++i) if(!vis[i])
+        DFS(i);
 }
 

@@ -4,8 +4,10 @@
 
 using namespace std;
 
-void Fast() { 
-	cin.sync_with_stdio(0); cin.tie(0); cout.tie(0); 
+void Fast() {
+    cin.sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 }
 
 const int N = 1e3 + 9;
@@ -23,16 +25,14 @@ void engage(int man, int woman)
     if(ex) Q.push(ex);
 }
 
-void _clear()
-{
+void _clear() {
     memset(husband, 0, (n + 2) << 2);
     memset(wife, 0, (n + 4) << 2);
     memset(Next, 0, (n + 4) << 2);
     Q = queue <int> ();
 }
 
-void Solve()
-{
+void Solve() {
     /** Ladies' Choice, the best possible choice for the girls. **/
     cin >> n;
     _clear();
@@ -43,17 +43,16 @@ void Solve()
     }
 
     for(int i = 1; i <= n; ++i)
-    for(int j = 1; j <= n; ++j)
-        cin >> u, order[i][u] = j;
+        for(int j = 1; j <= n; ++j)
+            cin >> u, order[i][u] = j;
 
     int man, woman;
-    while(Q.size())
-    {
+    while(Q.size()) {
         woman = Q.front(); Q.pop();
         man = pref[woman][++Next[woman]];
 
         if(!wife[man] || order[man][woman] < order[man][wife[man]])
-           engage(man, woman);
+            engage(man, woman);
         else
             Q.push(woman);
     }
@@ -65,8 +64,7 @@ void Solve()
 void MultiTest(bool Tests = 0)
 {
     int tc = 1; (Tests) && (cin >> tc);
-    for(int i = 1; i <= tc; ++i)
-    {
+    for(int i = 1; i <= tc; ++i) {
         if(i > 1) cout << endl;
         Solve();
     }
@@ -78,3 +76,4 @@ int main()
 {
     Fast(); MultiTest(1);
 }
+
