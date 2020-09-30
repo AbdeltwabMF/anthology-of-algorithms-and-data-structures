@@ -34,6 +34,8 @@
        - [Multi Source Shortest Path[Grid]](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/MSSP[Grid].cpp)
        - [Shortest Path from One To Many](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/OneToMany.cpp)
        - [Shortest Path from Many To One[DirectedGraph]](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/ManyToOne[DirectedGraph].cpp)
+       - [Shortest Cycle](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/Shortest-Cycle.cpp)
+       - [Shortest Even path](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/Shortest-Even-path.cpp)
 
 ---
 

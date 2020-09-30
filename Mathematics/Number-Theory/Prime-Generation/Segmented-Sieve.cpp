@@ -65,7 +65,7 @@ vector <ll> segmented_sieve(ll l, ll r)
 
     for(int i = 0; i < (int)Primes.size(); ++i) {
         ll p = Primes[i];
-        for(int j = max(p * p, (l / p) * p); j <= r; j += Primes[i])
+        for(ll j = max(p * p, (l / p) * p); j <= r; j += Primes[i])
             isPrime.reset(j - l);
     }
 
