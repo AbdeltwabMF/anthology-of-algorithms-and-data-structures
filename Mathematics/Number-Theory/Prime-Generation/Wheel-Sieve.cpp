@@ -6,7 +6,7 @@
 
 using namespace std;
 
-typedef long long  ll;
+typedef int64_t  ll;
 
 const int N = 1e9;
 
@@ -15,12 +15,11 @@ void Fast() {
     cin.tie(0);cout.tie(0);
 }
 
-bitset <N + 9> isComposite;
-int inx[30100], primesCnt;
+bitset <N + 9> isPrime;
+int inx[30100];
 vector <int> Primes;
 
-vector <int> coPrimes(int n)
-{
+vector <int> coPrimes(int n) {
     int basis [5] = {3, 5, 7, 11, 13};
 
     vector <int> ret;
@@ -49,26 +48,24 @@ void wheel_sieve(int n)
     for(int k = 0; k < sz; ++k)
         inx[wheel[k]] = k;
 
+    isPrime.set();
+    inx[1] = sz - 2;
     int inc [sz - 1];
 
     for(int i = 1; i < sz; ++i)
         inc[i - 1] = wheel[i] - wheel[i - 1];
 
-    Primes.push_back(2);
-    primesCnt = 6;
+    Primes = {2, 3, 5, 7, 11, 13};
 
     int i = 0;
-    for(ll d = 17; d <= n; d += inc[i++]) {
-        if(!isComposite[d]) {
-            if(++primesCnt == 501)
-                Primes.push_back(d), primesCnt = 1;
-
-            int md = d % 30030;
-            if(md == 1) md += 30030;
-
-            int c = inx[md];
-            for(ll j = d * d; j <= n; j += d * inc[c++]) {
-                isComposite.set(j);
+    for(ll d = 17; d <= n; d += inc[i++])
+    {
+        if(isPrime[d]) {
+            Primes.push_back(d);
+            int c = inx[d % 30030];
+            for(ll j = d * d; j <= n; j += d * inc[c++])
+            {
+                isPrime.reset(j);
                 if(c == sz - 1) c = 0;
             }
         }
@@ -81,7 +78,7 @@ int main()
     Fast();
     wheel_sieve(1'000'000'000);
 
-    for(int i = 0; i < Primes.size(); ++i)
+    for(int i = 0; i < Primes.size(); i += 500)
         cout << Primes[i] << endl;
 }
 

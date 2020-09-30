@@ -42,6 +42,7 @@
      - [Prime Generation](Mathematics/Number-Theory/Prime-Generation)
        - [Simple Sieve of Eratosthenes](Mathematics/Number-Theory/Prime-Generation/Simple-Sieve-Eratosthenes.cpp)
        - [Segmented Sieve](Mathematics/Number-Theory/Prime-Generation/Segmented-Sieve.cpp)
+       - [Enhancement Segmented Sieve](Mathematics/Number-Theory/Prime-Generation/Enhancement_Segmented_sieve.cpp)
        - [Wheel Sieve](Mathematics/Number-Theory/Prime-Generation/Wheel-Sieve.cpp)
      - [Integer Factorization](Mathematics/Number-Theory/Integer-Factorization)
        - [Extended Wheel-Factorization](Mathematics/Number-Theory/Integer-Factorization/Extended-Wheel-Factorization.cpp)
