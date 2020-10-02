@@ -65,4 +65,5 @@
  4. [Miscellaneous](Miscellaneous)
    - [Next/Prev Greater/Smaller Element](Miscellaneous/Next-Prev-Greater-Smaller-Element[using_stack].cpp)
    - [Modular Calculations](Miscellaneous/Modular-Calculations.cpp)
+   - [The Minimal Excluded element of subarray of Permutation](Miscellaneous/The-MEX-of-subarray-of-Permutation.cpp)
   
