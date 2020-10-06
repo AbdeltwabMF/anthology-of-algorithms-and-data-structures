@@ -4,6 +4,9 @@
 ## Contents
  1. [Data Structures](Data-Structures)
    - [Union Find Disjoint Sets](Data-Structures/UnionFindDisjointSets.cpp)
+   - [Segment Tree](Data-Structures/Segment-Tree)
+     - [RMQ with Lazy Propagation](Data-Structures/Segment-Tree/RMQ[Lazy-Propagation].cpp)
+     - [RSQ with Lazy Propagation](Data-Structures/Segment-Tree/RSQ[Lazy-Propagation].cpp)
 
 ---
 
