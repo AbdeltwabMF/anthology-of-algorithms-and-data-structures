@@ -7,6 +7,9 @@
    - [Segment Tree](Data-Structures/Segment-Tree)
      - [RMQ with Lazy Propagation](Data-Structures/Segment-Tree/RMQ[Lazy-Propagation].cpp)
      - [RSQ with Lazy Propagation](Data-Structures/Segment-Tree/RSQ[Lazy-Propagation].cpp)
+   - [Sparse Table](Data-Structures/Sparse-Table)
+     - [Range Maximum Query on Static Array](Data-Structures/Sparse-Table/RMAXQ[static-array].cpp)
+     - [Range Minimum Query on Static Array](Data-Structures/Sparse-Table/RMINQ[static-array].cpp)
 
 ---
 
