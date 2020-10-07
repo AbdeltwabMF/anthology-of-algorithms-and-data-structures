@@ -99,7 +99,7 @@ class SegmentTree
         if(ql > r || qr < l) return 0;
 
         if(lazyTree[p]) {
-            segTree[p] += (l - r + 1) * lazyTree[p];
+            segTree[p] += (r - l + 1) * lazyTree[p];
             if(l != r) {
                 lazyTree[left(p)] += lazyTree[p];
                 lazyTree[right(p)] += lazyTree[p];
