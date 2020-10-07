@@ -37,7 +37,7 @@ class SparseTable
         for(int j = 0; i != _end; i++, ++j)
             arr[j] = *i;
 
-        spTable.assign(N + 1, vector <int> (LOG, 0));
+        spTable.assign(N + 1, vector <int> (LOG + 1, 0));
         build();
     }
 
