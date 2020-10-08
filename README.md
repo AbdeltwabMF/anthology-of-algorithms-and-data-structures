@@ -42,6 +42,9 @@
        - [Shortest Path from Many To One[DirectedGraph]](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/ManyToOne[DirectedGraph].cpp)
        - [Shortest Cycle](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/Shortest-Cycle.cpp)
        - [Shortest Even path](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/Shortest-Even-path.cpp)
+     - [Dijkstra](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra)
+       - [Dijkstra on dense graphs](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Dijkstra[dense-graphs].cpp)
+       - [Dijkstra on sparse graphs](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Dijkstra[sparse-graphs].cpp)
 
 ---
 
