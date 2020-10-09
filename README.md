@@ -45,6 +45,7 @@
      - [Dijkstra](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra)
        - [Dijkstra on dense graphs](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Dijkstra[dense-graphs].cpp)
        - [Dijkstra on sparse graphs](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Dijkstra[sparse-graphs].cpp)
+       - [Dijkstra on Grids](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Dijkstra[Grid].cpp)
 
 ---
 
