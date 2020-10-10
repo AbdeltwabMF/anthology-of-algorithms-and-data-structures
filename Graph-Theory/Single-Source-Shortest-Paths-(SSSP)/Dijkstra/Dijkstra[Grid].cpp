@@ -25,9 +25,10 @@ bool valid(int r, int c) {
     return r >= 0 && r < n && c >= 0 && c < m;
 }
 
-void BFS(int sr, int sc)
+void Dijkstra(int sr, int sc)
 {
-    memset(dis, 0x3f, sizeof dis);
+    memset(dis, 0x3f, sizeof dis); // memset(dis, 0x3f, n * m) we don't do that here
+    
     priority_queue <tuple <int, int, int>,
                    vector <tuple <int, int, int> >,
                    greater <tuple <int, int, int> > > Q;
@@ -39,7 +40,7 @@ void BFS(int sr, int sc)
     while(Q.size())
     {
         tie(cost, r, c) = Q.top(); Q.pop();
-        if(cost != dis[r][c]) continue;
+        if(cost > dis[r][c]) continue;
 
         for(int i = 0; i < 4; ++i)
         {
@@ -64,7 +65,7 @@ void Solve()
         for(int j = 0; j < m; ++j)
             cin >> grid[i][j];
 
-    BFS(0, 0);
+    Dijkstra(0, 0);
     cout << dis[n - 1][m - 1] << endl;
 }
 

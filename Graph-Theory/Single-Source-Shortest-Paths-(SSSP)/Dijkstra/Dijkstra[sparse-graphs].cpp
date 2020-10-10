@@ -1,5 +1,8 @@
 /** Dijkstra on sparse graphs
-    complexity : O(nlogn + m)
+    - complexity : O(n + m)logn -> O(nlogn + m)
+	- Single Source Single Destination Shortest Path Problem
+	- Positive Weight Edges only
+    * Subpaths of shortest paths from u to v are shortest paths!
 **/
 
 #pragma GCC optimize ("Ofast")
@@ -32,33 +35,6 @@ void addEdge(int from, int to, int cost)
     Head[from] = ne;
 }
 
-void Dijkstra(int src)
-{
-    memset(dis, 0x3f, sizeof dis);
-    memset(Par, -1, sizeof Par);
-
-    priority_queue <pair <ll, int>,
-                   vector <pair <ll, int> >,
-                   greater <pair <ll, int> > > Q;
-
-    dis[src] = 0;
-    Q.push({dis[src], src});
-
-    int node;
-    ll cost;
-    while(Q.size())
-    {
-        tie(cost, node) = Q.top(); Q.pop();
-        if(cost != dis[node]) continue;
-
-        for(int i = Head[node]; i; i = Next[i]) if(dis[node] + Cost[i] < dis[To[i]]) {
-            dis[To[i]] = dis[node] + Cost[i];
-            Q.push({dis[To[i]], To[i]});
-            Par[To[i]] = node;
-        }
-    }
-}
-
 vector <int> restorePath(int dest)
 {
     vector <int> path;
@@ -76,6 +52,34 @@ void _clear() {
     ne = 0;
 }
 
+void Dijkstra(int src, int trg = -INF)
+{
+    memset(dis, 0x3f, sizeof(dis[0]) * (n + 2));
+    memset(Par, -1, sizeof(Par[0]) * (n + 2));
+
+    priority_queue <pair <ll, int>,
+                   vector <pair <ll, int> >,
+                   greater <pair <ll, int> > > Q;
+
+    dis[src] = 0;
+    Q.push({dis[src], src});
+
+    int node;
+    ll cost;
+    while(Q.size())
+    {
+        tie(cost, node) = Q.top(); Q.pop();
+        if(cost > dis[node]) continue; // lazy deletion
+        if(node == trg) return; // cheapest cost in case of positive weight edges
+
+        for(int i = Head[node]; i; i = Next[i]) if(dis[node] + Cost[i] < dis[To[i]]) {
+            dis[To[i]] = dis[node] + Cost[i];
+            Q.push({dis[To[i]], To[i]});
+            Par[To[i]] = node;
+        }
+    }
+}
+
 void Solve()
 {
     _clear();
@@ -86,9 +90,9 @@ void Solve()
         addEdge(u, v, tax);
         addEdge(v, u, tax);
     }
-
-    Dijkstra(st);
-
+    
+	Dijkstra(st, tr);
+	
     if(dis[tr] == INF)
         cout << "NONE" << endl;
     else

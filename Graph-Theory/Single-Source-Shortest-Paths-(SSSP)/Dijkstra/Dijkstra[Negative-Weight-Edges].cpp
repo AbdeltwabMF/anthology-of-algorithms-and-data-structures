@@ -1,7 +1,3 @@
-/** Dijkstra on dense graphs
-    complexity : O(n^2 + m)
-**/
-
 #pragma GCC optimize ("Ofast")
 
 #include <bits/stdc++.h>
@@ -45,30 +41,33 @@ vector <int> restorePath(int dest)
 }
 
 void _clear() {
-    memset(Head, 0, sizeof Head);
+    memset(Head, 0, sizeof(int) * (n + 2));
     ne = 0;
 }
 
-void Dijkstra(int src, int V)
+void Dijkstra(int src)
 {
-    memset(Par, -1, sizeof Par);
-    memset(dis, 0x3f, sizeof dis);
-    vector <bool> mark(V + 1, false); // dont use it in case of negative weights
+    memset(dis, 0x3f, sizeof(ll) * (n + 2));
+    memset(Par, -1, sizeof(int) * (n + 2));
+
+    priority_queue <pair <ll, int>,
+                   vector <pair <ll, int> >,
+                   greater <pair <ll, int> > > Q;
 
     dis[src] = 0;
-    for(int i = 1; i <= V; ++i) {
+    Q.push({dis[src], src});
 
-        int node = 0;
-        for(int j = 1; j <= V; ++j)
-            if(!mark[j] && dis[j] < dis[node])
-                node = j;
+    int node;
+    ll cost;
+    while(Q.size())
+    {
+        tie(cost, node) = Q.top(); Q.pop();
+        if(cost > dis[node]) continue;
 
-        if(dis[node] == INF) break;
-
-        mark[node] = true;
-        for(int e = Head[node]; e; e = Next[e]) if(dis[node] + Cost[e] < dis[To[e]]) {
-            dis[To[e]] = dis[node] + Cost[e];
-            Par[To[e]] = node;
+        for(int i = Head[node]; i; i = Next[i]) if(dis[node] + Cost[i] < dis[To[i]]) {
+            dis[To[i]] = dis[node] + Cost[i];
+            Q.push({dis[To[i]], To[i]});
+            Par[To[i]] = node;
         }
     }
 }
@@ -81,11 +80,10 @@ void Solve()
     while(m--) {
         cin >> u >> v >> tax;
         addEdge(u, v, tax);
-        addEdge(v, u, tax);
+        /** addEdge(v, u, tax); negative edges in an undirected graphs considered to be -ve weight cycle **/
     }
 
-    Dijkstra(st, n);
-    vector <int> path = restorePath(tr);
+    Dijkstra(st);
 
     if(dis[tr] == INF)
         cout << "NONE" << endl;
@@ -97,7 +95,7 @@ int main()
 {
     Fast();
 
-    int tc = 1; cin >> tc;
+    int tc = 1;
     for(int i = 1; i <= tc; ++i)
         Solve();
 }
