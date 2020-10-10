@@ -48,7 +48,7 @@
        - [Modified Dijkstra on -ve weight edges](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Dijkstra[Negative-Weight-Edges].cpp)
        - [Special Case (0-1 BFS)](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Special-Case(0-1-BFS))
          - [Single Pair Shortest Path](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Special-Case(0-1-BFS)/SPSP[0-1-BFS].cpp)
-         - [Single Pair Shortest Path via Edge Splitting](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Special-Case(0-1-BFS)/Single Pair Shortest Path.cpp)
+         - [Single Pair Shortest Path via Edge Splitting](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Special-Case(0-1-BFS)/SPSP[0-1-BFS-via-EdgeSplitting].cpp)
      - [Bellman-Ford](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Bellman-Ford)
        - [Bellman-Ford's Algorithm](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Bellman-Ford/Bellman-Ford[Negative-Cycle-Detection].cpp)
        - [Shortest Path Faster Algorithm (SPFA)](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Bellman-Ford/SPFA[Modified-Bellman].cpp)
