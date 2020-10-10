@@ -6,8 +6,7 @@ using namespace std;
 
 void Fast() {
     cin.sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+    cin.tie(0);cout.tie(0);
 }
 
 const int N = 500 + 9, M = 4e4 + 9, oo = 0x3f3f3f3f;
@@ -24,6 +23,7 @@ int BFS(int src)
 {
     memset(dis, 0x3f, (n + 3) * sizeof(int));
     memset(Par, 0, (n + 3) * sizeof(int));
+    
     queue <int> Q;
     Q.push(src);
     dis[src] = 0;

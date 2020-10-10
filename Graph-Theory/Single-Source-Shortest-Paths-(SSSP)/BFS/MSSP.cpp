@@ -13,9 +13,11 @@ void addEdge(int from, int to) {
     Head[from] = ne;
 }
 
-void BFS() {
+void BFS() 
+{
     int node;
-    while(Q.size()) {
+    while(Q.size()) 
+    {
         node = Q.front(); Q.pop();
         for(int i = Head[node]; i; i = Next[i]) if(dis[To[i]] == oo) {
             dis[To[i]] = dis[node] + 1;
@@ -24,7 +26,8 @@ void BFS() {
     }
 }
 
-array <int, 2> Furthest(int n) {
+array <int, 2> Furthest(int n) 
+{
     BFS();
     array <int, 2> ret =  {0, oo};
     for(int i = 1; i <= n; ++i) if(dis[i] >= ret[0])
@@ -37,8 +40,8 @@ array <int, 2> Furthest(int n) {
     return ret;
 }
 
-int main() {
-
+int main() 
+{
     cin >> n >> m;
 
     while(m--) {

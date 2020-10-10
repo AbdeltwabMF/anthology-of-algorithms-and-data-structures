@@ -12,7 +12,8 @@ void addEdge(int from, int to) {
     Head[from] = ne;
 }
 
-void BFS(int src) {
+void BFS(int src) 
+{
     memset(dis, 0x3f, sizeof dis);
     queue <int> Q;
     Q.push(src);

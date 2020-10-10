@@ -29,7 +29,8 @@ void BFS(int src, bool asp = false)
     dis[src] = 0;
 
     int node;
-    while(Q.size()) {
+    while(Q.size()) 
+    {
         node = Q.front(); Q.pop();
         for(int i = Head[node]; i; i = Next[i]) if(dis[To[i]] == oo) {
             if(asp && dis_s[node] + 1 + dis_t[To[i]] == dis_s[tr]) continue;

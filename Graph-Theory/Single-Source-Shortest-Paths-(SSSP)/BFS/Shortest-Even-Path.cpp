@@ -28,7 +28,8 @@ void BFS(int src)
     dis[src] = 0;
 
     int node;
-    while(Q.size()) {
+    while(Q.size()) 
+    {
         node = Q.front(); Q.pop();
         for(int i = Head[node]; i; i = Next[i]) if(dis[To[i]] == -1) {
             dis[To[i]] = dis[node] + 1;
@@ -44,7 +45,7 @@ int main()
 
     while(m--) {
         cin >> u >> v;
-        addEdge(u, v + n);
+        addEdge(u, v + n); // u -> even, u + n -> odd
         addEdge(v + n, u);
         addEdge(u + n, v);
         addEdge(v, u + n);
