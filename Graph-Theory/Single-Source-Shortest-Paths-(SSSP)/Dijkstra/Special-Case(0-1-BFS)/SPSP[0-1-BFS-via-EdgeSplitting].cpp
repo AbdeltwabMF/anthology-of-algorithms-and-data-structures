@@ -16,7 +16,8 @@ void addEdge(int from, int to, int cost) {
     Head[from] = ne;
 }
 
-void splitEdge(int u, int v, int w, int & edge) {
+void splitEdge(int u, int v, int w, int & edge) 
+{
     addEdge(u, edge, 1);
     addEdge(edge, u, 1);
 
@@ -31,25 +32,30 @@ void splitEdge(int u, int v, int w, int & edge) {
     ++edge;
 }
 
-void BFS(int src) {
+int BFS(int src, int trg) 
+{
     memset(dis, 0x3f, sizeof dis);
     deque <int> Q;
     Q.push_front(src);
     dis[src] = 0;
 
     int node;
-    while(Q.size()) {
+    while(Q.size()) 
+    {
         node = Q.front(); Q.pop_front();
+        if(node == trg) return dis[node];
+        
         for(int i = Head[node]; i; i = Next[i]) if(dis[node] + Cost[i] < dis[To[i]]) {
             dis[To[i]] = dis[node] + Cost[i];
             if(Cost[i]) Q.push_back(To[i]);
             else Q.push_front(To[i]);
         }
     }
+    return -1;
 }
 
-int main() {
-
+int main() 
+{
     cin >> n >> m >> start >> target;
     edge = n + 1;
 
@@ -61,7 +67,6 @@ int main() {
             addEdge(u, v, w), addEdge(v, u, w);
     }
 
-    BFS(start);
-    cout << dis[target] << endl;
+    cout << BFS(start, target) << endl;
 }
 
