@@ -54,7 +54,7 @@ bool hasNC()
 {
     for(int u = 1; u <= n; ++u)
         for(int e = Head[u]; e; e = Next[e])
-            if(dis[u] + Cost[e] < dis[To[e]])
+            if(dis[u] < INF && dis[u] + Cost[e] < dis[To[e]])
                 return true;
 
     return false;
@@ -65,7 +65,7 @@ vector <int> getCycle()
     int start = -1;
     for(int i = 2; i <= n; ++i) {
         for(int u = 1; u <= n; ++u)
-            for(int e = Head[u]; e; e = Next[e]) if(dis[u] + Cost[e] < dis[To[e]]) {
+            for(int e = Head[u]; e; e = Next[e]) if(dis[u] < INF && dis[u] + Cost[e] < dis[To[e]]) {
                     dis[To[e]] = -INF;
                     start = To[e];
                     Par[To[e]] = u;
@@ -99,7 +99,7 @@ bool Bellman_Ford(int src)
     for(int i = 2; i <= n && newRelaxation; ++i) {
         newRelaxation = false;
         for(int u = 1; u <= n; ++u)
-            for(int e = Head[u]; e; e = Next[e]) if(dis[u] + Cost[e] < dis[To[e]]) {
+            for(int e = Head[u]; e; e = Next[e]) if(dis[u] < INF && dis[u] + Cost[e] < dis[To[e]]) {
                     dis[To[e]] = dis[u] + Cost[e];
                     Par[To[e]] = u;
                     newRelaxation = true;
