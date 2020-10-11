@@ -52,6 +52,7 @@
      - [Bellman-Ford](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Bellman-Ford)
        - [Bellman-Ford's Algorithm](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Bellman-Ford/Bellman-Ford[Negative-Cycle-Detection].cpp)
        - [Shortest Path Faster Algorithm (SPFA)](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Bellman-Ford/SPFA[Modified-Bellman].cpp)
+       - [Finding and Printing a Negative Cycle](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Bellman-Ford/Bellman-Ford[Finding-Printing-Negative-Cycle].cpp)
    - [All Pairs Shortest Paths (APSP)](Graph-Theory/All-Pairs-Shortest-Paths(APSP))
      - [Floyd-Warshall's Algorithm](Graph-Theory/All-Pairs-Shortest-Paths(APSP)/Floyd-Warshall[dp-APSP].cpp)
 
