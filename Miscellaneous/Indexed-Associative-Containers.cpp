@@ -4,12 +4,11 @@
 #include <ext/rope>
 #endif
 
-#if   __cplusplus >= 201402L    \
+#if   __cplusplus >= 201402L
 using namespace __gnu_cxx;
 using namespace __gnu_pbds;
 #endif
 
-\1
 template <class T, typename Comp = less <T> >
 using indexed_set = tree <T, null_type, Comp, rb_tree_tag, tree_order_statistics_node_update>;
 
