@@ -90,5 +90,8 @@
    - [Modular Calculations](Miscellaneous/Modular-Calculations.cpp)
    - [The Minimal Excluded element of subarray of Permutation](Miscellaneous/The-MEX-of-subarray-of-Permutation.cpp)
    - [Double Comparison](Miscellaneous/Double-Comparison.cpp)
-   
-   
+   - [Overloaded Operators << and >> to Accept an 128-Bit Integer](Miscellaneous/Overloaded-Operators-To-Accept-128Bit-Integer.cpp)
+   - [Indexed Associative Containers](Miscellaneous/Indexed-Associative-Containers.cpp)
+   - [My Debugging Tools](Miscellaneous/MyDebugger.cpp)
+   - [SPOJ Solutions](Miscellaneous/SPOJ-Solutions)
+   - [UVa Solutions](Miscellaneous/UVa-Solutions)
