@@ -8,6 +8,8 @@
      - [Range Minimum Query](Data-Structures/Segment-Tree/RMQ[Lazy-Propagation].cpp)
      - [Range Sum Query](Data-Structures/Segment-Tree/RSQ[Lazy-Propagation].cpp)
      - [Range Odd-Even Query](Data-Structures/Segment-Tree/Odd-Even-RQ.cpp)
+     - [Multiples of 3 Range Query [Lazy Propagation]](Data-Structures/Segment-Tree/Multiples-of-3-RQ[Lazy-Propagation].cpp)
+     - [Merge Sort Segment Tree](Data-Structures/Segment-Tree/Merge-Sort-Segment-Tree.cpp)
    - [Sparse Table](Data-Structures/Sparse-Table)
      - [Range Maximum Query on Static Array](Data-Structures/Sparse-Table/RMAXQ[static-array].cpp)
      - [Range Minimum Query on Static Array](Data-Structures/Sparse-Table/RMINQ[static-array].cpp)
