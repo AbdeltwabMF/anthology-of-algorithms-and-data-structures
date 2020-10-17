@@ -1,3 +1,9 @@
+/**	The graph has a negative cycle if at the end of the algorithm, the distance from a vertex v to itself is negative.
+	- before k-th phase the value of d[i][j] is equal to the length of the shortest path from vertex i to the vertex j, 
+	if this path is allowed to enter only the vertex with numbers smaller than k 
+	(the beginning and end of the path are not restricted by this property).
+**/
+
 #pragma GCC optimize ("Ofast")
 
 #include <bits/stdc++.h>
