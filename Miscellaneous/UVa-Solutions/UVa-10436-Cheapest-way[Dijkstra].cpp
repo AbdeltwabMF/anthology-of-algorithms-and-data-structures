@@ -25,7 +25,7 @@ void addEdge(int from, int to, int cost)
     Head[from] = ne;
 }
 
-void BFS(int src)
+void Dijkstra(int src)
 {
     memset(dis, 0x3f, sizeof dis);
     memset(Par, -1, sizeof Par);
@@ -89,7 +89,7 @@ void Solve() {
     for(int i = 1; i <= q; ++i) {
         cin >> u >> v >> pass;
 
-        BFS(inv[u]);
+        Dijkstra(inv[u]);
 
         cout << "Query #" << i << endl;
         printPath(inv[v]);
@@ -100,7 +100,8 @@ void Solve() {
     }
 }
 
-int main() {
+int main() 
+{
     Fast();
 
     cout << fixed << setprecision(2);
