@@ -36,6 +36,7 @@
      - [Tree Diameter in Weighted Tree [DFS]](Graph-Theory/Graph-Traversal/TreeDiameter[Weighted-DFS].cpp)
    - [Single-Source Shortest Paths (SSSP)](Graph-Theory/Single-Source-Shortest-Paths-(SSSP))
      - [BFS](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS)
+       - [Restoring The Path (Grids)] (Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/Restoring-The-Path[Grid].cpp)
        - [Single Source Shortest Path](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/SSSP.cpp)
        - [Single Destination Shortest Path](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/SDSP[DirectedGraph].cpp)
        - [Single Pair Shortest Path Finding and Printing](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/BFS/SPSP-FindingAndPrinting.cpp)
