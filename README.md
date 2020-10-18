@@ -47,6 +47,7 @@
        - [Dijkstra on -ve Weight Edges](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Dijkstra[NWE].cpp)
        - [Special Case (0-1 BFS)](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Special-Case(0-1-BFS))
          - [Single Pair Shortest Path](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Special-Case(0-1-BFS)/SPSP.cpp)
+         - [Single Pair Shortest Path on Grids](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Dijkstra/Special-Case(0-1-BFS)/SSSP[Grid].cpp)
      - [Bellman-Ford](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Bellman-Ford)
        - [Bellman-Ford's Algorithm](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Bellman-Ford/Bellman-Ford.cpp)
        - [Shortest Path Faster Algorithm (SPFA)](Graph-Theory/Single-Source-Shortest-Paths-(SSSP)/Bellman-Ford/SPFA.cpp)
