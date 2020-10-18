@@ -13,24 +13,24 @@ void addEdge(int from, int to) {
     To[ne] = to;
 }
 
-void DFS(int node, int par = -1) {
+void DFS(int node, int par = -1) 
+{
     visited[node] = true;
-    for (int e = Head[node]; e; e = Next[e]) if(To[e] != par)
-            DFS(To[e], node);
+    for (int i = Head[node]; i; i = Next[i]) if(To[i] != par)
+            DFS(To[i], node);
 }
 
-int main() {
-
+int main() 
+{
     cin >> n;
-
     while(--n) {
         cin >> u >> v;
         addEdge(u, v);
         addEdge(v, u);
     }
 
-    for(int node = 1; node <= n; ++node) if(!visited[node])
-        ++CCs, DFS(node);
+    for(int i = 1; i <= n; ++i) if(!visited[i])
+        ++CCs, DFS(i);
 
     cout << CCs << endl;
 }

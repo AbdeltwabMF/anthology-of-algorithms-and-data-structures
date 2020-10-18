@@ -1,10 +1,12 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+typedef int64_t  ll;
 
-const int N = 1e5 + 9, M = 1e6 + 9;
+const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f;
+ll INF = 0x3f3f3f3f3f3f3f3f;
 
-int Head[N], Next[M], To[M], ne, u, v, n, m;
+int Head[N], Par[N], Next[M], To[M], Cost[M], ne, n, m, u, v, st, tr, tax;
+ll dis[N];
 bool hasCycle;
 char visited[N];
 
@@ -14,28 +16,27 @@ void addEdge(int from, int to) {
     To[ne] = to;
 }
 
-void DFS(int node) {
-
+void DFS(int node)
+{
     if(hasCycle |= visited[node] == 1) return; /** Oops, revisiting active node **/
     visited[node] = 1;                         /** current node legend mode has been activated **/
 
-    for(int e = Head[node]; e; e = Next[e]) if(visited[To[e]] != 2)
-            DFS(To[e]);
+    for(int i = Head[node]; i; i = Next[i]) if(visited[To[i]] != 2)
+            DFS(To[i]);
 
     visited[node] = 2;                          /** done with this node and mark it as visited **/
 }
 
-int main() {
-
+int main()
+{
     cin >> n >> m;
-
     while(m--) {
         cin >> u >> v;
         addEdge(u, v);
     }
 
-    for(int node = 1; node <= n; ++node) if(!visited[node])
-        DFS(node);
+    for(int i = 1; i <= n; ++i) if(!visited[i])
+        DFS(i);
 
     cout << (hasCycle ? "YES" : "NO") << endl;
 }

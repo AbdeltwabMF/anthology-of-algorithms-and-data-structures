@@ -1,10 +1,12 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+typedef int64_t  ll;
 
-const int N = 1e5 + 9, M = 1e6 + 9;
+const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f;
+ll INF = 0x3f3f3f3f3f3f3f3f;
 
-int Head[N], Next[M], To[M], ne, n, m, u, v;
+int Head[N], Par[N], Next[M], To[M], Cost[M], ne, n, m, u, v, st, tr, tax;
+ll dis[N];
 bool color[N], vis[N];
 
 void addEdge(int from, int to) {
@@ -13,11 +15,12 @@ void addEdge(int from, int to) {
     To[ne] = to;
 }
 
-bool checkBiPartite(int node, int par = 0) {
+bool checkBiPartite(int node, int par = 0)
+{
     if(vis[node])
         return color[par] != color[node];
 
-    color[node] = 1 ^ color[par];
+    color[node] = color[par] ^ 1;
 
     vis[node] = true;
     bool ok = true;
