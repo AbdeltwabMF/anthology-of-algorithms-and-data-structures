@@ -3,16 +3,18 @@
  
 ## Contents
  1. [Data Structures](1.Data-Structures)
-   - [Union Find Disjoint Sets](1.Data-Structures/UnionFindDisjointSets.cpp)
-   - [Segment Tree](1.Data-Structures/Segment-Tree)
-     - [Range Minimum Query](1.Data-Structures/Segment-Tree/RMQ[Lazy-Propagation].cpp)
-     - [Range Sum Query](1.Data-Structures/Segment-Tree/RSQ[Lazy-Propagation].cpp)
-     - [Range Odd-Even Query](1.Data-Structures/Segment-Tree/Odd-Even-RQ.cpp)
-     - [Multiples of 3 Range Query [Lazy Propagation]](1.Data-Structures/Segment-Tree/Multiples-of-3-RQ[Lazy-Propagation].cpp)
-     - [Merge Sort Segment Tree](1.Data-Structures/Segment-Tree/Merge-Sort-Segment-Tree.cpp)
-   - [Sparse Table](1.Data-Structures/Sparse-Table)
-     - [Range Maximum Query on Static Array](1.Data-Structures/Sparse-Table/RMAXQ[static-array].cpp)
-     - [Range Minimum Query on Static Array](1.Data-Structures/Sparse-Table/RMINQ[static-array].cpp)
+   - [1.1 Union Find Disjoint Sets](1.Data-Structures/1.1.UnionFindDisjointSets.cpp)
+   - [1.2 Segment Tree](1.Data-Structures/1.2.Segment-Tree)
+     - [1.2.1 Range Minimum Query](1.Data-Structures/1.2.Segment-Tree/1.2.1.RMQ.cpp)
+     - [1.2.2 Merge Sort Segment Tree](1.Data-Structures/1.2.Segment-Tree/1.2.2.Merge-Sort-Segment-Tree.cpp)
+     - [1.2.3 Other Range Query Problems](1.Data-Structures/1.2.Segment-Tree/1.2.3.Other-Range-Query-Problems)
+       - [1.2.3.1 Range Sum Query](1.Data-Structures/1.2.Segment-Tree/1.2.3.Other-Range-Query-Problems/1.2.3.1.RSQ.cpp)
+       - [1.2.3.2 Multiples of 3 Range Query](1.Data-Structures/1.2.Segment-Tree/1.2.3.Other-Range-Query-Problems/1.2.3.2.Multiples-of-3-RQ.cpp)
+       - [1.2.3.3 Odd-Even Range Query](1.Data-Structures/1.2.Segment-Tree/1.2.3.Other-Range-Query-Problems/1.2.3.3.Odd-Even-RQ.cpp)
+   - [1.3 Fenwick Tree](1.Data-Structures/1.3.Fenwick-Tree)
+   - [1.4 Sparse Table](1.Data-Structures/1.4.Sparse-Table)
+     - [1.4.1 Range Minimum Query (Static Array)](1.Data-Structures/1.4.Sparse-Table/1.4.1.RMINQ.cpp)
+     - [1.4.2 Range Maximum Query (Static Array)](1.Data-Structures/1.4.Sparse-Table/1.4.2.RMAXQ.cpp)
 
 ---
 
