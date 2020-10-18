@@ -1,3 +1,9 @@
+/** resources:
+	1. https://codeforces.com/blog/entry/15729
+	2. https://codeforces.com/blog/entry/15890
+	3. https://codeforces.com/blog/entry/18051
+**/
+
 #pragma GCC optimize ("Ofast")
 
 #include <bits/stdc++.h>
