@@ -2,39 +2,39 @@
  Common Code for Competitive Programming in C++
  
 ## Contents
- 1. [Data Structures](Data-Structures)
-   - [Union Find Disjoint Sets](Data-Structures/UnionFindDisjointSets.cpp)
-   - [Segment Tree](Data-Structures/Segment-Tree)
-     - [Range Minimum Query](Data-Structures/Segment-Tree/RMQ[Lazy-Propagation].cpp)
-     - [Range Sum Query](Data-Structures/Segment-Tree/RSQ[Lazy-Propagation].cpp)
-     - [Range Odd-Even Query](Data-Structures/Segment-Tree/Odd-Even-RQ.cpp)
-     - [Multiples of 3 Range Query [Lazy Propagation]](Data-Structures/Segment-Tree/Multiples-of-3-RQ[Lazy-Propagation].cpp)
-     - [Merge Sort Segment Tree](Data-Structures/Segment-Tree/Merge-Sort-Segment-Tree.cpp)
-   - [Sparse Table](Data-Structures/Sparse-Table)
-     - [Range Maximum Query on Static Array](Data-Structures/Sparse-Table/RMAXQ[static-array].cpp)
-     - [Range Minimum Query on Static Array](Data-Structures/Sparse-Table/RMINQ[static-array].cpp)
+ 1. [Data Structures](1.Data-Structures)
+   - [Union Find Disjoint Sets](1.Data-Structures/UnionFindDisjointSets.cpp)
+   - [Segment Tree](1.Data-Structures/Segment-Tree)
+     - [Range Minimum Query](1.Data-Structures/Segment-Tree/RMQ[Lazy-Propagation].cpp)
+     - [Range Sum Query](1.Data-Structures/Segment-Tree/RSQ[Lazy-Propagation].cpp)
+     - [Range Odd-Even Query](1.Data-Structures/Segment-Tree/Odd-Even-RQ.cpp)
+     - [Multiples of 3 Range Query [Lazy Propagation]](1.Data-Structures/Segment-Tree/Multiples-of-3-RQ[Lazy-Propagation].cpp)
+     - [Merge Sort Segment Tree](1.Data-Structures/Segment-Tree/Merge-Sort-Segment-Tree.cpp)
+   - [Sparse Table](1.Data-Structures/Sparse-Table)
+     - [Range Maximum Query on Static Array](1.Data-Structures/Sparse-Table/RMAXQ[static-array].cpp)
+     - [Range Minimum Query on Static Array](1.Data-Structures/Sparse-Table/RMINQ[static-array].cpp)
 
 ---
 
- 2. [Problem Solving Paradigms](Problem-Solving-Paradigms)
+ 2. [Problem Solving Paradigms](2.Problem-Solving-Paradigms)
 
 ---
 
- 3. [Mathematics](Mathematics)
-   - [Number Theory](Mathematics/Number-Theory)
-     - [Prime Generation](Mathematics/Number-Theory/Prime-Generation)
-       - [Simple Sieve of Eratosthenes](Mathematics/Number-Theory/Prime-Generation/Simple-Sieve-Eratosthenes.cpp)
-       - [Segmented Sieve](Mathematics/Number-Theory/Prime-Generation/Segmented-Sieve.cpp)
-       - [Enhancement Segmented Sieve](Mathematics/Number-Theory/Prime-Generation/Enhancement_Segmented_sieve.cpp)
-       - [Wheel Sieve](Mathematics/Number-Theory/Prime-Generation/Wheel-Sieve.cpp)
-     - [Integer Factorization](Mathematics/Number-Theory/Integer-Factorization)
-       - [Extended Wheel-Factorization](Mathematics/Number-Theory/Integer-Factorization/Extended-Wheel-Factorization.cpp)
-     - [Primality Tests](Mathematics/Number-Theory/Primality-Tests)
-       - [Miller-Rabin Test](Mathematics/Number-Theory/Primality-Tests/Miller-Rabin-Test.cpp)
-       - [Practice Problem](Mathematics/Number-Theory/Primality-Tests/GCPC'15[Divisions-F].cpp)
-     - [Fibonacci Numbers](Mathematics/Number-Theory/Fibonacci-Numbers)
-       - [Pisano Periodic Sequence](Mathematics/Number-Theory/Fibonacci-Numbers/pisano-periodic-sequence.cpp)
-       - [Pisano Periodic Sequence using Factorization](Mathematics/Number-Theory/Fibonacci-Numbers/pisano-periodic-sequence[Factorization].cpp)
+ 3. [Mathematics](3.Mathematics)
+   - [Number Theory](3.Mathematics/Number-Theory)
+     - [Prime Generation](3.Mathematics/Number-Theory/Prime-Generation)
+       - [Simple Sieve of Eratosthenes](3.Mathematics/Number-Theory/Prime-Generation/Simple-Sieve-Eratosthenes.cpp)
+       - [Segmented Sieve](3.Mathematics/Number-Theory/Prime-Generation/Segmented-Sieve.cpp)
+       - [Enhancement Segmented Sieve](3.Mathematics/Number-Theory/Prime-Generation/Enhancement_Segmented_sieve.cpp)
+       - [Wheel Sieve](3.Mathematics/Number-Theory/Prime-Generation/Wheel-Sieve.cpp)
+     - [Integer Factorization](3.Mathematics/Number-Theory/Integer-Factorization)
+       - [Extended Wheel-Factorization](3.Mathematics/Number-Theory/Integer-Factorization/Extended-Wheel-Factorization.cpp)
+     - [Primality Tests](3.Mathematics/Number-Theory/Primality-Tests)
+       - [Miller-Rabin Test](3.Mathematics/Number-Theory/Primality-Tests/Miller-Rabin-Test.cpp)
+       - [Practice Problem](3.Mathematics/Number-Theory/Primality-Tests/GCPC'15[Divisions-F].cpp)
+     - [Fibonacci Numbers](3.Mathematics/Number-Theory/Fibonacci-Numbers)
+       - [Pisano Periodic Sequence](3.Mathematics/Number-Theory/Fibonacci-Numbers/pisano-periodic-sequence.cpp)
+       - [Pisano Periodic Sequence using Factorization](3.Mathematics/Number-Theory/Fibonacci-Numbers/pisano-periodic-sequence[Factorization].cpp)
        
    - [Stable Matching](Mathematics/Stable-Matching)
      - [The Stable Marriage Problem](Mathematics/Stable-Matching/ICPC-Live-Archive-3837-The-Stable-Marriage-Problem.cpp)
@@ -90,19 +90,31 @@
 
 ---
 
- 5. [String Processing](String-Processing)
-   - [Trie](String-Processing/Trie.cpp)
+ 5. [String Processing](5.String-Processing)
+   - [Trie](5.String-Processing/Trie.cpp)
 
 ---
 
- 6. [Miscellaneous](Miscellaneous)
-   - [Next/Prev Greater/Smaller Element](Miscellaneous/Next-Prev-Greater-Smaller-Element[using_stack].cpp)
-   - [Modular Calculations](Miscellaneous/Modular-Calculations.cpp)
-   - [The Minimal Excluded element of subarray of Permutation](Miscellaneous/The-MEX-of-subarray-of-Permutation.cpp)
-   - [Double Comparison](Miscellaneous/Double-Comparison.cpp)
-   - [Overloaded Operators << and >> to Accept an 128-Bit Integer](Miscellaneous/Overloaded-Operators-To-Accept-128Bit-Integer.cpp)
-   - [Indexed Associative Containers](Miscellaneous/Indexed-Associative-Containers.cpp)
-   - [My Debugging Tools](Miscellaneous/MyDebugger.cpp)
-   - [SPOJ Solutions](Miscellaneous/SPOJ-Solutions)
-   - [UVa Solutions](Miscellaneous/UVa-Solutions)
+ 6. [Geometry](6.Geometry)
+
+---
+
+ 7. [More Advanced Topics](7.More-Advanced-Topics)
+
+---
+
+ 8. [Rare Topics](8.Rare-Topics)
+
+---
+
+ 9. [Miscellaneous](9.Miscellaneous)
+   - [Next/Prev Greater/Smaller Element](9.Miscellaneous/Next-Prev-Greater-Smaller-Element[using_stack].cpp)
+   - [Modular Calculations](9.Miscellaneous/Modular-Calculations.cpp)
+   - [The Minimal Excluded element of subarray of Permutation](9.Miscellaneous/The-MEX-of-subarray-of-Permutation.cpp)
+   - [Double Comparison](9.Miscellaneous/Double-Comparison.cpp)
+   - [Overloaded Operators << and >> to Accept an 128-Bit Integer](9.Miscellaneous/Overloaded-Operators-To-Accept-128Bit-Integer.cpp)
+   - [Indexed Associative Containers](9.Miscellaneous/Indexed-Associative-Containers.cpp)
+   - [My Debugging Tools](9.Miscellaneous/MyDebugger.cpp)
+   - [SPOJ Solutions](9.Miscellaneous/SPOJ-Solutions)
+   - [UVa Solutions](9.Miscellaneous/UVa-Solutions)
 
