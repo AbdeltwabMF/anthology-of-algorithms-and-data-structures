@@ -1,28 +1,36 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+typedef int64_t  ll;
 
-const int N = 1e5 + 9, M = 1e6 + 9;
+const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f;
+ll INF = 0x3f3f3f3f3f3f3f3f;
 
-int Head[N], Next[M << 1], To[M << 1], ne, n, m, u, v;
+int Head[N], Par[N], Next[M], To[M], Cost[M], ne, n, m, u, v, st, tr, tax;
+ll dis[N];
 bool vis[N];
 
-void addEdge(int from, int to) {
+void addEdge(int from, int to, int cost) {
     Next[++ne] = Head[from];
     Head[from] = ne;
+    Cost[ne] = cost;
     To[ne] = to;
 }
 
-void DFS(int node) {
-    vis[node] = true;
-    for(int i = Head[node]; i; i = Next[i]) if(!vis[To[i]])
-            DFS(To[i]);
+void _clear() {
+    memset(Head, 0, sizeof(Head[0]) * (n + 2));
+    ne = 0;
 }
 
-int main() {
+void DFS(int node) 
+{
+    vis[node] = true;
+    for(int i = Head[node]; i; i = Next[i]) if(!vis[To[i]])
+        DFS(To[i]);
+}
 
+int main() 
+{
     cin >> n >> m;
-
     while(m--) {
         cin >> u >> v;
         addEdge(u, v);
