@@ -1,29 +1,32 @@
-#pragma GCC optimize ("Ofast")
-
 #include <bits/stdc++.h>
-
 using namespace std;
-
-void Fast() {
-    cin.sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-}
+typedef int64_t  ll;
+int main() {}
 
 const int N = 500 + 9, M = 4e4 + 9, oo = 0x3f3f3f3f;
 
-int Head[N], Next[M], To[M], dis[N], Par[N], ne, n, m, u, v;
+int Head[N], dis[N], Par[N], Next[M], To[M], ne, n, m, u, v;
+ll INF = 0x3f3f3f3f3f3f3f3f;
 
 void addEdge(int from, int to) {
     Next[++ne] = Head[from];
-    To[ne] = to;
     Head[from] = ne;
+    To[ne] = to;
 }
+
+void _clear() {
+    memset(Head, 0, sizeof(Head[0]) * (n + 2));
+    ne = 0;
+}
+
+/** for each node run BFS and minmize the cycle length
+**/
 
 int BFS(int src)
 {
-    memset(dis, 0x3f, (n + 3) * sizeof(int));
-    memset(Par, 0, (n + 3) * sizeof(int));
-    
+    memset(dis, 0x3f, sizeof(dis[0]) * (n + 2));
+    memset(Par,   -1, sizeof(Par[0]) * (n + 2));
+
     queue <int> Q;
     Q.push(src);
     dis[src] = 0;
@@ -49,47 +52,4 @@ int BFS(int src)
     }
     return ret;
 }
-
-void _clear() {
-    memset(Head, 0, (n + 3) * sizeof(int));
-    ne = 0;
-}
-
-void Solve()
-{
-    cin >> n >> m;
-    _clear();
-
-    while(m--)
-    {
-        cin >> u >> v;
-        ++u, ++v;
-        addEdge(u, v);
-        addEdge(v, u);
-    }
-
-    int ans = oo;
-    for(int i = 1; i <= n; ++i) {
-        int cost = BFS(i);
-        if(cost < ans) ans = cost;
-    }
-
-    if(ans == oo)
-        cout << "impossible" << endl;
-    else
-        cout << ans << endl;
-}
-
-int main()
-{
-    Fast();
-
-    int tc = 1; cin >> tc;
-    for(int i = 1; i <= tc; ++i)
-    {
-        cout << "Case " << i << ": ";
-        Solve();
-    }
-}
-
 

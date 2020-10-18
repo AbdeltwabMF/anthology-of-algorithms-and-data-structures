@@ -1,47 +1,43 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+typedef int64_t  ll;
+int main() {}
 
-const int N = 2e6 + 9, M = 4e6 + 9, oo = 0x3f3f3f3f;
+const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f;
+ll INF = 0x3f3f3f3f3f3f3f3f;
 
-int Head[N], Next[M], To[M], dis[N], ne, n, m, u, v, st;
+int Head[N], Par[N], Next[M], To[M], ne, n, m, u, v, st, tr;
+ll dis[N];
 
 void addEdge(int from, int to) {
     Next[++ne] = Head[from];
-    To[ne] = to;
     Head[from] = ne;
+    To[ne] = to;
 }
 
-void BFS(int src) 
+void _clear() {
+    memset(Head, 0, sizeof(Head[0]) * (n + 2));
+    ne = 0;
+}
+
+void BFS(int src)
 {
-    memset(dis, 0x3f, sizeof dis);
+    memset(dis, 0x3f, sizeof(dis[0]) * (n + 2));
+    memset(Par,   -1, sizeof(Par[0]) * (n + 2));
+
     queue <int> Q;
     Q.push(src);
     dis[src] = 0;
 
     int node;
-    while(Q.size()) {
+    while(Q.size())
+    {
         node = Q.front(); Q.pop();
-        for(int i = Head[node]; i; i = Next[i]) if(dis[To[i]] == oo) {
+        for(int i = Head[node]; i; i = Next[i]) if(dis[To[i]] == INF) {
             dis[To[i]] = dis[node] + 1;
+            Par[To[i]] = node;
             Q.push(To[i]);
         }
     }
-}
-
-int main() {
-
-    cin >> n >> st;
-
-    for(int i = 1; i <= n; ++i)
-        for(int j = 1; j <= n; ++j) {
-            cin >> v;
-            if(v)
-                addEdge(i, j);
-        }
-
-    BFS(st);
-    for(int i = 1; i <= n; ++i)
-        cout << (dis[i] == oo ? -1 : dis[i]) << " \n"[i == n];
 }
 
