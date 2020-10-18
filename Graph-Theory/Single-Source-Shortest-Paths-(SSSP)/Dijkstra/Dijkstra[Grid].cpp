@@ -12,7 +12,7 @@ const int N = 1e3 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f;
 int grid[N][N], dis[N][N], n, m;
 
 bool valid(int r, int c) {
-    return r >= 0 && r < n && c >= 0 && c < m;
+    return r >= 1 && r <= n && c >= 1 && c <= m;
 }
 
 void Dijkstra(int sr, int sc)
