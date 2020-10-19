@@ -108,6 +108,8 @@
 ---
 
  7. [More Advanced Topics](7.More-Advanced-Topics)
+   - [7.1 More Advanced Search Techniques](7.More-Advanced-Topics/7.1.More-Advanced-Search-Techniques)
+     - [7.1.1 Informed Search: A* Algorithm](7.More-Advanced-Topics/7.1.More-Advanced-Search-Techniques/7.1.1.A*-Algorithm.cpp)
 
 ---
 
