@@ -1,3 +1,6 @@
+/**	https://www.spoj.com/problems/HORRIBLE/
+**/
+
 #pragma GCC optimize ("Ofast")
 
 #include <bits/stdc++.h>
@@ -16,10 +19,11 @@ void Fast() {
 
 class SegmentTree
 {
-    vector <int> sTree;
-    vector <int> lazyTree;
+    vector <ll> sTree;
+    vector <ll> lazyTree;
     vector <int> localArr;
-    int NP2, oo = 0x3f3f3f3f; /** the number of elements in the array as a power of 2 **/
+    int NP2, oo = 0x3f3f3f3f;
+    ll INF = 0x3f3f3f3f3f3f3f3f;
 
   public :
     template <class T>
@@ -40,7 +44,8 @@ class SegmentTree
         build(1, 1, NP2);
     }
 
-    void build(int p, int l, int r) {
+    void build(int p, int l, int r)
+    {
         if(l == r) {
             sTree[p] = localArr[l];
             return;
@@ -57,8 +62,7 @@ class SegmentTree
         inx += NP2 - 1;
         sTree[inx] += delta;
 
-        while(inx > 1)
-        {
+        while(inx > 1) {
             inx >>= 1;
             sTree[inx] = sTree[left(inx)] + sTree[right(inx)];
         }
@@ -68,7 +72,7 @@ class SegmentTree
         update_range(ul, ur, delta, 1, 1, NP2);
     }
 
-    int query(int ql, int qr) {
+    ll query(int ql, int qr) {
         return query(ql, qr, 1, 1, NP2);
     }
 
@@ -79,7 +83,7 @@ class SegmentTree
             return;
 
         if(isInside(ul, ur, l, r)) {
-            sTree[p] += (r - l + 1) * delta;
+            sTree[p] += (r - l + 1) * 1ll * delta;
             lazyTree[p] += delta;
             return;
         }
@@ -92,17 +96,18 @@ class SegmentTree
         sTree[p] = sTree[left(p)] + sTree[right(p)];
     }
 
-    int query(int ql, int qr, int p, int l, int r)
+    ll query(int ql, int qr, int p, int l, int r)
     {
         if(isOutside(ql, qr, l, r))
             return 0;
 
-        if(isInside(ql, qr, l, r))
+        if(isInside(ql, qr, l, r)) {
             return sTree[p];
+        }
 
         propagate(p, l, r);
 
-        return query(ql, qr, left(p),  l,      mid(l, r)) +
+        return query(ql, qr, left(p),  l,     mid(l, r)) +
                query(ql, qr, right(p), mid(l, r) + 1, r);
     }
 
@@ -141,30 +146,26 @@ class SegmentTree
     }
 };
 
-int n, q, x, y, delta;
-char query;
+const int N = 1e2 + 9, M = 1e4 + 9, oo = 0x3f3f3f3f;
+
+int n, q, x, l, r, val;
 vector <int> a;
 
 void Solve()
 {
     cin >> n >> q;
 
-    a.resize(n);
-    for(int i = 0; i < n; ++i)
-        cin >> a[i];
-
+    a.resize(n, 0);
     SegmentTree st(a.begin(), a.end());
 
     while(q--)
     {
-        cin >> query >> x >> y;
-        if(query == 'q')
-            cout << st.query(x, y) << endl;
-        else
-        {
-            cin >> delta;
-            st.update_range(x, y, delta);
-        }
+        cin >> x >> l >> r;
+        if(x == 0) {
+            cin >> val;
+            st.update_range(l, r, val);
+        } else
+            cout << st.query(l, r) << endl;
     }
 }
 
@@ -172,7 +173,8 @@ int main()
 {
     Fast();
 
-    int tc = 1;
-    for(int i = 1; i <= tc; ++i) Solve();
+    int tc = 1; cin >> tc;
+    for(int i = 1; i <= tc; ++i)
+        Solve();
 }
 
