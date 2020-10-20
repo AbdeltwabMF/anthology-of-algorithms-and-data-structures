@@ -17,35 +17,28 @@ void Fast() {
     cin.tie(0);cout.tie(0);
 }
 
-const int N = 1e2 + 9, M = 1e4 + 9, oo = 0x3f3f3f3f;
-ll INF = 0x3f3f3f3f3f3f3f3f;
-
 class SegmentTree
 {
-    #define mid(l, r)  (l + ((r - l) >> 1))
-    #define left(p)    ((p << 1))
-    #define right(p)   ((p << 1) | 1)
-
     vector <pair <int, int> > sTree;
     vector <int> localArr;
-    int N, oo = 0x3f3f3f3f;
+    int NP2, oo = 0x3f3f3f3f;
 
   public :
     template <class T>
     SegmentTree(T _begin, T _end)
     {
-        N = 1;
+        NP2 = 1;
         int n = _end - _begin;
-        while(N < n) N <<= 1;
+        while(NP2 < n) NP2 <<= 1;
 
-        sTree.assign(N << 1, {0, 0});
-        localArr.assign(N + 1, 0);
+        sTree.assign(NP2 << 1, {0, 0});
+        localArr.assign(NP2 + 1, 0);
 
         __typeof(_begin) i = _begin;
         for(int j = 1; i != _end; i++, ++j)
             localArr[j] = *i;
 
-        build(1, 1, N);
+        build(1, 1, NP2);
     }
 
     void build(int p, int l, int r)
@@ -58,16 +51,16 @@ class SegmentTree
             return;
         }
 
-        build(left(p), l, mid(l, r));
+        build(left(p),      l, mid(l, r));
         build(right(p), mid(l, r) + 1, r);
 
-        sTree[p] = {sTree[left(p)].first + sTree[right(p)].first,
+        sTree[p] = {sTree[left(p)].first  + sTree[right(p)].first,
                     sTree[left(p)].second + sTree[right(p)].second};
     }
 
     void update_point(int inx, int val)
     {
-        inx += N - 1;
+        inx += NP2 - 1;
         if(val & 1) {
             if(sTree[inx].second)
                 sTree[inx] = {1, 0};
@@ -76,34 +69,57 @@ class SegmentTree
                 sTree[inx] = {0, 1};
         }
 
-        while(inx > 1) {
+        while(inx > 1)
+        {
             inx >>= 1;
-            sTree[inx] = {sTree[left(inx)].first + sTree[right(inx)].first,
+            sTree[inx] = {sTree[left(inx)].first  + sTree[right(inx)].first,
                           sTree[left(inx)].second + sTree[right(inx)].second};
         }
     }
 
     int query(int ql, int qr, int type) {
-        return query(ql, qr, 1, 1, N, type);
+        return query(ql, qr, 1, 1, NP2, type);
     }
 
   private :
     int query(int ql, int qr, int p, int l, int r, int type)
     {
-        if(ql > r || qr < l) return 0;
+        if(isOutside(ql, qr, l, r)) return 0;
 
-        if(ql <= l && qr >= r) {
+        if(isInside(ql, qr, l, r)) {
             if(type == 1)
                 return sTree[p].second;
             else
                 return sTree[p].first;
         }
 
-        return query(ql, qr, left(p), l, mid(l, r), type) +
+        return query(ql, qr, left(p),      l, mid(l, r), type) +
                query(ql, qr, right(p), mid(l, r) + 1, r, type);
+    }
+
+    inline bool isInside(int ql, int qr, int sl, int sr) {
+        return (ql <= sl && sr <= qr);
+    }
+
+    inline bool isOutside(int ql, int qr, int sl, int sr) {
+        return (sr < ql || qr < sl);
+    }
+
+    inline int mid (int l, int r) {
+        return ((l + r) >> 1);
+    }
+
+    inline int left(int p) {
+        return (p << 1);
+    }
+
+    inline int right(int p) {
+        return ((p << 1) | 1);
     }
 };
 
+const int N = 1e2 + 9, M = 1e4 + 9, oo = 0x3f3f3f3f;
+ll INF = 0x3f3f3f3f3f3f3f3f;
 int n, q, l, r, type, x, y;
 vector <int> a;
 
