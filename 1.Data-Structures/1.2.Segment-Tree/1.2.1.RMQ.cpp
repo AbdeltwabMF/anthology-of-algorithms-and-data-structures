@@ -119,11 +119,11 @@ class SegmentTree
     void propagate(int p, int l, int r)
     {
         if(lazyTree[p]) {
-            sTree[left(p)] += lazyTree[p];
+            sTree[left(p)]  += lazyTree[p];
             sTree[right(p)] += lazyTree[p];
 
             if(l != r) {
-                lazyTree[left(p)] += lazyTree[p];
+                lazyTree[left(p)]  += lazyTree[p];
                 lazyTree[right(p)] += lazyTree[p];
             }
             lazyTree[p] = 0;

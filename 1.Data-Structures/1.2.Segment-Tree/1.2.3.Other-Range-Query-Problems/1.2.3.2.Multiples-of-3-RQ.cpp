@@ -124,7 +124,7 @@ class SegmentTree
                 swap(sTree[right(p)][1], sTree[right(p)][2]);
             }
             if(l != r) {
-                lazyTree[left(p)] += lazyTree[p];
+                lazyTree[left(p)]  += lazyTree[p];
                 lazyTree[right(p)] += lazyTree[p];
             }
             lazyTree[p] = 0;
