@@ -53,22 +53,22 @@ class SegmentTree
         merge(p);
     }
 
-    int query(int ql, int qr, int delta) {
-        return query(ql, qr, delta, 1, 1, NP2);
+    int query(int ql, int qr, int k) {
+        return query(ql, qr, k, 1, 1, NP2);
     }
 
   private :
-    int query(int ql, int qr, int delta, int p, int l, int r)
+    int query(int ql, int qr, int k, int p, int l, int r)
     {
         if(isOutside(ql, qr, l, r))
             return 0;
 
         if(isInside(ql, qr, l, r)) {
-            return sTree[p].end() - upper_bound(sTree[p].begin(), sTree[p].end(), delta);
+            return sTree[p].end() - upper_bound(sTree[p].begin(), sTree[p].end(), k);
         }
 
-        return query(ql, qr, delta, left(p),  l,     mid(l, r)) +
-               query(ql, qr, delta, right(p), mid(l, r) + 1, r);
+        return query(ql, qr, k, left(p),  l,     mid(l, r)) +
+               query(ql, qr, k, right(p), mid(l, r) + 1, r);
     }
 
     void merge(int p)
