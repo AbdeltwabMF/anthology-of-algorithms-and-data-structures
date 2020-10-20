@@ -79,23 +79,6 @@ class SegmentTree
     }
 
   private :
-    void propagate(int p, int l, int r)
-    {
-        if(lazyTree[p]) {
-            for(int i = 0, add = (lazyTree[p] % 3); i < add; ++i) {
-                swap(sTree[left(p)][0], sTree[left(p)][2]);
-                swap(sTree[left(p)][1], sTree[left(p)][2]);
-                swap(sTree[right(p)][0], sTree[right(p)][2]);
-                swap(sTree[right(p)][1], sTree[right(p)][2]);
-            }
-            if(l != r) {
-                lazyTree[left(p)] += lazyTree[p];
-                lazyTree[right(p)] += lazyTree[p];
-            }
-            lazyTree[p] = 0;
-        }
-    }
-
     void update_range(int ul, int ur, int p, int l, int r)
     {
         if(isOutside(ul, ur, l, r))
@@ -129,6 +112,23 @@ class SegmentTree
 
         return query(ql, qr, left(p),      l, mid(l, r)) +
                query(ql, qr, right(p), mid(l, r) + 1, r);
+    }
+
+    void propagate(int p, int l, int r)
+    {
+        if(lazyTree[p]) {
+            for(int i = 0, add = (lazyTree[p] % 3); i < add; ++i) {
+                swap(sTree[left(p)][0], sTree[left(p)][2]);
+                swap(sTree[left(p)][1], sTree[left(p)][2]);
+                swap(sTree[right(p)][0], sTree[right(p)][2]);
+                swap(sTree[right(p)][1], sTree[right(p)][2]);
+            }
+            if(l != r) {
+                lazyTree[left(p)] += lazyTree[p];
+                lazyTree[right(p)] += lazyTree[p];
+            }
+            lazyTree[p] = 0;
+        }
     }
 
     inline bool isInside(int ql, int qr, int sl, int sr) {
