@@ -70,8 +70,8 @@ ll Phi(ll a)
         if(prime * 1ll * prime > a) break;
         if(a % prime) continue;
 
-        ret *= (prime - 1);
         ret /= prime;
+        ret *= (prime - 1);
 
         while(a % prime == 0)
             a /= prime;
