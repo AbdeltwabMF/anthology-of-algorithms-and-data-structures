@@ -40,6 +40,8 @@
      - [3.2.5 Primality Tests](3.Mathematics/3.2.Number-Theory/3.2.5.Primality-Tests)
        - [3.2.5.1 Miller-Rabin Test](3.Mathematics/3.2.Number-Theory/3.2.5.Primality-Tests/3.2.5.1.Miller-Rabin-Test.cpp)
        - [3.2.5.2 Practice Problem](3.Mathematics/3.2.Number-Theory/3.2.5.Primality-Tests/3.2.5.2.GCPC'15[Divisions-F].cpp)
+     - [3.2.6 Functions Involving Prime Factors](3.Mathematics/3.2.Number-Theory/3.2.6.Functions-Involving-Prime-Factors)
+       - [3.2.6.1 Euler Totient Function](3.Mathematics/3.2.Number-Theory/3.2.6.Functions-Involving-Prime-Factors/3.2.6.1.Euler-Totient-Function.cpp)
    - [3.3 Probability Theory](3.Mathematics/3.3.Probability-Theory)
    - [3.4 Game Theory](3.Mathematics/3.4.Game-Theory)
    - [3.5 Cycle-Finding](3.Mathematics/3.5.Cycle-Finding)
