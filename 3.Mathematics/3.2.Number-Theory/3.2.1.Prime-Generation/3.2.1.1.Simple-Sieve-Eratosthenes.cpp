@@ -15,53 +15,58 @@ using namespace std;
 
 typedef int64_t  ll;
 
-const int N = 1e6;
+const int N = 1e6 + 9;
 
 void Fast() {
     cin.sync_with_stdio(0);
     cin.tie(0);cout.tie(0);
 }
 
-bitset <N + 9> isPrime;
+vector <int> primes;
+bool isPrime[N];
 
-vector <int> simple_sieve(int n)
+void sieve(ll x)
 {
-    int basis [] = {2, 3, 5};
-    int inc [] = {4, 2, 4, 2, 4, 6, 2, 6};
-    int inx [30] = {0};
-    inx[1] = 7, inx[7] = 0, inx[11] = 1, inx[13] = 2,
-    inx[17] = 3, inx[19] = 4, inx[23] = 5, inx[29] = 6;
+    int basis [3] = {2, 3, 5};
+    int wheel [8] = {7, 11, 13, 17, 19, 23, 29, 1};
+    int inc   [8] = {4, 2, 4, 2, 4, 6, 2, 6};
+    int inx[31];
 
-    isPrime.set();
-    vector <int> ret;
-    for(int i : basis) if(n >= i)
-            ret.push_back(i);
+    memset(inx,        -1, sizeof inx);
+    memset(isPrime, true, sizeof isPrime);
 
-    int i = 0;
-    for(ll d = 7; d <= n; d += inc[i++]) {
-        if(isPrime[d])
+    for(int i : basis) if(x >= i)
+            primes.push_back(i);
+
+    for(int i = 0; i < 8; ++i)
+        inx[wheel[i]] = i;
+
+    int c = 0;
+    for(ll i = 7; i <= x; i += inc[c++])
+    {
+        if(isPrime[i])
         {
-            ret.push_back(d);
-            int c = inx[d % 30];
-            for(ll j = d * d; j <= n; j += d * inc[c++]) {
-                isPrime.reset(j);
-                if(c == 8) c = 0;
+            primes.push_back(i);
+            int d = inx[i % 30];
+
+            for(ll j = i * i; j <= x; j += i * inc[d++])
+            {
+                isPrime[j] = false;
+                if(d == 8) d = 0;
             }
         }
-        if(i == 8) i = 0;
+        if(c == 8) c = 0;
     }
-    return ret;
 }
 
 int main()
 {
     Fast();
-    vector <int> Primes = simple_sieve(1'000'000);
+    sieve(1000000);
 
-    for(int i = 0; i < Primes.size(); i += 500)
-        cout << Primes[i] << "\n";
+    for(int i = 0; i < primes.size(); i += 500)
+        cout << primes[i] << "\n";
 
-    cout << Primes.size() << endl;
+    cout << primes.size() << endl;
 }
-
 
