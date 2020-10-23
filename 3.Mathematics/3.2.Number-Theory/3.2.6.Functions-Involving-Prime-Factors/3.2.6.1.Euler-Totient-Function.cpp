@@ -2,6 +2,7 @@
     Time Complexity: O(sqrt(n))
     2 <= n <= 10 ^ {12}
     - Phi(n) = n * ((p1 - 1) / p1) * ((p2 - 1) / p2) *...* ((pk - 1) / pk)
+    - Phi(n) = n * (1 - (1 / p1)) * (1 - (1 / p2)) *...* (1 - (1 / pk))
 **/
 
 #pragma GCC optimize ("Ofast")
@@ -70,17 +71,13 @@ ll Phi(ll a)
         if(prime * 1ll * prime > a) break;
         if(a % prime) continue;
 
-        ret /= prime;
-        ret *= (prime - 1);
-
+        ret -= ret / prime;
         while(a % prime == 0)
             a /= prime;
     }
 
-    if(a > 1) {
-        ret /= a;
-        ret *= (a - 1);
-    }
+    if(a > 1)
+        ret -= ret / a;
     return ret;
 }
 
