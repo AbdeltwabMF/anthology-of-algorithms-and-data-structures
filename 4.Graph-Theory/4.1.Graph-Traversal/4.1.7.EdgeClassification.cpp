@@ -1,11 +1,20 @@
+#pragma GCC optimize ("Ofast")
+
 #include <bits/stdc++.h>
+
+#define UNVISITED  0
+#define EXPLORED   1
+#define VISITED    2
 
 using namespace std;
 
-const int N = 1e5 + 9, M = 1e6 + 9;
+typedef int64_t  ll;
 
-int Head[N], Next[M], To[M], in_time[N], out_time[N], ne, n, m, u, v, dfs_timer;
-bool vis[N];
+const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f;
+ll INF = 0x3f3f3f3f3f3f3f3f;
+
+int Head[N], Next[M], To[M], Par[N], in_time[N], ne, n, m, u, v, dfs_timer;
+char dfs_num[N];
 
 void addEdge(int from, int to) {
     Next[++ne] = Head[from];
@@ -13,38 +22,51 @@ void addEdge(int from, int to) {
     To[ne] = to;
 }
 
-void edgeClassification(int node, int par = -1) {
-    if(vis[node]) {
-        if(in_time[par] > in_time[node] && !out_time[node]) /** Ancestor **/
-            cout << "Edge from " << par << " to " << node << " is a Back Edge 'Cycle' " << endl;
-        if(in_time[par] < in_time[node] && out_time[node])  /** child **/
-            cout << "Edge from " << par << " to " << node << " is a Forward Edge" << endl;
-        if(in_time[par] > in_time[node] && out_time[node])  /** neither Ancestor nor child. cross edges only occur in directed graph **/
-            cout << "Edge from " << par << " to " << node << " is a Cross Edge" << endl;
+void edgeClassification(int node)
+{
+    dfs_num[node] = EXPLORED;
+    in_time[node] = ++dfs_timer;
 
-        return;
-    } else cout << "Edge from " << par << " to " << node << " is a Tree Edge" << endl;
+    for(int i = Head[node]; i; i = Next[i])
+    {
+        if(dfs_num[To[i]] == UNVISITED)
+        {
+            cout << "Tree Edge : " << node << " -> " << To[i] << endl;
 
-    in_time[node] = dfs_timer++;
-    vis[node] = true;
+            Par[To[i]] = node;
+            edgeClassification(To[i]);
+        }
+        else if(dfs_num[To[i]] == VISITED)
+        {
+            /** Cross Edges only occur in directed graph */
+            if(in_time[To[i]] < in_time[node])
+                cout << "Cross Edge : " << node << " -> " << To[i] << endl;
+            else
+                cout << "Forward Edge : " << node << " -> " << To[i] << endl;
+        }
+        else if(dfs_num[To[i]] == EXPLORED)
+        {
+            if(Par[node] == To[i])
+                cout << "Bi-Directional Edge : " << node << " -> " << To[i] << endl;
+            else
+                cout << "Backward Edge : " << node << " -> " << To[i] << " (Cycle)" << endl;
+        }
+    }
 
-    for(int i = Head[node]; i; i = Next[i]) if(To[i] != par)
-        edgeClassification(To[i], node);
-
-    out_time[node] = dfs_timer++;
+    dfs_num[node] = VISITED;
 }
 
 int main() {
 
     cin >> n >> m;
 
-    while(m--) {
+    while(m--)
+    {
         cin >> u >> v;
         addEdge(u, v);
-        addEdge(v, u);
     }
 
-    for(int i = 1; i <= n; ++i) if(!vis[i])
+    for(int i = 1; i <= n; ++i) if(!dfs_num[i])
         edgeClassification(i);
 }
 
