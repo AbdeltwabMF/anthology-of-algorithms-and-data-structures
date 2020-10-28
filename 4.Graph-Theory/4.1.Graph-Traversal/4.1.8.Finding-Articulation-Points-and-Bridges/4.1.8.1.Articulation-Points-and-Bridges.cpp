@@ -79,7 +79,7 @@ void Solve()
         rootChildren = 0;
 
         DFS(i);
-        articulation[i] = rootChildren > 1;
+        articulation[root] = (rootChildren > 1);
     }
 
     cout << "Cut Points :\n";
