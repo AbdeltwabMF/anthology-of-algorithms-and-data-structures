@@ -6,12 +6,17 @@ using namespace std;
 
 typedef int64_t  ll;
 
+void Fast() {
+    cin.sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
+}
+
 const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f;
 ll INF = 0x3f3f3f3f3f3f3f3f;
 
-int Head[N], Next[M], To[M], Par[N], in_time[N], Low[N], ne, n, m, u, v, dfs_timer;
-int root, rootChildren;
+int Head[N], Next[M], To[M], Par[N], dfs_num[N], dfs_low[N], ne, n, m, u, v, dfs_timer;
 vector < pair <int, int> > bridges;
+int root, rootChildren;
 bool articulation[N];
 
 void addEdge(int from, int to) {
@@ -20,59 +25,77 @@ void addEdge(int from, int to) {
     To[ne] = to;
 }
 
+void _clear() {
+    memset(Par,         -1, sizeof(Par[0])          * (n + 2));
+    memset(Head,         0, sizeof(Head[0])         * (n + 2));
+    memset(dfs_num,      0, sizeof(dfs_num[0])      * (n + 2));
+    memset(articulation, 0, sizeof(articulation[0]) * (n + 2));
+    bridges.clear();
+    dfs_timer = 0;
+    ne = 0;
+}
+
 void DFS(int node)
 {
-    in_time[node] = Low[node] = ++dfs_timer;
+    dfs_num[node] = dfs_low[node] = ++dfs_timer;
 
     for(int i = Head[node]; i; i = Next[i])
     {
-        if(in_time[To[i]] == 0)
-        {
+        if(dfs_num[To[i]] == 0) {
             if(node == root) rootChildren++;
 
             Par[To[i]] = node;
             DFS(To[i]);
 
-            Low[node] = min(Low[node], Low[To[i]]);
+            if(dfs_low[To[i]] < dfs_low[node])
+                dfs_low[node] = dfs_low[To[i]];
 
-            if(Low[To[i]] > in_time[node])
+            if(dfs_low[To[i]] > dfs_num[node])
                 bridges.push_back({node, To[i]});
 
-            if(Low[To[i]] >= in_time[node])
+            if(dfs_low[To[i]] >= dfs_num[node])
                 articulation[node] = true;
         }
         else if(Par[node] != To[i])
-            Low[node] = min(Low[node], in_time[To[i]]);
+            if(dfs_num[To[i]] < dfs_low[node])
+                dfs_low[node] = dfs_num[To[i]];
     }
 }
 
-int main()
+void Solve()
 {
     cin >> n >> m;
-    while(m--)
-    {
+    _clear();
+
+    while(m--) {
         cin >> u >> v;
         addEdge(u, v);
         addEdge(v, u);
     }
 
-    for(int i = 1; i <= n; ++i) if(!in_time[i])
+    for(int i = 1; i <= n; ++i) if(!dfs_num[i])
     {
         root = i;
         rootChildren = 0;
 
         DFS(i);
-
         articulation[i] = rootChildren > 1;
     }
 
-    cout << "Cut Points : ";
+    cout << "Cut Points :\n";
     for(int i = 1; i <= n; ++i) if(articulation[i])
-        cout << i << " ";
+            cout << i << " ";
 
-    cout << "\nBridges : ";
+    cout << "\nBridges :\n";
     for(pair <int, int> bridge : bridges)
         cout << bridge.first << " <--> " << bridge.second << endl;
 }
 
+int main()
+{
+    Fast();
+
+    int tc = 1;
+    while(tc--) Solve();
+}
 
