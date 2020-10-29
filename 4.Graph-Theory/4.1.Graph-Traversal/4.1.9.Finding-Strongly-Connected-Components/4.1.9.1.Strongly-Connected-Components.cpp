@@ -62,18 +62,15 @@ void DFS(int node)
 
     if(dfs_low[node] == dfs_num[node])
     {
-        vector <int> CC;
-        while(stk.size() && stk.top() != node) {
-            CC.push_back(stk.top());
+        SCCs.push_back(vector <int> ());
+        while(true)
+        {
+            SCCs.back().push_back(stk.top());
             in_stk[stk.top()] = false;
             stk.pop();
-        }
 
-        if(stk.size()) {
-            stk.pop();
-            in_stk[node] = false;
-            CC.push_back(node);
-            SCCs.push_back(CC);
+            if(SCCs.back().back() == node)
+                break;
         }
     }
 }
