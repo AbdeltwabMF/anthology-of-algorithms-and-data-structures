@@ -18,7 +18,7 @@ void File() {
     freopen("output.out", "w", stdout);
 }
 
-const int N = 1e3 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f;
+const int N = 1e5 + 9, M = 2e6 + 9, oo = 0x3f3f3f3f;
 ll INF = 0x3f3f3f3f3f3f3f3f;
 
 int Head[N], Next[M], To[M], dfs_num[N], dfs_low[N], ne, n, m, u, v, dfs_timer;
@@ -44,8 +44,7 @@ void _clear() {
 void Tarjan(int node)
 {
     dfs_num[node] = dfs_low[node] = ++dfs_timer;
-    stk.push(node);
-    in_stk[node] = true;
+    stk.push(node); in_stk[node] = true;
 
     for(int i = Head[node]; i; i = Next[i])
     {
