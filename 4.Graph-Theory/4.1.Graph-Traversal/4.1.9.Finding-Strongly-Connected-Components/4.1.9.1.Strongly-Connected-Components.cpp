@@ -2,7 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#define endl    '\n'
+#define endl        '\n'
+#define Min(a, b)   (((a) < (b)) ? (a) : (b));
 
 using namespace std;
 
@@ -21,10 +22,10 @@ void File() {
 const int N = 1e5 + 9, M = 2e6 + 9, oo = 0x3f3f3f3f;
 ll INF = 0x3f3f3f3f3f3f3f3f;
 
-int Head[N], Next[M], To[M], dfs_num[N], dfs_low[N], ne, n, m, u, v, dfs_timer;
-stack <int> stk;
-bool in_stk[N];
-vector< vector <int> > SCCs;
+int Head[N], To[M], Next[M], dfs_num[N], dfs_low[N], n, m, u, v, tax;
+int dfs_timer, component, top, ne;
+int Stack[N];
+bool in_stack[N];
 
 void addEdge(int from, int to) {
     Next[++ne] = Head[from];
@@ -33,42 +34,29 @@ void addEdge(int from, int to) {
 }
 
 void _clear() {
-    memset(Head,         0, sizeof(Head[0])         * (n + 2));
-    memset(dfs_num,      0, sizeof(dfs_num[0])      * (n + 2));
-    memset(in_stk,       0, sizeof(in_stk[0])       * (n + 2));
-    SCCs = vector < vector <int> > ();
-    dfs_timer = 0;
-    ne = 0;
+    memset(Head,    0, sizeof(Head[0])    * (n + 2));
+    memset(dfs_num, 0, sizeof(dfs_num[0]) * (n + 2));
+    ne = dfs_timer = component = top = 0;
 }
 
 void Tarjan(int node)
 {
     dfs_num[node] = dfs_low[node] = ++dfs_timer;
-    stk.push(node); in_stk[node] = true;
+    in_stack[Stack[top++] = node] = true;
 
     for(int i = Head[node]; i; i = Next[i])
     {
-        if(dfs_num[To[i]] == 0) {
+        if(dfs_num[To[i]] == 0)
             Tarjan(To[i]);
 
-            if(dfs_low[To[i]] < dfs_low[node])
-                dfs_low[node] = dfs_low[To[i]];
-        }
-        else if(in_stk[To[i]])
-            if(dfs_num[To[i]] < dfs_low[node])
-                dfs_low[node] = dfs_num[To[i]];
+        if(in_stack[To[i]])
+            dfs_low[node] = Min(dfs_low[node], dfs_low[To[i]]);
     }
 
-    if(dfs_low[node] == dfs_num[node])
+    if(dfs_num[node] == dfs_low[node])
     {
-        SCCs.push_back(vector <int> ());
-
-        int cur = -1;
-        while(cur ^ node)
-        {
-            cur = stk.top(); stk.pop(); in_stk[cur] = false;
-            SCCs.back().push_back(cur);
-        }
+        ++component;
+        for(int cur = -1; cur ^ node; in_stack[cur = Stack[--top]] = false) {}
     }
 }
 
@@ -82,16 +70,10 @@ void Solve()
         addEdge(u, v);
     }
 
-    for(int i = 1; i <= n; ++i) if(!dfs_num[i])
+    for(int i = 1; i <= n; ++i) if(dfs_num[i] == 0)
         Tarjan(i);
 
-    for(vector <int> CC : SCCs)
-    {
-        cout << "Component : ";
-
-        for(int i = 0; i < CC.size(); ++i)
-            cout << CC[i] << " \n"[i == CC.size() - 1];
-    }
+    cout << component << endl;
 }
 
 int main()
@@ -99,6 +81,7 @@ int main()
     Fast();
 
     int tc = 1;
-    for(int i = 1; i <= tc; ++i) Solve();
+    for(int i = 1; i <= tc; ++i)
+        Solve();
 }
 
