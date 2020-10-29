@@ -69,6 +69,7 @@
      - [4.1.8 Finding Articulation Points and Bridges](4.Graph-Theory/4.1.Graph-Traversal/4.1.8.Finding-Articulation-Points-and-Bridges)
        - [4.1.8.1 Articulation Points and Bridges](4.Graph-Theory/4.1.Graph-Traversal/4.1.8.Finding-Articulation-Points-and-Bridges/4.1.8.1.Articulation-Points-and-Bridges.cpp)
      - [4.1.9 Finding Strongly Connected Components](4.Graph-Theory/4.1.Graph-Traversal/4.1.9.Finding-Strongly-Connected-Components)
+       - [4.1.9.1 Strongly Connected Components](4.Graph-Theory/4.1.Graph-Traversal/4.1.9.Finding-Strongly-Connected-Components/4.1.9.1.Strongly-Connected-Components.cpp)
      - [4.1.10 Applications](4.Graph-Theory/4.1.Graph-Traversal/4.1.10.Applications)
    - [4.2 Minimum Spanning Tree](4.Graph-Theory/4.2.Minimum-Spanning-Tree)
      - [4.2.1 Kruskal's Algorithm](4.Graph-Theory/4.2.Minimum-Spanning-Tree/4.2.1.Kruskal-Algorithm)
