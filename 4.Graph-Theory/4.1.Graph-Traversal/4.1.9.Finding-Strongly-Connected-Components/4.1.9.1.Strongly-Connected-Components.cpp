@@ -41,7 +41,7 @@ void _clear() {
     ne = 0;
 }
 
-void DFS(int node)
+void Tarjan(int node)
 {
     dfs_num[node] = dfs_low[node] = ++dfs_timer;
     stk.push(node);
@@ -50,7 +50,7 @@ void DFS(int node)
     for(int i = Head[node]; i; i = Next[i])
     {
         if(dfs_num[To[i]] == 0) {
-            DFS(To[i]);
+            Tarjan(To[i]);
 
             if(dfs_low[To[i]] < dfs_low[node])
                 dfs_low[node] = dfs_low[To[i]];
@@ -63,14 +63,12 @@ void DFS(int node)
     if(dfs_low[node] == dfs_num[node])
     {
         SCCs.push_back(vector <int> ());
-        while(true)
-        {
-            SCCs.back().push_back(stk.top());
-            in_stk[stk.top()] = false;
-            stk.pop();
 
-            if(SCCs.back().back() == node)
-                break;
+        int cur = -1;
+        while(cur ^ node)
+        {
+            cur = stk.top(); stk.pop(); in_stk[cur] = false;
+            SCCs.back().push_back(cur);
         }
     }
 }
@@ -86,7 +84,7 @@ void Solve()
     }
 
     for(int i = 1; i <= n; ++i) if(!dfs_num[i])
-        DFS(i);
+        Tarjan(i);
 
     for(vector <int> CC : SCCs)
     {
