@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 
 #define endl        '\n'
-#define Min(a, b)   (((a) < (b)) ? (a) : (b));
+#define Min(a, b)   (((a) < (b)) ? (a) : (b))
 
 using namespace std;
 
