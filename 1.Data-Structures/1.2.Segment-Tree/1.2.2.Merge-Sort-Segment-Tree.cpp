@@ -1,5 +1,6 @@
 /** https://www.spoj.com/problems/KQUERY/
 **/
+
 #pragma GCC optimize ("Ofast")
 
 #include <bits/stdc++.h>
