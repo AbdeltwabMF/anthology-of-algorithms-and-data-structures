@@ -18,6 +18,7 @@
    - [1.5 Sorting](1.Data-Structures/1.5.Sorting)
      - [1.5.1 Bubble Sort](1.Data-Structures/1.5.Sorting/1.5.1.Bubble-Sort.cpp)
      - [1.5.2 Selection Sort](1.Data-Structures/1.5.Sorting/1.5.2.Selection-Sort.cpp)
+     - [1.5.3 Merge Sort](1.Data-Structures/1.5.Sorting/1.5.3.Merge-Sort.cpp)
 
 ---
 
