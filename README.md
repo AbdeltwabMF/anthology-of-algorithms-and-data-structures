@@ -134,7 +134,7 @@
    - [The Minimal Excluded element of subarray of Permutation](9.Miscellaneous/The-MEX-of-subarray-of-Permutation.cpp)
    - [Double Comparison](9.Miscellaneous/Double-Comparison.cpp)
    - [Overloaded Operators << and >> to Accept an 128-Bit Integer](9.Miscellaneous/Overloaded-Operators-To-Accept-128Bit-Integer.cpp)
-   - [Indexed Associative Containers](9.Miscellaneous/Indexed-Associative-Containers.cpp)
+   - [Policy Based Data Structures](9.Miscellaneous/Policy-Based-Data-Structures.cpp)
    - [My Debugging Tools](9.Miscellaneous/MyDebugger.cpp)
    - [SPOJ Solutions](9.Miscellaneous/SPOJ-Solutions)
    - [UVa Solutions](9.Miscellaneous/UVa-Solutions)
