@@ -15,6 +15,8 @@
    - [1.4 Sparse Table](1.Data-Structures/1.4.Sparse-Table)
      - [1.4.1 Range Minimum Query (Static Array)](1.Data-Structures/1.4.Sparse-Table/1.4.1.RMINQ.cpp)
      - [1.4.2 Range Maximum Query (Static Array)](1.Data-Structures/1.4.Sparse-Table/1.4.2.RMAXQ.cpp)
+   - [1.5 Sorting](1.Data-Structures/1.5.Sorting)
+     - [1.5.1 Bubble Sort](1.Data-Structures/1.5.Sorting/1.5.1.Bubble-Sort.cpp)
 
 ---
 
