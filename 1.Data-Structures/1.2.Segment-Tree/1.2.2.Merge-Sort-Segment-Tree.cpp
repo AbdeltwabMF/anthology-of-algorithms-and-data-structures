@@ -5,7 +5,9 @@
 
 #include <bits/stdc++.h>
 
-#define endl      '\n'
+#define endl        '\n'
+#define Min(a, b)   (((a) < (b)) ? (a) : (b))
+#define Max(a, b)   (((a) > (b)) ? (a) : (b))
 
 using namespace std;
 
@@ -16,6 +18,14 @@ void Fast() {
     cin.sync_with_stdio(0);
     cin.tie(0);cout.tie(0);
 }
+
+void File() {
+    freopen("input.in",  "r", stdin);
+    freopen("output.out", "w", stdout);
+}
+
+const int N = 1e6 + 9, M = 2e6 + 9, oo = 0x3f3f3f3f;
+ll INF = 0x3f3f3f3f3f3f3f3f;
 
 class SegmentTree
 {
@@ -74,24 +84,26 @@ class SegmentTree
 
     void merge(int p)
     {
-        auto & lf = sTree[left(p)];
-        auto & ri = sTree[right(p)];
+        vector <int> & L = sTree[left(p)];
+        vector <int> & R = sTree[right(p)];
 
-        int i, j, k, lSize = lf.size(), rSize = ri.size();
-        sTree[p].resize(lSize + rSize);
+        int l_size = L.size();
+        int r_size = R.size();
+        int p_size = l_size + r_size;
 
-        for(i = 0, j = 0, k = 0; i < lSize && j < rSize;) {
-            if(lf[i] <= ri[j])
-                sTree[p][k++] = lf[i++];
+        L.push_back(INT_MAX);
+        R.push_back(INT_MAX);
+
+        sTree[p].resize(p_size);
+
+        for(int k = 0, i = 0, j = 0; k < p_size; ++k)
+            if(L[i] <= R[j])
+                sTree[p][k] = L[i], i += (L[i] != INT_MAX);
             else
-                sTree[p][k++] = ri[j++];
-        }
+                sTree[p][k] = R[j], j += (R[j] != INT_MAX);
 
-        for(; i < lSize; ++i)
-            sTree[p][k++] = lf[i];
-
-        for(; j < rSize; ++j)
-            sTree[p][k++] = ri[j];
+        L.pop_back();
+        R.pop_back();
     }
 
     inline bool isInside(int ql, int qr, int sl, int sr) {
@@ -115,8 +127,6 @@ class SegmentTree
     }
 };
 
-const int N = 1e2 + 9, M = 1e4 + 9, oo = 0x3f3f3f3f;
-
 int n, q, l, r, k, x, y;
 vector <int> a;
 
@@ -131,8 +141,7 @@ void Solve()
     SegmentTree st(a.begin(), a.end());
 
     cin >> q;
-    while(q--)
-    {
+    while(q--) {
         cin >> x >> y >> k;
         cout << st.query(x, y, k) << endl;
     }
