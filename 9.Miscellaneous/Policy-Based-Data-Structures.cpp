@@ -1,7 +1,6 @@
 #if      __cplusplus >= 201402L
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-#include <ext/rope>
 #endif
 
 #if   __cplusplus >= 201402L
