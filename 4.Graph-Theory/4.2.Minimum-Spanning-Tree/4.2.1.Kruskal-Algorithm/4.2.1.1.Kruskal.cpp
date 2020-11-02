@@ -11,6 +11,7 @@ class UnionFind
     size_t sz;
 
   public:
+    UnionFind() : par(1, -1), siz(1, 1), num_sets(0), sz(0) {}
     UnionFind(int n) : par(n + 1, -1), siz(n + 1, 1), num_sets(n), sz(n) {}
 
     int find_set(int u)
@@ -80,16 +81,16 @@ class UnionFind
     }
 };
 
-int n, m ,u, v, w;
+int n, m, u, v, w;
 vector < tuple <int, int, int> > edges;
+UnionFind uf;
 
-pair < ll, vector < pair <int, int> > > Kruskal(int n)
+pair < ll, vector < pair <int, int> > > Kruskal()
 {
-    UnionFind uf(n);
     sort(edges.begin(), edges.end());
 
-    vector < pair <int, int> > mstEdges(n - 1);
-    int from, to, cost, inx = 0;
+    vector < pair <int, int> > mstEdges;
+    int from, to, cost;
     ll minWieght = 0;
 
     for(tuple <int, int, int> edge : edges)
@@ -98,11 +99,11 @@ pair < ll, vector < pair <int, int> > > Kruskal(int n)
         if(uf.union_set(from, to))
         {
             minWieght += cost;
-            mstEdges[inx++] = make_pair(from, to);
+            mstEdges.push_back(make_pair(from, to));
         }
     }
 
-    if(inx == n - 1)
+    if(mstEdges.size() == n - 1)
         return make_pair(minWieght, mstEdges);
 
     return make_pair(-1, vector < pair <int, int> > ());
