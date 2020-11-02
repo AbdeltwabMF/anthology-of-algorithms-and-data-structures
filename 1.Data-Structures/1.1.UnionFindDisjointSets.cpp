@@ -32,6 +32,7 @@ class UnionFind
     size_t sz;
 
   public:
+    UnionFind() : par(1, -1), siz(1, 1), num_sets(0), sz(0) {}
     UnionFind(int n) : par(n + 1, -1), siz(n + 1, 1), num_sets(n), sz(n) {}
 
     int find_set(int u)
