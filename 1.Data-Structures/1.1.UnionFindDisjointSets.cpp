@@ -1,3 +1,8 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef int64_t  ll;
+int main() {}
+
 /**
     Maintain a set of elements partitioned into non-overlapping subsets. Each
     partition is assigned a unique representative known as the parent, or root. The
@@ -18,12 +23,6 @@
     - O(n) for storage of the disjoint set forest elements.
     - O(1) auxiliary for all operations.
 **/
-
-#pragma GCC optimize ("Ofast")
-
-#include <bits/stdc++.h>
-
-using namespace std;
 
 class UnionFind
 {
@@ -101,21 +100,4 @@ class UnionFind
         return ret;
     }
 };
-
-int main()
-{
-    int n, q, a, u, v;
-    cin >> n >> q;
-
-    UnionFind uf(n);
-
-    while(q--)
-    {
-        cin >> a >> u >> v;
-        if(a)
-            cout << uf.same_set(u, v) << endl;
-        else
-            uf.union_set(u, v);
-    }
-}
 
