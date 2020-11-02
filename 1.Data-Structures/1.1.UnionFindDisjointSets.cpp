@@ -1,18 +1,44 @@
+/**
+    Maintain a set of elements partitioned into non-overlapping subsets. Each
+    partition is assigned a unique representative known as the parent, or root. The
+    following implements two well-known optimizations known as union-by-size and
+    path compression. This version is simplified to only work on integer elements.
+
+    - find_set(u) returns the unique representative of the partition containing u.
+    - same_set(u, v) returns whether elements u and v belong to the same partition.
+    - union_set(u, v) replaces the partitions containing u and v with a single new
+      partition consisting of the union of elements in the original partitions.
+
+    Time Complexity:
+    - O(a(n)) per call to find_set(), same_set(), and union_set(), where n is the
+      number of elements, and a(n) is the extremely slow growing inverse of the Ackermann function
+      (effectively a very small constant for all practical values of n).
+
+    Space Complexity:
+    - O(n) for storage of the disjoint set forest elements.
+    - O(1) auxiliary for all operations.
+**/
+
+#pragma GCC optimize ("Ofast")
+
 #include <bits/stdc++.h>
 
 using namespace std;
 
-class UnionFind {
-  private:
+class UnionFind
+{
     vector <int> par;
     vector <int> siz;
     int num_sets;
     size_t sz;
 
   public:
-    UnionFind(int n) : par(n + 5, -1), siz(n + 5, 1), num_sets(n), sz(n) {}
+    UnionFind(int n) : par(n + 1, -1), siz(n + 1, 1), num_sets(n), sz(n) {}
 
-    int find_set(int u) {
+    int find_set(int u)
+    {
+        assert(u <= sz);
+
         int leader;
         for(leader = u; ~par[leader]; leader = par[leader]);
 
@@ -42,11 +68,11 @@ class UnionFind {
         return true;
     }
 
-    int sets() {
+    int number_of_sets() {
         return num_sets;
     }
 
-    int s_size(int u) {
+    int size_of_set(int u) {
         return siz[find_set(u)];
     }
 
@@ -54,40 +80,42 @@ class UnionFind {
         return sz;
     }
 
-    vector < vector <int> > all_sets(int st) {
-        map < int, vector <int> > tmp;
-        vector < vector <int> > ret;
+    void clear() {
+        par.clear();
+        siz.clear();
+        sz = num_sets = 0;
+    }
+
+    void assign(size_t n) {
+        par.assign(n + 1, -1);
+        siz.assign(n + 1,  1);
+        sz = num_sets = n;
+    }
+
+    map < int, vector <int> > groups(int st) {
+        map < int, vector <int> > ret;
 
         for(size_t i = st; i < sz + st; ++i)
-            tmp[find_set(i)].push_back(i);
+            ret[find_set(i)].push_back(i);
 
-        for(auto i : tmp)
-            ret.push_back(i.second);
         return ret;
     }
 };
 
-int main() {
-
+int main()
+{
     int n, q, a, u, v;
     cin >> n >> q;
 
     UnionFind uf(n);
 
-    while(q--) {
+    while(q--)
+    {
         cin >> a >> u >> v;
         if(a)
             cout << uf.same_set(u, v) << endl;
         else
             uf.union_set(u, v);
-    }
-
-    vector < vector <int> > Cs = uf.all_sets(0);
-
-    for(int i = 0; i < (int)Cs.size(); ++i) {
-        int compSize = Cs[i].size();
-        for(int j = 0; j < compSize; ++j)
-            cout << Cs[i][j] << " \n"[j == compSize - 1];
     }
 }
 
