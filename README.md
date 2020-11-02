@@ -78,6 +78,7 @@
      - [4.1.10 Applications](4.Graph-Theory/4.1.Graph-Traversal/4.1.10.Applications)
    - [4.2 Minimum Spanning Tree](4.Graph-Theory/4.2.Minimum-Spanning-Tree)
      - [4.2.1 Kruskal's Algorithm](4.Graph-Theory/4.2.Minimum-Spanning-Tree/4.2.1.Kruskal-Algorithm)
+       - [4.2.1.1 Kruskal](4.Graph-Theory/4.2.Minimum-Spanning-Tree/4.2.1.Kruskal-Algorithm/4.2.1.1.Kruskal.cpp)
      - [4.2.2 Prim's Algorithm](4.Graph-Theory/4.2.Minimum-Spanning-Tree/4.2.2.Prim-Algorithm)
    - [4.3 Single-Source Shortest Paths](4.Graph-Theory/4.3.Single-Source-Shortest-Paths)
      - [4.3.1 Unweighted Graph](4.Graph-Theory/4.3.Single-Source-Shortest-Paths/4.3.1.Unweighted-Graph)
