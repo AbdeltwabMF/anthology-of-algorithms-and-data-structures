@@ -7,6 +7,7 @@
 	Algorithmic Paradigm: Divide and Conquer
 	Sorting In Place: No in a typical implementation
 	Count Inversion of array: yes
+		https://discuss.codechef.com/t/iiti15-editorial/4427
 	Stable: Yes
 **/
 
