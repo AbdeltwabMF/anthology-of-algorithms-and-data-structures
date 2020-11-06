@@ -3,7 +3,7 @@
 
 ## 1. [Data Structures](1.Data-Structures)
   - [1.1 Union Find Disjoint Sets](1.Data-Structures/1.1.UnionFindDisjointSets.cpp)
-  - [1.2 Segment Tree](1.Data-Structures/1.2.Segment-Tree)
+### [1.2 Segment Tree](1.Data-Structures/1.2.Segment-Tree)
     - [1.2.1 Range Minimum Query](1.Data-Structures/1.2.Segment-Tree/1.2.1.RMQ.cpp)
     - [1.2.2 Merge Sort Segment Tree](1.Data-Structures/1.2.Segment-Tree/1.2.2.Merge-Sort-Segment-Tree.cpp)
     - [1.2.3 Other Range Query Problems](1.Data-Structures/1.2.Segment-Tree/1.2.3.Other-Range-Query-Problems)
