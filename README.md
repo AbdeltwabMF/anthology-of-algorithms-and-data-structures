@@ -1,7 +1,7 @@
 
-#Contents
+# Contents
 
-##1. [Data Structures](1.Data-Structures)
+## 1. [Data Structures](1.Data-Structures)
   - [1.1 Union Find Disjoint Sets](1.Data-Structures/1.1.UnionFindDisjointSets.cpp)
   - [1.2 Segment Tree](1.Data-Structures/1.2.Segment-Tree)
     - [1.2.1 Range Minimum Query](1.Data-Structures/1.2.Segment-Tree/1.2.1.RMQ.cpp)
@@ -22,7 +22,7 @@
 
 ---
 
-##2. [Problem Solving Paradigms](2.Problem-Solving-Paradigms)
+## 2. [Problem Solving Paradigms](2.Problem-Solving-Paradigms)
 
 ---
 
