@@ -15,6 +15,7 @@ class SparseTable
     SparseTable(iter _begin, iter _end, const F _func = less <T> ()) : func(_func)
     {
         _N = distance(_begin, _end);
+        
         Log.assign(_N + 1, 0);
         for(int i = 2; i <= _N; ++i)
             Log[i] = Log[i >> 1] + 1;
