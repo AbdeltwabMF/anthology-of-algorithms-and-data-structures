@@ -26,7 +26,7 @@
 
 ---
 
-3. [Mathematics](3.Mathematics)
+## 3. [Mathematics](3.Mathematics)
   - [3.1 Combinatorics](3.Mathematics/3.1.Combinatorics)
     - [3.1.1 Fibonacci Numbers](3.Mathematics/3.1.Combinatorics/3.1.1.Fibonacci-Numbers)
       - [3.1.1.1 Pisano Periodic Sequence](3.Mathematics/3.1.Combinatorics/3.1.1.Fibonacci-Numbers/3.1.1.1.Pisano-Periodic-Sequence.cpp)
@@ -57,7 +57,7 @@
 
 ---
 
-4. [Graph Theory](4.Graph-Theory)
+## 4. [Graph Theory](4.Graph-Theory)
   - [4.1 Graph Traversal](4.Graph-Theory/4.1.Graph-Traversal)
     - [4.1.1 Depth First Search](4.Graph-Theory/4.1.Graph-Traversal/4.1.1.DFS.cpp)
     - [4.1.2 Breadth First Search](4.Graph-Theory/4.1.Graph-Traversal/4.1.2.BFS.cpp)
@@ -112,16 +112,16 @@
 
 ---
 
-5. [String Processing](5.String-Processing)
+## 5. [String Processing](5.String-Processing)
   - [Trie](5.String-Processing/Trie.cpp)
 
 ---
 
-6. [Geometry](6.Geometry)
+## 6. [Geometry](6.Geometry)
 
 ---
 
-7. [More Advanced Topics](7.More-Advanced-Topics)
+## 7. [More Advanced Topics](7.More-Advanced-Topics)
   - [7.1 More Advanced Search Techniques](7.More-Advanced-Topics/7.1.More-Advanced-Search-Techniques)
     - [7.1.1 Informed Search: A* Algorithm](7.More-Advanced-Topics/7.1.More-Advanced-Search-Techniques/7.1.1.A*-Algorithm.cpp)
   - [7.2 Range Queries](7.More-Advanced-Topics/7.2.Range-Queries)
@@ -129,11 +129,11 @@
 
 ---
 
-8. [Rare Topics](8.Rare-Topics)
+## 8. [Rare Topics](8.Rare-Topics)
 
 ---
 
-9. [Miscellaneous](9.Miscellaneous)
+## 9. [Miscellaneous](9.Miscellaneous)
   - [Next/Prev Greater/Smaller Element](9.Miscellaneous/Next-Prev-Greater-Smaller-Element[using_stack].cpp)
   - [Modular Calculations](9.Miscellaneous/Modular-Calculations.cpp)
   - [The Minimal Excluded element of subarray of Permutation](9.Miscellaneous/The-MEX-of-subarray-of-Permutation.cpp)
