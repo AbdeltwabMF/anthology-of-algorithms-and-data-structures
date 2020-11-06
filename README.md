@@ -1,7 +1,5 @@
-# Anthology of Algorithms and Data structures
- Common Code for Competitive Programming in C++
- 
-## Contents
+**Contents**
+
  1. [Data Structures](1.Data-Structures)
    - [1.1 Union Find Disjoint Sets](1.Data-Structures/1.1.UnionFindDisjointSets.cpp)
    - [1.2 Segment Tree](1.Data-Structures/1.2.Segment-Tree)
@@ -104,9 +102,10 @@
    - [4.6 Special Graphs](4.Graph-Theory/4.6.Special-Graphs)
      - [4.6.1 Directed Acyclic Graph](4.Graph-Theory/4.6.Special-Graphs/4.6.1.Directed-Acyclic-Graph)
      - [4.6.2 Tree](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree)
-       - [4.6.1.1 LCA Complete Search 1](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.1.LCA-Complete-Search-1.cpp)
-       - [4.6.2.2 LCA Complete Search 2](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.2.LCA-Complete-Search-2.cpp)
-     - [4.6.3 Graph Eulerian](4.Graph-Theory/4.6.Special-Graphs/4.6.3.Eulerian-Graph)
+       - [4.6.1.1 LCA - Complete Search method 1](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.1.LCA-Complete-Search-1.cpp)
+       - [4.6.2.2 LCA - Complete Search method 2](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.2.LCA-Complete-Search-2.cpp)
+       - [4.6.2.3 LCA - Eulerian Tour and RMQ method](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.3.LCA-Eulerian-Tour-and-RMQ.cpp)
+     - [4.6.3 Eulerian Graph](4.Graph-Theory/4.6.Special-Graphs/4.6.3.Eulerian-Graph)
        - [4.6.3.1 Eulerian Tour of Tree](4.Graph-Theory/4.6.Special-Graphs/4.6.3.Eulerian-Graph/4.6.3.1.Eulerian-Tour-Tree.cpp)
      - [4.6.4 Bipartite Graph](4.Graph-Theory/4.6.Special-Graphs/4.6.4.Bipartite-Graph)
 
