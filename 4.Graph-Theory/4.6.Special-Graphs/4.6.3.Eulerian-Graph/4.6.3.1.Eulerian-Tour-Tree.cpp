@@ -2,8 +2,8 @@
 using namespace std;
 typedef int64_t    ll;
 
-const int N = 2e5 + 9, M = 2e6 + 9, oo = 0x3f3f3f3f, Mod = 1e9 + 7;
-ll INF = 0x3f3f3f3f3f3f3f3f;
+const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f, Mod = 1e9 + 7;
+const ll INF = 0x3f3f3f3f3f3f3f3f;
 
 int Head[N], To[M], Next[M], Cost[M];
 int ne, n, m, u, v, w;
