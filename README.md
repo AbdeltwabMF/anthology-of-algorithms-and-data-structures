@@ -12,7 +12,7 @@
       - [1.2.3.3 Odd-Even Range Query](1.Data-Structures/1.2.Segment-Tree/1.2.3.Other-Range-Query-Problems/1.2.3.3.Odd-Even-RQ.cpp)
   - [1.3 Fenwick Tree](1.Data-Structures/1.3.Fenwick-Tree)
   - [1.4 Sparse Table](1.Data-Structures/1.4.Sparse-Table)
-    - [1.4.1 Range M Query (Static Array)](1.Data-Structures/1.4.Sparse-Table/1.4.1.RMQ.cpp)
+    - [1.4.1 Range Min/Max Query](1.Data-Structures/1.4.Sparse-Table/1.4.1.RMQ.cpp)
     - [1.4.3 Range Sum Query](1.Data-Structures/1.4.Sparse-Table/1.4.3.RSQ.cpp)
   - [1.5 Sorting](1.Data-Structures/1.5.Sorting)
     - [1.5.1 Bubble Sort](1.Data-Structures/1.5.Sorting/1.5.1.Bubble-Sort.cpp)
