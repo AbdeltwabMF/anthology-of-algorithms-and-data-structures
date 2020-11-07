@@ -105,6 +105,7 @@
       - [LCA - Complete Search method 1](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.1.LCA-Complete-Search-1.cpp)
       - [LCA - Complete Search method 2](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.2.LCA-Complete-Search-2.cpp)
       - [LCA - Eulerian Tour and RMQ method](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.3.LCA-Eulerian-Tour-and-RMQ.cpp)
+      - [Kth Ancestor](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.4.Kth-Ancestor.cpp)
     - [Eulerian Graph](4.Graph-Theory/4.6.Special-Graphs/4.6.3.Eulerian-Graph)
       - [Eulerian Tour of Tree](4.Graph-Theory/4.6.Special-Graphs/4.6.3.Eulerian-Graph/4.6.3.1.Eulerian-Tour-Tree.cpp)
     - [Bipartite Graph](4.Graph-Theory/4.6.Special-Graphs/4.6.4.Bipartite-Graph)
