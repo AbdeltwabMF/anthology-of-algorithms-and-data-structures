@@ -6,7 +6,6 @@ const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f, Mod = 1e9 + 7;
 const int LOG = 20;
 
 int Head[N], To[M], Next[M], Par[N];
-int dfs_in[N], dfs_out[N], dfs_timer;
 int up[N][LOG + 1];
 int Log[N], Level[N];
 int ne, n, u, v, q;
@@ -21,7 +20,7 @@ void _clear() {
     memset(Head,  0, sizeof(Head[0])   * (n + 2));
     memset(Par,   0, sizeof(Par[0])    * (n + 2));
     memset(Level, 0, sizeof(Level[0])  * (n + 2));
-    ne = dfs_timer = 0;
+    ne = 0;
 }
 
 int lastBit(int a) {
@@ -37,7 +36,6 @@ void logCalc()
 
 void DFS(int node, int depth = 0)
 {
-    dfs_in[node] = ++dfs_timer;
     Level[node] = depth;
     up[node][0] = Par[node];  // Par[root] = root
 
@@ -49,24 +47,6 @@ void DFS(int node, int depth = 0)
             Par[To[i]] = node;
             DFS(To[i], depth + 1);
         }
-
-    dfs_out[node] = ++dfs_timer;
-}
-
-bool isAncestor(int u, int v) {
-    return dfs_in[u] <= dfs_in[v] && dfs_out[u] >= dfs_out[v];
-}
-
-int LCA(int u, int v)
-{
-    if(isAncestor(u, v)) return u;
-    if(isAncestor(v, u)) return v;
-
-    for(int i = LOG; i >= 0; --i)
-        if(!isAncestor(up[u][i], v))
-            u = up[u][i];
-
-    return up[u][0];
 }
 
 int KthAncestor(int u, int k)
@@ -77,6 +57,24 @@ int KthAncestor(int u, int k)
         u = up[u][Log[i]];
 
     return u;
+}
+
+int LCA(int u, int v)
+{
+    if(Level[u] < Level[v]) swap(u, v);
+    int k = Level[u] - Level[v];
+
+    u = KthAncestor(u, k);
+    if(u == v) return u;
+
+    for(int i = LOG; i >= 0; --i)
+        if(up[u][i] ^ up[v][i])
+        {
+            u = up[u][i];
+            v = up[v][i];
+        }
+
+    return up[u][0];
 }
 
 int main()
