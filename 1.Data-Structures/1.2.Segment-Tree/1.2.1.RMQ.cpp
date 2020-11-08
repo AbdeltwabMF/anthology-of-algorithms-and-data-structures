@@ -5,182 +5,125 @@
 	4. https://www.hackerearth.com/practice/data-structures/advanced-data-structures/segment-trees/practice-problems/algorithm/range-minimum-query/description/
 **/
 
-#pragma GCC optimize ("Ofast")
-
-#include <bits/stdc++.h>
-
-#define endl      '\n'
-
-using namespace std;
-
-typedef int64_t    ll;
-typedef __int128 i128;
-
-void Fast() {
-    cin.sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-}
-
-/**----------------->>  Quality Over Quantity  <<----------------**/
-
+template <class T, class F = function <T(const T &, const T &)> >
 class SegmentTree
 {
-    vector <int> sTree;
-    vector <int> lazyTree;
-    vector <int> localArr;
-    int NP2, oo = 0x3f3f3f3f; /** the number of elements in the array as a power of 2 **/
+    vector <T> _A;
+    vector <T> ST;
+    vector <T> LT;
+    F func;
+    int _N;
 
   public :
-    template <class T>
-    SegmentTree(T _begin, T _end)
+    template <class iter>
+    SegmentTree(iter _begin, iter _end, const F _func = [](T a, T b) {return a <= b ? a : b;}) : func(_func)
     {
-        NP2 = 1;
-        int n = _end - _begin;
-        while(NP2 < n) NP2 <<= 1;
+        _N = distance(_begin, _end);
+        _N = (1 << (int)ceil(log2(_N)));
 
-        sTree.assign(NP2 << 1, 0);
-        lazyTree.assign(NP2 << 1, 0);
-        localArr.assign(NP2 + 1, 0);
+        _A.assign(_N + 1,  0);
+        ST.assign(_N << 1, 0);
+        LT.assign(_N << 1, 0);
 
         __typeof(_begin) i = _begin;
-        for(int j = 1; i != _end; i++, ++j)
-            localArr[j] = *i;
+        for(int j = 1; i != _end; ++i, ++j)
+            _A[j] = *i;
 
-        build(1, 1, NP2);
+        build(1, 1, _N);
     }
 
     void build(int p, int l, int r)
     {
         if(l == r) {
-            sTree[p] = localArr[l];
+            ST[p] = _A[l];
             return;
         }
 
-        build(left(p),  l,     mid(l, r));
-        build(right(p), mid(l, r) + 1, r);
+        int mid = (l + r) >> 1;
 
-        sTree[p] = min(sTree[left(p)], sTree[right(p)]);
+        build(p + p, l, mid);
+        build(p + p + 1, mid + 1, r);
+
+        const T & x = ST[p + p];
+        const T & y = ST[p + p + 1];
+
+        ST[p] = func(x, y);
+    }
+
+    void update_range(int ul, int ur, int delta) {
+        update_range(ul, ur, delta, 1, 1, _N);
+    }
+
+    T query(int ql, int qr) {
+        return query(ql, qr, 1, 1, _N);
     }
 
     void update_point(int inx, int delta)
     {
-        inx += NP2 - 1;
-        sTree[inx] = delta; // sTree[inx] += delta;
+        inx += _N - 1;
+        ST[inx] = delta;
 
-        while(inx > 1)
-        {
+        while(inx > 1) {
             inx >>= 1;
-            sTree[inx] = min(sTree[left(inx)], sTree[right(inx)]);
+
+            const T & x = ST[inx + inx];
+            const T & y = ST[inx + inx + 1];
+
+            ST[inx] = func(x, y);
         }
-    }
-
-    void update_range(int ul, int ur, int delta) {
-        update_range(ul, ur, delta, 1, 1, NP2);
-    }
-
-    int query(int ql, int qr) {
-        return query(ql, qr, 1, 1, NP2);
     }
 
   private :
     void update_range(int ul, int ur, int delta, int p, int l, int r)
     {
-        if(isOutside(ul, ur, l, r))
+        if(r < ul || ur < l)
             return;
 
-        if(isInside(ul, ur, l, r)) {
-            sTree[p] += delta;
-            lazyTree[p] += delta;
+        if(ul <= l && r <= ur) {
+            ST[p] += delta;
+            LT[p] += delta;
             return;
         }
 
-        propagate(p, l, r);
+        propagate(p);
 
-        update_range(ul, ur, delta, left(p),  l,     mid(l, r));
-        update_range(ul, ur, delta, right(p), mid(l, r) + 1, r);
+        int mid = (l + r) >> 1;
 
-        sTree[p] = min(sTree[left(p)], sTree[right(p)]);
+        update_range(ul, ur, delta, p + p, l, mid);
+        update_range(ul, ur, delta, p + p + 1, mid + 1, r);
+
+        const T & x = ST[p + p];
+        const T & y = ST[p + p + 1];
+
+        ST[p] = func(x, y);
     }
 
-    int query(int ql, int qr, int p, int l, int r)
+    T query(int ql, int qr, int p, int l, int r)
     {
-        if(isOutside(ql, qr, l, r))
-            return oo;
+        if(r < ql || qr < l)
+            return INT_MAX;
 
-        if(isInside(ql, qr, l, r))
-            return sTree[p];
+        if(ql <= l && r <= qr)
+            return ST[p];
 
-        propagate(p, l, r);
+        propagate(p);
 
-        return min(query(ql, qr, left(p),  l,      mid(l, r)),
-                   query(ql, qr, right(p), mid(l, r) + 1, r));
+        int mid = (l + r) >> 1;
+
+        const T & x = query(ql, qr, p + p, l, mid);
+        const T & y = query(ql, qr, p + p + 1, mid + 1, r);
+
+        return  func(x, y);
     }
 
-    void propagate(int p, int l, int r)
-    {
-        if(lazyTree[p]) {
-            sTree[left(p)]  += lazyTree[p];
-            sTree[right(p)] += lazyTree[p];
-
-            if(l != r) {
-                lazyTree[left(p)]  += lazyTree[p];
-                lazyTree[right(p)] += lazyTree[p];
-            }
-            lazyTree[p] = 0;
+    void propagate(int p) {
+        if(LT[p]) {
+            ST[p + p]     += LT[p];
+            ST[p + p + 1] += LT[p];
+            LT[p + p]     += LT[p];
+            LT[p + p + 1] += LT[p];
+            LT[p] = 0;
         }
-    }
-
-    inline bool isInside(int ql, int qr, int sl, int sr) {
-        return (ql <= sl && sr <= qr);
-    }
-
-    inline bool isOutside(int ql, int qr, int sl, int sr) {
-        return (sr < ql || qr < sl);
-    }
-
-    inline int mid (int l, int r) {
-        return ((l + r) >> 1);
-    }
-
-    inline int left(int p) {
-        return (p << 1);
-    }
-
-    inline int right(int p) {
-        return ((p << 1) | 1);
     }
 };
-
-int n, q, x, y;
-char query;
-vector <int> a;
-
-void Solve()
-{
-    cin >> n >> q;
-
-    a.resize(n);
-    for(int i = 0; i < n; ++i)
-        cin >> a[i];
-
-    SegmentTree st(a.begin(), a.end());
-
-    while(q--)
-    {
-        cin >> query >> x >> y;
-        if(query == 'q')
-            cout << st.query(x, y) << endl;
-        else
-            st.update_point(x, y);
-    }
-}
-
-int main()
-{
-    Fast();
-
-    int tc = 1;
-    for(int i = 1; i <= tc; ++i)
-        Solve();
-}
 
