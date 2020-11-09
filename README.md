@@ -71,6 +71,7 @@
     - [Edge Classification](4.Graph-Theory/4.1.Graph-Traversal/4.1.7.EdgeClassification.cpp)
     - [Finding Articulation Points and Bridges](4.Graph-Theory/4.1.Graph-Traversal/4.1.8.Finding-Articulation-Points-and-Bridges)
       - [Articulation Points and Bridges](4.Graph-Theory/4.1.Graph-Traversal/4.1.8.Finding-Articulation-Points-and-Bridges/4.1.8.1.Articulation-Points-and-Bridges.cpp)
+      - [BiConnected Components](4.Graph-Theory/4.1.Graph-Traversal/4.1.8.Finding-Articulation-Points-and-Bridges/4.1.8.2.BiConnectedComponents.cpp.cpp)
     - [Finding Strongly Connected Components](4.Graph-Theory/4.1.Graph-Traversal/4.1.9.Finding-Strongly-Connected-Components)
       - [Tarjan](4.Graph-Theory/4.1.Graph-Traversal/4.1.9.Finding-Strongly-Connected-Components/4.1.9.1.Tarjan.cpp)
       - [DCG into DAG](4.Graph-Theory/4.1.Graph-Traversal/4.1.9.Finding-Strongly-Connected-Components/4.1.9.2.DCG-into-DAG.cpp)
