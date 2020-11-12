@@ -107,6 +107,7 @@
       - [LCA - Complete Search method 2](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.2.LCA-Complete-Search-2.cpp)
       - [LCA - Eulerian Tour and RMQ method](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.3.LCA-Eulerian-Tour-and-RMQ.cpp)
       - [Kth Ancestor and LCA - Binary Lifting](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.4.Kth-Ancestor-and-LCA.cpp)
+      - [Tree Diameter](4.Graph-Theory/4.6.Special-Graphs/4.6.2.Tree/4.6.2.5.Tree-Diameter.cpp)
     - [Eulerian Graph](4.Graph-Theory/4.6.Special-Graphs/4.6.3.Eulerian-Graph)
       - [Eulerian Tour of Tree](4.Graph-Theory/4.6.Special-Graphs/4.6.3.Eulerian-Graph/4.6.3.1.Eulerian-Tour-Tree.cpp)
     - [Bipartite Graph](4.Graph-Theory/4.6.Special-Graphs/4.6.4.Bipartite-Graph)
@@ -119,6 +120,7 @@
 ---
 
 ## 6. [Geometry](6.Geometry)
+  - [Point](6.Geometry/6.1.Point.cpp)
 
 ---
 
