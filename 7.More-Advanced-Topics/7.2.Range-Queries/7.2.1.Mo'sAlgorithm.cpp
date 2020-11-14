@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#define endl      '\n'
+#define endl        '\n'
 
 using namespace std;
 
@@ -14,70 +14,83 @@ void Fast() {
     cin.tie(0);cout.tie(0);
 }
 
-const int N = 2e5 + 9, M = 1e6 + 9, oo = 0x3f3f3f3f;
+void File() {
+    freopen("input.in",  "r", stdin);
+    freopen("output.out", "w", stdout);
+}
+
+const int N = 3e4 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f, Mod = 1e9 + 7;
 const ll INF = 0x3f3f3f3f3f3f3f3f;
 const int BLK = 256;
 
-int n, q, a[N], l, r, cnt[M];
-tuple <int, int, int> queries[N];
-ll answers[N], current_ans;
-
-void process(int item, int delta) {
-    current_ans -= 1ll * cnt[item] * cnt[item] * item;
-    cnt[item] += delta;
-    current_ans += 1ll * cnt[item] * cnt[item] * item;
-}
-
-void add(int inx, int delta = 1) {
-    process(a[inx], delta);
-}
-
-void remove(int inx, int delta = -1) {
-    process(a[inx], delta);
-}
-
-bool MoComp(const tuple <int, int, int> & A, const tuple <int, int, int> & B) {
-    int AL, AR, AIX;
-    int BL, BR, BIX;
-
-    tie(AL, AR, AIX) = A;
-    tie(BL, BR, BIX) = B;
-
-    if(AL / BLK != BL / BLK)
-        return AL < BL;
-    return ((AL / BLK) & 1) ? (AR < BR) : (AR > BR);
-}
-
-void Solve ()
+struct query
 {
-    cin >> n >> q;
-    for(int i = 1; i <= n; ++i)
-        cin >> a[i];
+    int l, r, id, blk;
 
-    int l, r;
-    for(int i = 0; i < q; ++i) {
+    query() = default;
+    query(int _l, int _r, int _id) {
+        l = _l;
+        r = _r;
+        id = _id;
+        blk = l / BLK;
+    }
+
+    bool operator < (const query other) const {
+        if(blk ^ other.blk)
+            return blk < other.blk;
+        return (blk & 1) ? r < other.r : r > other.r;
+    }
+} queries[M];
+
+int res[M], freq[M << 3], cur;
+
+void add(int id) {
+    cur += (++freq[id] == 1);
+}
+
+void remove(int id) {
+    cur -= (--freq[id] == 0);
+}
+
+int get_res() {
+    return cur;
+}
+
+int cur_l, cur_r, l, r, n, q, a[N];
+
+void Solve()
+{
+    cin >> n;
+    for(int i = 1; i <= n; ++i) cin >> a[i];
+
+    cin >> q;
+    for(int i = 1; i <= q; ++i) {
         cin >> l >> r;
-        queries[i] = make_tuple(l, r, i);
+        queries[i] = query(l, r, i);
     }
 
-    sort(queries, queries + q, MoComp);
+    sort(queries + 1, queries + 1 + q);
 
-    int ql, qr, ix;
-    l = 1, r = 0;
-    for(int i = 0; i < q; ++i)
+    cur_l = 1, cur_r = 0; // assign to right invalid index
+    for(int i = 1; i <= q; ++i)
     {
-        tie(ql, qr, ix) = queries[i];
+        int ql = queries[i].l;
+        int qr = queries[i].r;
 
-        while(l < ql) remove(l++);
-        while(l > ql) add(--l);
-        while(r < qr) add(++r);
-        while(r > qr) remove(r--);
+        // Add right
+        while(cur_r < qr) add(a[++cur_r]);
+        // Add left
+        while(cur_l > ql) add(a[--cur_l]);
+        // Remove right
+        while(cur_r > qr) remove(a[cur_r--]);
+        // Remove left
+        while(cur_l < ql) remove(a[cur_l++]);
 
-        answers[ix] = current_ans;
+        res[queries[i].id] = get_res();
     }
 
-    for(int i = 0; i < q; ++i)
-        cout << answers[i] << endl;
+    for(int i = 1; i <= q; ++i)
+        cout << res[i] << "\n";
 }
 
 int main()
