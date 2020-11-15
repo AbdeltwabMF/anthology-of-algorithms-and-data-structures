@@ -133,6 +133,7 @@
     - [Informed Search: A* Algorithm](7.More-Advanced-Topics/7.1.More-Advanced-Search-Techniques/7.1.1.A*-Algorithm.cpp)
   - [Range Queries](7.More-Advanced-Topics/7.2.Range-Queries)
     - [Mo's Algorithm](7.More-Advanced-Topics/7.2.Range-Queries/7.2.1.Mo'sAlgorithm.cpp)
+    - [SQRT Decomposition](7.More-Advanced-Topics/7.2.Range-Queries/7.2.2.SQRTDecomposition.cpp)
 
 ---
 
