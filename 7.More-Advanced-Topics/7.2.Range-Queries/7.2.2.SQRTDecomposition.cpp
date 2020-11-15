@@ -14,9 +14,9 @@ void Fast() {
     cin.tie(0);cout.tie(0);
 }
 
-const int N = 5e5 + 9, M = 2e3 + 9, oo = 0x3f3f3f3f, Mod = 1e9 + 7;
+const int N = 5e5 + 9, M = 1e3 + 9, oo = 0x3f3f3f3f, Mod = 1e9 + 7;
 const ll INF = 0x3f3f3f3f3f3f3f3f;
-int BLK = 256;
+const int BLK = 256;
 
 int n, q, a[N], type, x, y, z;
 vector <int> bs[M];
@@ -43,11 +43,10 @@ int query(int l, int r, int val)
 
 void build()
 {
-    int numberOfBLKs = ceil((double)n / BLK);
     for(int i = 0; i < n; ++i)
         bs[i / BLK].emplace_back(a[i]);
 
-    for(int i = 0; i < numberOfBLKs; ++i)
+    for(int i = 0; i < M; ++i)
         sort(bs[i].begin(), bs[i].end());
 }
 
@@ -64,7 +63,6 @@ void Solve()
     cin >> n;
     for(int i = 1; i <= n; ++i) cin >> a[i];
 
-    BLK = sqrtl(n + .0) + 2;
     build();
 
     cin >> q;
