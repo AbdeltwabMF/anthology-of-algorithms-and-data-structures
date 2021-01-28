@@ -2,101 +2,58 @@
 	constraints:
 	1 <= l, r <= 1e{14}
 	1 <= r - l + 1 <= 1e7
-
 	Time complexity of this approach is : O((r − l + 1)lnln(r) + √r lnln r^{1/4})
 **/
 
-#pragma  GCC optimize ("Ofast")
+bool isPrime[N];
+vector<int> Primes;
 
-#include <bits/stdc++.h>
+void sieve(int x) {
+    int basis[3] = {2, 3, 5};
+    int wheel[8] = {7, 11, 13, 17, 19, 23, 29, 1};
+    int inc[8] = {4, 2, 4, 2, 4, 6, 2, 6};
+    int inx[31];
 
-#define endl      '\n'
+    memset(inx, 0, sizeof(inx));
+    memset(isPrime, true, sizeof(isPrime));
 
-using namespace std;
+    for (int prime : basis) {
+        if (x > prime)
+            Primes.emplace_back(prime);
+    }
 
-typedef int64_t  ll;
+    for (int i = 0; i < 8; ++i) {
+        inx[wheel[i]] = i;
+    }
 
-const int N = 1e6;
-
-void Fast() {
-    cin.sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-}
-
-vector <int> Primes;
-bitset <N + 9> isPrime;
-
-vector <int> simple_sieve(int n)
-{
-    int basis [] = {2, 3, 5};
-    int inc [] = {4, 2, 4, 2, 4, 6, 2, 6};
-    int inx [30] = {0};
-    inx[1] = 7, inx[7] = 0, inx[11] = 1, inx[13] = 2,
-    inx[17] = 3, inx[19] = 4, inx[23] = 5, inx[29] = 6;
-
-    isPrime.set();
-    vector <int> ret;
-    for(int i : basis) if(n >= i)
-            ret.push_back(i);
-
-    int i = 0;
-    for(ll d = 7; d <= n; d += inc[i++])
-    {
-        if(isPrime[d]) {
-            ret.push_back(d);
-            int c = inx[d % 30];
-            for(ll j = d * d; j <= n; j += d * inc[c++])
-            {
-                isPrime.reset(j);
-                if(c == 8) c = 0;
+    int c = 0;
+    for (int i = 7; i <= x; i += inc[c++]) {
+        if (isPrime[i]) {
+            Primes.emplace_back(i);
+            int d = inx[i % 30];
+            for (ll j = i * 1ll * i; j <= x; j += i * inc[d++]) {
+                isPrime[j] = false;
+                if (d == 8) d = 0;
             }
         }
-        if(i == 8) i = 0;
+        if (c == 8) c = 0;
     }
-    return ret;
 }
 
-vector <ll> segmented_sieve(ll l, ll r)
-{
+vector<ll> segmented_sieve(ll l, ll r) {
     l += l == 1;
     int limit = r - l + 1;
-    vector <ll> ret;
-    isPrime.set();
+    vector<ll> ret;
+    memset(isPrime, true, sizeof(isPrime));
 
-    for(int i = 0; i < (int)Primes.size(); ++i) {
-        ll p = Primes[i];
-        for(ll j = max(p * p, (l / p) * p); j <= r; j += Primes[i])
-            isPrime.reset(j - l);
+    for (int prime : Primes) {
+        for (ll j = max(prime * 1ll * prime, (l + prime - 1) * 1ll / prime * prime); j <= r; j += prime)
+            isPrime[j - l] = false;
     }
 
-    for(int i = 0; i < limit; ++i)
-        if(isPrime[i])
-            ret.push_back(i + l);
+    for (int i = 0; i < limit; ++i)
+        if (isPrime[i])
+            ret.emplace_back(i + l);
     return ret;
-}
-
-void Solve()
-{
-    ll l, r;
-    cin >> l >> r;
-
-    vector <ll> P = segmented_sieve(l, r);
-    int sz = P.size();
-
-    for(int i = 0; i < sz; ++i)
-        cout << P[i] << "\n";
-
-    cout << endl;
-}
-
-int main()
-{
-    Fast();
-
-    int tc = 1; cin >> tc;
-    Primes = simple_sieve(1'000'000);
-
-    for(int i = 1; i <= tc; ++i)
-        Solve();
 }
 
