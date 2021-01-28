@@ -1,5 +1,6 @@
 /**
 	constraints:
+	
 	1 <= n <= 1e8
 	Time complexity of this approach is : n lnln √n + O(n)
 **/

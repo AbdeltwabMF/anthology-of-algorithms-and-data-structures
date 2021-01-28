@@ -1,5 +1,6 @@
 /**
 	constraints:
+	
 	1 <= l, r <= 1e{14}
 	1 <= r - l + 1 <= 1e7
 	Time complexity of this approach is : O((r − l + 1)lnln(r) + √r lnln r^{1/4})
@@ -56,4 +57,3 @@ vector<ll> segmented_sieve(ll l, ll r) {
             ret.emplace_back(i + l);
     return ret;
 }
-
