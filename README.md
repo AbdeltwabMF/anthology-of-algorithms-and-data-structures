@@ -39,6 +39,7 @@
       - [Linear Sieve](3.Mathematics/3.2.Number-Theory/3.2.1.Prime-Generation/3.2.1.5.Linear-Sieve.cpp)
     - [Integer Factorization](3.Mathematics/3.2.Number-Theory/3.2.2.Integer-Factorization)
       - [Extended Wheel-Factorization](3.Mathematics/3.2.Number-Theory/3.2.2.Integer-Factorization/3.2.2.1.Extended-Wheel-Factorization.cpp)
+      - [Least Prime Factorization](3.Mathematics/3.2.Number-Theory/3.2.2.Integer-Factorization/3.2.2.2.LeastPrime-Factorization.cpp)
     - [Extended-Euclid: Solving Linear Diophantine Equation](3.Mathematics/3.2.Number-Theory/3.2.3.Extended-Euclid:Solving-Linear-Diophantine-Equation)
     - [Modified Sieve](3.Mathematics/3.2.Number-Theory/3.2.4.Modified-Sieve)
     - [Primality Tests](3.Mathematics/3.2.Number-Theory/3.2.5.Primality-Tests)
