@@ -17,4 +17,4 @@ ll gcd(ll a, ll b) { // binary GCD uses about 60% fewer bit operations
 ll lcm(ll a, ll b) {
     return a / gcd(a, b) * b;
 }
-
+	
