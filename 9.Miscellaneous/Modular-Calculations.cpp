@@ -29,4 +29,9 @@ ll binMul(ll a, ll b, ll p) {
     return res;
 }
 
+// 3. Modular Multiplicative Inverse
+
+ll modInv(ll b, ll p) {
+	return binExp(b, p - 2, p); // Guaranteed that p is a Prime Number
+}
 
