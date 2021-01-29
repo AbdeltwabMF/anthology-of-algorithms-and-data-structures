@@ -1,44 +1,32 @@
-#pragma  GCC optimize ("Ofast")
-
-#include <bits/stdc++.h>
-
-#define endl      '\n'
-
-using namespace std;
-
-typedef long long  ll;
-typedef __int128 i128;
-
-const int N = 1e6, Mod = 1'000'000'007;
-
-void Fast() {
-    cin.sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-}
-
 /*
-    1. Modular Exponentiation
+	- It also has important applications in many tasks unrelated to arithmetic, since it can be used with any operations that have the property of associativity:
 */
-ll ModExp(ll base, ll e, ll mod)
-{
-    ll result;
-    base %= mod;
 
-    for(result = 1; e; e >>= 1ll)
-    {
-        if(e & 1ll)
-            result = ((i128)result * base) % mod;
-        base = ((i128)base * base) % mod;
+// 1. Modular Exponentiation
+
+ll binExp(ll a, ll b, ll p) {
+    ll res = 1;
+    while (b) {
+        if (b & 1ll)
+            res = res * a % p;
+        a = a * a % p;
+        b >>= 1;
     }
-    return result;
+    return res;
 }
 
-int main()
-{
-    Fast();
+// 2. Modular Multiplication
 
-    ll n, e;
-    cin >> n >> e;
-    cout << ModExp(n, e, Mod) << endl;
+ll binMul(ll a, ll b, ll p) {
+    ll res = 0;
+    a %= p;
+    while (b) {
+        if (b & 1ll)
+            res = (res + a) % p;
+        a = (a + a) % p;
+        b >>= 1;
+    }
+    return res;
 }
+
 
