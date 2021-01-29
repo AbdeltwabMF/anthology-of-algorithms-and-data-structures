@@ -36,6 +36,7 @@
       - [Segmented Sieve](3.Mathematics/3.2.Number-Theory/3.2.1.Prime-Generation/3.2.1.2.Segmented-Sieve.cpp)
       - [Enhancement Segmented Sieve](3.Mathematics/3.2.Number-Theory/3.2.1.Prime-Generation/3.2.1.3.Enhancement-Segmented-sieve.cpp)
       - [Wheel Sieve](3.Mathematics/3.2.Number-Theory/3.2.1.Prime-Generation/3.2.1.4.Wheel-Sieve.cpp)
+      - [Linear Sieve](3.Mathematics/3.2.Number-Theory/3.2.1.Prime-Generation/3.2.1.5.Linear-Sieve.cpp)
     - [Integer Factorization](3.Mathematics/3.2.Number-Theory/3.2.2.Integer-Factorization)
       - [Extended Wheel-Factorization](3.Mathematics/3.2.Number-Theory/3.2.2.Integer-Factorization/3.2.2.1.Extended-Wheel-Factorization.cpp)
     - [Extended-Euclid: Solving Linear Diophantine Equation](3.Mathematics/3.2.Number-Theory/3.2.3.Extended-Euclid:Solving-Linear-Diophantine-Equation)
