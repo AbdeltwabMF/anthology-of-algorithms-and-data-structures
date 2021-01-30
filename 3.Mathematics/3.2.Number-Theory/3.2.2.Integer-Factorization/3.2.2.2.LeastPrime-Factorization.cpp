@@ -7,7 +7,7 @@
 	Factorization takes O(log(n))
 	
 	Space Complexity:
-	MaxN + n / (ln(n) - 1.08
+	O(MaxN + n / (ln(n) - 1.08)
 */
 
 int lp[N];
