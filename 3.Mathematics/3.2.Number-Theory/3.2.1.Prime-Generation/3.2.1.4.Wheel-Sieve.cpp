@@ -1,15 +1,21 @@
-/**
-	constraints:
-	
+/** 
+	Constraints:
 	1 <= n <= 1e9
-	Used: 3150 ms, 517536 KB
+	2 <= x <= 9700000
+    
+	Time Complexity:
+	wheel_sieve takes O(n / ln(ln(n)))
+	coPrimes takes O(x * ln(ln(x)))
+	
+	Space Complexity:
+	O(MaxN / 32 + n / (ln(n) - 1.08) + x)
 **/
 
 bitset<N> isPrime;
-int32_t inx[30100];
-vector<int> Primes;
+int inx[30100];
+int Primes[50908031], pnx; /** size of Primes = n / (ln(n) - 1.08) */
 
-vector<int> coPrimes(int n) {
+vector<int> coPrimes(int x) {
     int basis[5] = {3, 5, 7, 11, 13};
 
     vector<int> ret;
@@ -17,15 +23,14 @@ vector<int> coPrimes(int n) {
     isCoprime.set();
 
     for (int b : basis)
-        for (int d = b * b; d <= n; d += b << 1)
+        for (int d = b * b; d <= x; d += b << 1)
             isCoprime.reset(d);
 
-    for (int i = 17; i <= n; i += 2)
+    for (int i = 17; i <= x; i += 2)
         if (isCoprime[i]) ret.push_back(i);
 
-    ret.push_back(n + 1);
-    ret.push_back(n + 17);
-
+    ret.push_back(x + 1);
+    ret.push_back(x + 17);
     return ret;
 }
 
@@ -44,15 +49,15 @@ void wheel_sieve(int n) {
     for (int i = 1; i < sz; ++i)
         inc[i - 1] = wheel[i] - wheel[i - 1];
 
-    for (int prime : basis) {
-        if (n >= prime)
-            Primes.emplace_back(prime);
+    for (int p : basis) {
+        if (n >= p)
+            Primes[pnx++] = p;
     }
 
     int c = 0;
     for (ll i = 17; i <= n; i += inc[c++]) {
         if (isPrime[i]) {
-            Primes.emplace_back(i);
+            Primes[pnx++] = i;
             int d = inx[i % 30030];
             for (ll j = i * i; j <= n; j += i * inc[d++]) {
                 isPrime.reset(j);
