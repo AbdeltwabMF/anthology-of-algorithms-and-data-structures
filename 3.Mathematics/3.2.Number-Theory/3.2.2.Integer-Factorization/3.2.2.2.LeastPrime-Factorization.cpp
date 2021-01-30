@@ -1,18 +1,30 @@
-int leastPrime[N];
-int Primes[664580], pnx;
+/*
+	Constraints:
+	1 <= n <= 1e7
+	
+	Time Complexity:
+	linear_sieve takes O(n)
+	Factorization takes O(log(n))
+	
+	Space Complexity:
+	MaxN + n / (ln(n) - 1.08
+*/
 
-void linear_sieve(int x) { // O(n)
-    for (int i = 2; i <= x; ++i) {
-        if (leastPrime[i] == 0) {
-            leastPrime[i] = Primes[pnx++] = i;
+int lp[N];
+int Primes[664580], pnx; /** size of Primes = n / (ln(n) - 1.08) */
+
+void linear_sieve(int n) {
+    for (int i = 2; i <= n; ++i) {
+        if (lp[i] == 0) {
+            lp[i] = Primes[pnx++] = i;
         }
-        for (int j = 0, lp = leastPrime[i], comp = 0; j < pnx && Primes[j] <= lp && (comp = i * Primes[j]) <= x; ++j) {
-            leastPrime[comp] = Primes[j];
+        for (int j = 0, comp; j < pnx && Primes[j] <= lp[i] && (comp = i * Primes[j]) <= n; ++j) {
+            lp[comp] = Primes[j];
         }
     }
 }
 
-vector<pair<int, int>> Factorization(int n) {  // O(log(n))
+vector<pair<int, int>> Factorization(int n) {
     vector<pair<int, int>> ret;
     while (n > 1) {
         int p = leastPrime[n], cnt = 0;
