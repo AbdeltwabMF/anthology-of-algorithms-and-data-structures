@@ -18,7 +18,7 @@ void Phi_sieve(int n) {
     for (int i = 2; i <= n; ++i) {
         if (EulerPhi[i] == i)
             for (int j = i; j <= n; j += i) {
-                EulerPhi[i] -= EulerPhi[i] / i;
+                EulerPhi[j] -= EulerPhi[j] / i;
             }
     }
 }
