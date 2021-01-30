@@ -6,38 +6,24 @@
 	
 	Time complexity:
 	segmented_sieve takes O((r − l + 1) * ln(ln(r)))
-	sieve takes O( + √r * ln(ln(r^{1/4})))
+	linear_sieve takes O(n)
 	
 	Space Complexity:
-	O(MaxN + n / (ln(n) - 1.08))
+	O(2 * MaxN + n / (ln(n) - 1.08))
 **/
 
-bool isPrime[N];
+int lp[N];
 int Primes[664580], pnx; /** size of Primes = n / (ln(n) - 1.08) */
+bool isPrime[N];
 
-void sieve(int x) {
-    int basis[3] = {2, 3, 5};
-    int wheel[8] = {7, 11, 13, 17, 19, 23, 29, 1};
-    int inc[8] = {4, 2, 4, 2, 4, 6, 2, 6};
-    int inx[31];
-
-    memset(inx, 0, sizeof(inx));
-    memset(isPrime, true, sizeof(isPrime));
-
-    for (int p : basis) if (x > p) Primes[pnx++] = p;
-    for (int i = 0; i < 8; ++i) inx[wheel[i]] = i;
-
-    int c = 0;
-    for (int i = 7; i <= x; i += inc[c++]) {
-        if (isPrime[i]) {
-            Primes[pnx++] = i;
-            int d = inx[i % 30];
-            for (ll j = i * 1ll * i; j <= x; j += i * inc[d++]) {
-                isPrime[j] = false;
-                if (d == 8) d = 0;
-            }
+void linear_sieve(int n) {
+    for (int i = 2; i <= n; ++i) {
+        if (lp[i] == 0) {
+            lp[i] = Primes[pnx++] = i;
         }
-        if (c == 8) c = 0;
+        for (int j = 0, comp; j < pnx && Primes[j] <= lp[i] && (comp = i * Primes[j]) <= n; ++j) {
+            lp[comp] = Primes[j];
+        }
     }
 }
 
@@ -47,8 +33,9 @@ vector<ll> segmented_sieve(ll l, ll r) {
     vector<ll> ret;
     memset(isPrime, true, sizeof(isPrime));
 
-    for (int p : Primes) {
-        for (ll j = max(p * 1ll * p, (l + p - 1) * 1ll / p * p); j <= r; j += p)
+    ll p;
+    for (int i = 0; i < pnx && (p = Primes[i], true); ++i) {
+        for (ll j = max(p * p, (l + p - 1) / p * p); j <= r; j += p)
             isPrime[j - l] = false;
     }
 
