@@ -42,6 +42,7 @@
       - [Least Prime Factorization](3.Mathematics/3.2.Number-Theory/3.2.2.Integer-Factorization/3.2.2.2.LeastPrime-Factorization.cpp)
     - [Extended-Euclid: Solving Linear Diophantine Equation](3.Mathematics/3.2.Number-Theory/3.2.3.Extended-Euclid:Solving-Linear-Diophantine-Equation)
     - [Modified Sieve](3.Mathematics/3.2.Number-Theory/3.2.4.Modified-Sieve)
+      - [Euler Phi](3.Mathematics/3.2.Number-Theory/3.2.4.1.Euler-Phi.cpp)
     - [Primality Tests](3.Mathematics/3.2.Number-Theory/3.2.5.Primality-Tests)
       - [Miller-Rabin Test](3.Mathematics/3.2.Number-Theory/3.2.5.Primality-Tests/3.2.5.1.Miller-Rabin-Test.cpp)
       - [Practice Problem](3.Mathematics/3.2.Number-Theory/3.2.5.Primality-Tests/3.2.5.2.GCPC'15[Divisions-F].cpp)
