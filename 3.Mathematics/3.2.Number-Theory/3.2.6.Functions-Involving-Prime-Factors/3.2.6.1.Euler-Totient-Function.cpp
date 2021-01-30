@@ -8,7 +8,7 @@
 	Phi takes O(n / (ln(n) - 1.08))
 	
 	Space Complexity:
-	MaxN + n / (ln(n) - 1.08)
+	O(MaxN + n / (ln(n) - 1.08))
 	
 	Explanation:
 	Phi(n) = n * ((p1 - 1) / p1) * ((p2 - 1) / p2) *...* ((pk - 1) / pk)
