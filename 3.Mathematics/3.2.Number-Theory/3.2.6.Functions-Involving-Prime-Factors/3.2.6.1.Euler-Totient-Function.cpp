@@ -13,10 +13,22 @@
 	Explanation:
 	Phi(n) = n * ((p1 - 1) / p1) * ((p2 - 1) / p2) *...* ((pk - 1) / pk)
 	Phi(n) = n * (1 - (1 / p1)) * (1 - (1 / p2)) *...* (1 - (1 / pk))
+	
+	Applications:
+		Euler's theorem:
+		a^φ(m) ≡ 1 (mod m) if a and m are relatively prime.
+		
+		Fermat's little theorem:
+		when m is a prime:
+		a^{m − 1} ≡ 1 (mod m)
+		
+		As immediate consequence we also get the equivalence:
+		a^n ≡ a^{n mod φ(m)} (mod m)
+		This allows computing x^n mod m for very big n, especially if n is the result of another computation,
+		as it allows to compute n under a modulo.
 **/
 
-int lp[N];
-int Primes[664580], pnx; /** size of Primes = n / (ln(n) - 1.08) */
+int lp[N], Primes[664580], pnx; /** size of Primes = n / (ln(n) - 1.08) */
 
 void linear_sieve(int n) {
     for (int i = 2; i <= n; ++i) {
