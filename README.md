@@ -50,6 +50,7 @@
     - [Functions Involving Prime Factors](3.Mathematics/3.2.Number-Theory/3.2.6.Functions-Involving-Prime-Factors)
       - [Euler Totient Function](3.Mathematics/3.2.Number-Theory/3.2.6.Functions-Involving-Prime-Factors/3.2.6.1.Euler-Totient-Function.cpp)
       - [Mobius Function](3.Mathematics/3.2.Number-Theory/3.2.6.Functions-Involving-Prime-Factors/3.2.6.2.Mobius-Function.cpp)
+      - [Phi Factorial](3.Mathematics/3.2.Number-Theory/3.2.6.Functions-Involving-Prime-Factors/3.2.6.3.Phi-Factorial.cpp)
   - [Probability Theory](3.Mathematics/3.3.Probability-Theory)
   - [Game Theory](3.Mathematics/3.4.Game-Theory)
   - [Cycle-Finding](3.Mathematics/3.5.Cycle-Finding)
