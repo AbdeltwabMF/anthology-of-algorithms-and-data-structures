@@ -1,10 +1,10 @@
 /** 
 	Constraints:
-	1 <= n <= 1e7
-	2 <= a <= 10^{14}
+	1 <= x <= 1e7
+	2 <= n <= 10^{14}
     
 	Time Complexity:
-	linear_sieve takes O(n)
+	linear_sieve takes O(x)
 	mobius takes O(n / (ln(n) - 1.08))
 	
 	Space Complexity:
