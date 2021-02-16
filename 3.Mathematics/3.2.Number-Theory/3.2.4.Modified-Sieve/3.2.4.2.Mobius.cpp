@@ -3,24 +3,25 @@
 	1 <= n <= 1e7
 	
 	Time Complexity:
-	mobius_sieve takes O(n * ln(ln(n)))
+	mu_sieve takes O(n)
 	
 	Space Complexity:
-	MaxN
+	O(MaxN)
 */
 
-char mob[N];
+int mu[N], lp[N], Primes[78522], pnx;
 
-void mobius_sieve(int n) {
-    memset(mob, 0x02, sizeof(mob)); // 00000010
-    mob[1] = 1;
+void mu_sieve(int n) {
+    mu[1] = 1;
+    fill(mu, mu + N, 1);
     for (int i = 2; i <= n; ++i) {
-        if (mob[i] == 2) {
-            mob[i] = -1;
-            for (int j = i + i; j <= n; j += i) {
-                mob[j] = (mob[j] == 2) ? 1 : mob[j];
-                mob[j] = (j % (i * i) == 0) ? 0 : -mob[j];
-            }
+        if (lp[i] == 0) {
+            lp[i] = Primes[pnx++] = i;
+            mu[i] = -1;
+        }
+        for (int j = 0, nxt; j < pnx && Primes[j] <= lp[i] && (nxt = i * Primes[j]) <= n; ++j) {
+            lp[nxt] = Primes[j];
+            mu[nxt] = (lp[i] == Primes[j] ? 0 : -mu[i]);
         }
     }
 }
