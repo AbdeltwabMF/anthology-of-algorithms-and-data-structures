@@ -1,170 +1,98 @@
-#pragma GCC optimize ("Ofast")
+class Trie {
+private:
+  Trie* children[26]; // Pointer = 8 Byte; 8*26 = 208 Byte
+  int prefixs, words; // 8 Byte
+  bool iseow; // 1 Byte
+  char cur_letter; // 1 Byte
+  vector <string> lex;
+  
+public:
+  Trie(char lett = '\0') {
+    memset(children, 0, sizeof(children));
+    prefixs = words = 0;
+    iseow = false;
+    cur_letter = lett;
+  }
 
-#include <bits/stdc++.h>
+  void insert(string &str) { // O(l)
+    Trie* cur = this;
+    int inx, strsz = str.size();
+    for(int i = 0; i < strsz; ++i) {
+      inx = str[i] - 'a';      
+      if(cur->children[inx] == nullptr)
+	cur->children[inx] = new Trie(str[i]);
 
-#define endl      '\n'
+      cur = cur->children[inx];
+      cur->prefixs++;
+    }
+    cur->iseow = true;
+    cur->words++;
+  }
+  
+  int search_word(string &str) { // O(l)
+    Trie* cur = this; 
+    int inx, strsz = str.size();  
+    for(int i = 0; i < strsz; ++i) {
+      inx = str[i] - 'a';
+      if(cur->children[inx] == nullptr) {
+	return 0;
+      }
+      cur = cur->children[inx];
+    }
+    return cur->words;
+  }
 
-using namespace std;
+  int search_prefix(string &str) { // O(l)
+    Trie* cur = this;
+    int inx = 0, strsz = str.size();
+    for(int i = 0; i < strsz; ++i) {   
+      inx = str[i] - 'a';
+      if(cur->children[inx] == nullptr) {
+	return 0;
+      }
+      cur = cur->children[inx];
+    }
+    return cur->prefixs;
+  }
 
-typedef int64_t    ll;
-typedef __int128 i128;
+  bool erase(string &str) {
+    if(!search_word(str))
+      return false;
 
-void Fast() {
-    cin.sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-}
+    Trie* cur = this;
+    int inx, strsz = str.size();
+    for(int i = 0; i < strsz; ++i) {
+      inx = str[i] - 'a';
+      if(--cur->children[inx]->prefixs == 0) {
+	cur->children[inx] = nullptr;
+	return true;     
+      }
+      cur = cur->children[inx];
+    }
+    if(--cur->words == 0) {
+      cur->iseow = false;
+    }
+    return true;
+  }
 
-/**----------------->>  Quality Over Quantity  <<----------------**/
-
-class Trie
-{
-    Trie* children[26];
-    int prefixes, words;
-    bool eow;
-    char letter;
-    vector <string> lex;
-
-  public :
-    Trie (char le = '\0') {
-        memset(children, 0, sizeof children);
-        prefixes = words = 0;
-        eow = false;
-        letter = le;
+  void dfs(Trie* node, string s) {
+    if(node->iseow) {
+      lex.emplace_back(s);
     }
 
-    void insert(string str) {
-        Trie* cur = this;
-        int inx;
-        for(char i : str) {
-            inx = i - 'a';
-            if(cur->children[inx] == 0)
-                cur->children[inx] = new Trie(i);
-
-            cur = cur->children[inx];
-            cur->prefixes++;
-        }
-
-        cur->eow = true;
-        cur->words++;
-    }
-
-    bool search(string str) {
-        Trie* cur = this;
-        int inx;
-        for(char i : str) {
-            inx = i - 'a';
-            if(cur->children[inx] == 0)
-                return false;
-
-            cur = cur->children[inx];
-        }
-        return cur->eow;
-    }
-
-    int count_word(string str) {
-        Trie* cur = this;
-        int inx;
-        for(char i : str) {
-            inx = i - 'a';
-            if(cur->children[inx] == 0)
-                return false;
-
-            cur = cur->children[inx];
-        }
-        return cur->words;
-    }
-
-    int count_prefix(string str) {
-        Trie* cur = this;
-        int inx;
-        for(char i : str) {
-            inx = i - 'a';
-            if(cur->children[inx] == 0)
-                return 0;
-
-            cur = cur->children[inx];
-        }
-        return cur->prefixes;
-    }
-
-  private :
-    void dfs(Trie* node, string str = "") {
-        if(node->eow)
-            lex.push_back(str);
-
-        for(int i = 0; i < 26; ++i) if(node->children[i])
-                dfs(node->children[i], str + node->children[i]->letter);
-    }
-
-    bool dlete(Trie* node, string str, int i) {
-        if(i == (int)str.size()) {
-            if(--node->prefixes == 0)
-                return false;
-            if(--node->words == 0)
-                node->eow = false;
-            return true;
-        }
-
-        int inx = str[i] - 'a';
-        if(dlete(node->children[inx], str, i + 1)) {
-            --node->prefixes;
-            return true;
-        } else {
-            node->children[inx] = 0;
-            if(--node->prefixes || node->eow)
-                return true;
-            return false;
-        }
-    }
-
-  public :
-    bool dlete(string str) {
-        if(!search(str)) return false;
-        dlete(this, str, 0);
-        return true;
-    }
-
-    vector <string> lex_sort() {
-        lex.clear();
-        Trie* root = this;
-        for(int i = 0; i < 26; ++i) if(root->children[i])
-                dfs(root->children[i], string(1, root->children[i]->letter));
-
-        return lex;
-    }
-
-    void print() {
-        lex_sort();
-        for(int i = 0; i < (int)lex.size(); ++i)
-            cout << lex[i] << '\n';
-    }
+    for(int j = 0; j < 26; ++j)
+      if(node->children[j] != nullptr) {
+	dfs(node->children[j], s + string(1, node->children[j]->cur_letter));
+      }
+  }
+  
+  vector <string> lex_order() {
+    lex.clear();
+    Trie* cur = this;
+    for(int i = 0; i < 26; ++i) if(cur->children[i] != nullptr) {
+	dfs(cur->children[i], string(1, cur->children[i]->cur_letter));
+      }
+    return lex;
+  }
 };
-
-int n;
-string s;
-
-void Solve()
-{
-    Trie trie;
-
-    cin >> n;
-    while(n--) {
-        cin >> s;
-        if(trie.search(s)) {
-            cout << s << trie.count_word(s) << endl;
-            trie.insert(s);
-        } else {
-            trie.insert(s);
-            cout << "OK" << endl;
-        }
-    }
-}
-
-int main()
-{
-    Fast();
-
-    int tc = 1;
-    for(int i = 1; i <= tc; ++i) Solve();
-}
 
