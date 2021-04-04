@@ -149,7 +149,8 @@
 
 ## 9. [Miscellaneous](9.Miscellaneous)
   - [Compilation & Debugging Flags](9.Miscellaneous/.bashrc)
-  - [My personal Emacs configuration](9.Miscellaneous/.emacs)
+  - [My personal Emacs Configuration](9.Miscellaneous/.emacs)
+  - [Pseudo-Random Number Generator](9.Miscellaneous/PRNG.cpp)
   - [Next/Prev Greater/Smaller Element](9.Miscellaneous/Next-Prev-Greater-Smaller-Element[using_stack].cpp)
   - [Modular Calculations](9.Miscellaneous/Modular-Calculations.cpp)
   - [The Minimal Excluded element of subarray of Permutation](9.Miscellaneous/The-MEX-of-subarray-of-Permutation.cpp)
