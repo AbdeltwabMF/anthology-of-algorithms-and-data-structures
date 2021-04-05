@@ -1,3 +1,20 @@
+/**
+   Fast Input/Output method for C++:
+   1. cin(with sync_with_stdio(false) & cin.tie(nullptr)):
+   - int: 
+   - |n = 5e6| => 420ms
+   - |n = 1e7| => 742ms
+   - ll:
+   - |n = 5e6| => 895ms
+
+   2. read (using getchar()):
+   - int:
+   - |n = 5e6| => 173ms
+   - |n = 1e7| => 172ms
+   - ll:
+   - |n = 5e6| => 340ms
+**/
+
 ll readll () {
   bool minus = false;
   unsigned long long result = 0;
