@@ -39,7 +39,7 @@ function cp {
 # Since this macro is not defined in CodeForces' compilation options, when your code is judged debugging will be disabled.
 
 function db {
-    (echo "start <input.in" && cat) | gdb -q $1
+    (echo "start < input.in" && cat) | gdb -q $1
 }
 
 # Example db(GNU GDB Debugger):
@@ -47,12 +47,20 @@ function db {
 # by doing this command the main.cpp will run and reading input from input.in file & the GNU GDB will open in the terminal and ready to go
 
 function dbc {
-    gdb --tui -q $1 -ex "run <input.in"
+    gdb --tui -q $1 -ex "run < input.in"
 }
 
 # Example dbc(GNU GDB Debugger - split the window into 2 parts the souce code will be on the top and the GDB will be in the buttom):
 # abdeltwabmf@ThinkPad: dbc main
 # by doing this command the same thing will be happened as the previous command except for splitting the window
+
+function rt {
+    time ./$1
+}
+
+function r {
+    ./$1
+}
 
 <<COMMENT
 
