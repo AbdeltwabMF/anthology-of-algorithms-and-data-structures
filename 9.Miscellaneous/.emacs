@@ -141,7 +141,7 @@ there's a region, all lines that region covers will be duplicated."
  '(default-input-method nil)
  '(display-line-numbers 'relative)
  '(package-selected-packages
-   '(gruvbox-theme darktooth-theme solarized-theme dired-subtree avy-zap trie swiper-helm smex rainbow-delimiters posframe org-noter-pdftools markdown-mode ivy-rich flx dash counsel avy anzu)))
+   '(elpy toc-org org-bullets org-gnome gruvbox-theme darktooth-theme solarized-theme dired-subtree avy-zap trie swiper-helm smex rainbow-delimiters posframe org-noter-pdftools markdown-mode ivy-rich flx dash counsel avy anzu)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -156,11 +156,33 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "M-g e") 'avy-goto-word-0) ;; القفز إلى أي كلمة من كلمات البفر
 
 ;; (load-theme 'solarized-dark t)
-;;(load-theme 'solarized-light t)
+;; (load-theme 'solarized-light t)
 ;; (load-theme 'darktooth t)
-;;(load-theme 'gruvbox-dark-soft t)
-;;(load-theme 'gruvbox-dark-medium t)
-;;(load-theme 'gruvbox-dark-hard t)
+;; (load-theme 'gruvbox-dark-soft t)
+;; (load-theme 'gruvbox-dark-medium t)
+;; (load-theme 'gruvbox-dark-hard t)
 (load-theme 'gruvbox-light-soft t)
 ;;(load-theme 'gruvbox-light-medium t)
 ;;(load-theme 'gruvbox-light-hard t)
+
+;; F11 = Full Screen
+(defun toggle-fullscreen (&optional f)
+  (interactive)
+  (let ((current-value (frame-parameter nil 'fullscreen)))
+    (set-frame-parameter nil 'fullscreen
+      (if (equal 'fullboth current-value)
+        (if (boundp 'old-fullscreen) old-fullscreen nil)
+        (progn (setq old-fullscreen current-value)
+          'fullboth)))))
+(global-set-key [f11] 'toggle-fullscreen)
+
+;; org mode settings
+(require 'org-bullets)
+(add-hook 'org-mode-hook #'org-bullets-mode)
+(setq inhibit-compacting-font-caches t)
+
+;; Safely reload files which are changed on disc
+(global-auto-revert-mode t)
+
+;; set the size of output in bytes
+(setq undo-outer-limit 104857600)
