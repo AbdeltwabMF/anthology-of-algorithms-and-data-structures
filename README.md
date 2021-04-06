@@ -126,6 +126,7 @@
 
 ## 5. [String Processing](5.String-Processing)
   - [Trie](5.String-Processing/Trie.cpp)
+  - [Knuth-Morris-Pratt Algorithm](5.String-Processing/KMP.cpp)
 
 ---
 
