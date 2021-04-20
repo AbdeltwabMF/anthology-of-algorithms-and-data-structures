@@ -151,8 +151,6 @@
 ## 9. [Miscellaneous](9.Miscellaneous)
   - [Generators](9.Miscellaneous/Generators)
     - [Integer Generator](9.Miscellaneous/Generators/iGenerator.cpp)
-  - [Compilation & Debugging Flags](9.Miscellaneous/.bashrc)
-  - [My personal Emacs Configuration](9.Miscellaneous/.emacs)
   - [Pseudo-Random Number Generator](9.Miscellaneous/PRNG.cpp)
   - [Next/Prev Greater/Smaller Element](9.Miscellaneous/Next-Prev-Greater-Smaller-Element[using_stack].cpp)
   - [Fast Input/Output Methods for C++](9.Miscellaneous/FastIO.cpp)
