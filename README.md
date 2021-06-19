@@ -152,7 +152,7 @@
   - [Generators](9.Miscellaneous/Generators)
     - [Integer Generator](9.Miscellaneous/Generators/iGenerator.cpp)
   - [Pseudo-Random Number Generator](9.Miscellaneous/PRNG.cpp)
-  - [C++ Stress Test](9.Miscellaneous/stress.test.cpp)
+  - [C++ Stress Test](9.Miscellaneous/stress_test.cpp)
   - [Next/Prev Greater/Smaller Element](9.Miscellaneous/Next-Prev-Greater-Smaller-Element[using_stack].cpp)
   - [Fast Input/Output Methods for C++](9.Miscellaneous/FastIO.cpp)
   - [Modular Calculations](9.Miscellaneous/Modular-Calculations.cpp)
