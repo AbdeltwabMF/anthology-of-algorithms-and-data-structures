@@ -160,6 +160,7 @@
   - [Modular Calculations](9.Miscellaneous/Modular-Calculations.cpp)
   - [The Minimal Excluded element of subarray of Permutation](9.Miscellaneous/The-MEX-of-subarray-of-Permutation.cpp)
   - [Double Comparison](9.Miscellaneous/Double-Comparison.cpp)
+  - [Contest Template - C++](9.Miscellaneous/Template.cpp)
   - [Overloaded Operators << and >> to Accept an 128-Bit Integer](9.Miscellaneous/Overloaded-Operators-To-Accept-128Bit-Integer.cpp)
   - [Policy Based Data Structures](9.Miscellaneous/Policy-Based-Data-Structures.cpp)
   - [My Debugging Tools](9.Miscellaneous/MyDebugger.cpp)
