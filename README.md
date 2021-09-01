@@ -51,6 +51,7 @@
   - [BigInteger Class](Mathematics/BigInteger-Class)
   - [Ad-Hoc Mathematics Problems](Mathematics/Ad-Hoc-Mathematics-Problems)
     - [Stable Matching](Mathematics/Ad-Hoc-Mathematics-Problems/Stable-Matching)
+      - [The Stable Marriage Problem](Mathematics/Ad-Hoc-Mathematics-Problems/Stable-Matching/The-Stable-Marriage-Problem.cpp)
 
 ---
 
