@@ -49,8 +49,8 @@
   - [Game Theory](Mathematics/Game-Theory)
   - [Cycle Finding](Mathematics/Cycle-Finding)
   - [BigInteger Class](Mathematics/BigInteger-Class)
-  - [Ad-Hoc Mathematics Problems](Mathematics/Mathematics-Problems)
-    - [Stable Matching](Mathematics/Mathematics-Problems/Stable-Matching)
+  - [Ad-Hoc Mathematics Problems](Mathematics/Ad-Hoc-Mathematics-Problems)
+    - [Stable Matching](Mathematics/Ad-Hoc-Mathematics-Problems/Stable-Matching)
 
 ---
 
