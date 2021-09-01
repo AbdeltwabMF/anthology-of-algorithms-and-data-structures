@@ -47,7 +47,7 @@
   - [Probability Theory](Mathematics/Probability-Theory)
   - [Game Theory](Mathematics/Game-Theory)
   - [Cycle Finding](Mathematics/Cycle-Finding)
-  - [BigInteger Class](Mathematics/BigInteger-Class)
+  - [Big Integer Class](Mathematics/BigInteger-Class)
   - [Ad-Hoc Mathematics Problems](Mathematics/Ad-Hoc-Mathematics-Problems)
     - [Stable Matching](Mathematics/Ad-Hoc-Mathematics-Problems/Stable-Matching)
       - [The Stable Marriage Problem](Mathematics/Ad-Hoc-Mathematics-Problems/Stable-Matching/The-Stable-Marriage-Problem.cpp)
