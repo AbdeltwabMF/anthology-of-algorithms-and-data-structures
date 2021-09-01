@@ -74,7 +74,7 @@
       - [Edge Classification](Graph-Theory/Graph-Traversal/Applications/EdgeClassification.cpp)
       - [Adjacency List](Graph-Theory/Graph-Traversal/Applications/AdjacencyList.cpp)
       - [Cycle Detection Directed Graph](Graph-Theory/Graph-Traversal/Applications/CycleDetection[DirectedG].cpp)
-      - [Cycle Detection Undirected Graph](Graph-Theory/Graph-Traversal/Applications/CycleDetection[UnDirectedG].cpp)
+      - [Cycle Detection Undirected Graph](Graph-Theory/Graph-Traversal/Applications/CycleDetection[UndirectedG].cpp)
       - [Minimum Vertex Cover](Graph-Theory/Graph-Traversal/Applications/MinimumVertexCover.cpp)
   - [Minimum Spanning Tree](Graph-Theory/Minimum-Spanning-Tree)
     - [Kruskal's Algorithm](Graph-Theory/Minimum-Spanning-Tree/Kruskal-Algorithm)
