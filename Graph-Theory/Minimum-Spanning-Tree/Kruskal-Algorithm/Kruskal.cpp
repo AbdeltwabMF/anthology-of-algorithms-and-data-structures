@@ -1,10 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef int64_t  ll;
-int main() {}
-
-class UnionFind
-{
+class UnionFind {
   vector <int> par;
   vector <int> siz;
   int num_sets;
@@ -14,8 +8,7 @@ public:
   UnionFind() : par(1, -1), siz(1, 1), num_sets(0), sz(0) {}
   UnionFind(int n) : par(n + 1, -1), siz(n + 1, 1), num_sets(n), sz(n) {}
 
-  int find_set(int u)
-  {
+  int find_set(int u) {
     assert(u <= sz);
 
     int leader;
@@ -85,23 +78,20 @@ int n, m, u, v, w;
 vector < tuple <int, int, int> > edges;
 UnionFind uf;
 
-pair < ll, vector < pair <int, int> > > Kruskal()
-{
+pair < ll, vector < pair <int, int> > > Kruskal() {
   sort(edges.begin(), edges.end());
 
   vector < pair <int, int> > mstEdges;
   int from, to, cost;
   ll minWieght = 0;
 
-  for(tuple <int, int, int> edge : edges)
-    {
-      tie(cost, from, to) = edge;
-      if(uf.union_set(from, to))
-        {
-	  minWieght += cost;
-	  mstEdges.push_back(make_pair(from, to));
-        }
+  for(tuple <int, int, int> edge : edges) {
+    tie(cost, from, to) = edge;
+    if(uf.union_set(from, to)) {
+      minWieght += cost;
+      mstEdges.push_back(make_pair(from, to));
     }
+  }
 
   if(mstEdges.size() == n - 1)
     return make_pair(minWieght, mstEdges);

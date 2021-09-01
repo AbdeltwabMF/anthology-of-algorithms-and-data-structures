@@ -1,10 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef int64_t    ll;
-
 template <class T, class F = function <T(const T&, const T&)> >
-class SparseTable
-{
+class SparseTable {
   int _N;
   int _LOG;
   vector <T> _A;
@@ -16,8 +11,7 @@ public :
   SparseTable() = default;
 
   template <class iter>
-  SparseTable(iter _begin, iter _end, const F _func = less <T>()) : func(_func)
-  {
+  SparseTable(iter _begin, iter _end, const F _func = less <T>()) : func(_func) {
     _N = distance(_begin, _end);
     Log.assign(_N + 1, 0);
     for(int i = 2; i <= _N; ++i)
@@ -35,28 +29,24 @@ public :
     build();
   }
 
-  void build()
-  {
+  void build() {
     for(int i = 1; i <= _N; ++i)
       ST[i][0] = i;
 
-    for(int j = 1, k, d; j <= _LOG; ++j)
-      {
-	k = (1 << j);
-	d = (k >> 1);
+    for(int j = 1, k, d; j <= _LOG; ++j) {
+      k = (1 << j);
+      d = (k >> 1);
 
-	for(int i = 1; i + k - 1 <= _N; ++i)
-	  {
-	    T const & x = ST[i][j - 1];
-	    T const & y = ST[i + d][j - 1];
+      for(int i = 1; i + k - 1 <= _N; ++i) {
+	T const & x = ST[i][j - 1];
+	T const & y = ST[i + d][j - 1];
 
-	    ST[i][j] = func(_A[x], _A[y]) ? x : y;
-	  }
+	ST[i][j] = func(_A[x], _A[y]) ? x : y;
       }
+    }
   }
 
-  T query(int l, int r)
-  {
+  T query(int l, int r) {
     int d = r - l + 1;
     T const & x = ST[l][Log[d]];
     T const & y = ST[l + d - (1 << Log[d])][Log[d]];
@@ -89,49 +79,45 @@ void _clear() {
   ne = euler_timer = 0;
 }
 
-void EulerianTour(int node, int depth = 0)
-{
+void EulerianTour(int node, int depth = 0) {
   euler_tour[++euler_timer] = node;
   Height[euler_timer] = depth;
   First[node] = euler_timer;
 
-  for(int i = Head[node]; i; i = Next[i]) if(First[To[i]] == 0)
-					    {
-					      EulerianTour(To[i], depth + Cost[i]);
+  for(int i = Head[node]; i; i = Next[i])
+    if(First[To[i]] == 0) {
+      EulerianTour(To[i], depth + Cost[i]);
 
-					      euler_tour[++euler_timer] = node;
-					      Height[euler_timer] = depth;
-					    }
+      euler_tour[++euler_timer] = node;
+      Height[euler_timer] = depth;
+    }
 
   Last[node] = euler_timer;
 }
 
-int main()
-{
+int main() {
   cin >> n >> m;
   _clear();
 
-  while(m--)
-    {
-      cin >> u >> v;
-      addEdge(u, v);
-      addEdge(v, u);
-    }
+  while(m--) {
+    cin >> u >> v;
+    addEdge(u, v);
+    addEdge(v, u);
+  }
 
   EulerianTour(1);
 
   SparseTable <int> st(Height + 1, Height + euler_timer + 1, [&](int a, int b) { return a <= b; });
 
   int l, r; cin >> q;
-  while(q--)
-    {
-      cin >> l >> r;
+  while(q--) {
+    cin >> l >> r;
 
-      int left = Last[l];
-      int right = Last[r];
-      if(left > right) swap(left, right);
+    int left = Last[l];
+    int right = Last[r];
+    if(left > right) swap(left, right);
 
-      cout << euler_tour[ st.query(left, right) ] << endl;
-    }
+    cout << euler_tour[ st.query(left, right) ] << endl;
+  }
 }
 

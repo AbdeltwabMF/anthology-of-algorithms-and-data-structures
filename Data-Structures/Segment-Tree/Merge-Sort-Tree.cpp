@@ -1,16 +1,14 @@
 /** https://www.spoj.com/problems/KQUERY/
  **/
 
-class SegmentTree
-{
+class SegmentTree {
   vector <vector <int> > sTree;
   vector <int> localArr;
   int NP2, oo = 0x3f3f3f3f;
 
 public :
   template <class T>
-  SegmentTree(T _begin, T _end)
-  {
+  SegmentTree(T _begin, T _end) {
     NP2 = 1;
     int n = _end - _begin;
     while(NP2 < n) NP2 <<= 1;
@@ -25,8 +23,7 @@ public :
     build(1, 1, NP2);
   }
 
-  void build(int p, int l, int r)
-  {
+  void build(int p, int l, int r) {
     if(l == r) {
       sTree[p].push_back(localArr[l]);
       return;
@@ -43,8 +40,7 @@ public :
   }
 
 private :
-  int query(int ql, int qr, int k, int p, int l, int r)
-  {
+  int query(int ql, int qr, int k, int p, int l, int r) {
     if(isOutside(ql, qr, l, r))
       return 0;
 
@@ -52,12 +48,10 @@ private :
       return sTree[p].end() - upper_bound(sTree[p].begin(), sTree[p].end(), k);
     }
 
-    return query(ql, qr, k, left(p),  l,     mid(l, r)) +
-      query(ql, qr, k, right(p), mid(l, r) + 1, r);
+    return query(ql, qr, k, left(p),  l,     mid(l, r)) + query(ql, qr, k, right(p), mid(l, r) + 1, r);
   }
 
-  void merge(int p)
-  {
+  void merge(int p) {
     vector <int> & L = sTree[left(p)];
     vector <int> & R = sTree[right(p)];
 

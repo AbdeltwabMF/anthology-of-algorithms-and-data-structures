@@ -1,16 +1,14 @@
 /** https://www.hackerearth.com/practice/data-structures/advanced-data-structures/fenwick-binary-indexed-trees/practice-problems/algorithm/help-ashu-1/description/
  **/
 
-class SegmentTree
-{
+class SegmentTree {
   vector <pair <int, int> > sTree;
   vector <int> localArr;
   int NP2, oo = 0x3f3f3f3f;
 
 public :
   template <class T>
-  SegmentTree(T _begin, T _end)
-  {
+  SegmentTree(T _begin, T _end) {
     NP2 = 1;
     int n = _end - _begin;
     while(NP2 < n) NP2 <<= 1;
@@ -25,8 +23,7 @@ public :
     build(1, 1, NP2);
   }
 
-  void build(int p, int l, int r)
-  {
+  void build(int p, int l, int r) {
     if(l == r) {
       if(localArr[l] & 1)
 	sTree[p] = {1, 0};
@@ -42,8 +39,7 @@ public :
       sTree[left(p)].second + sTree[right(p)].second};
   }
 
-  void update_point(int inx, int val)
-  {
+  void update_point(int inx, int val) {
     inx += NP2 - 1;
     if(val & 1) {
       if(sTree[inx].second)
@@ -66,8 +62,7 @@ public :
   }
 
 private :
-  int query(int ql, int qr, int p, int l, int r, int type)
-  {
+  int query(int ql, int qr, int p, int l, int r, int type) {
     if(isOutside(ql, qr, l, r)) return 0;
 
     if(isInside(ql, qr, l, r)) {

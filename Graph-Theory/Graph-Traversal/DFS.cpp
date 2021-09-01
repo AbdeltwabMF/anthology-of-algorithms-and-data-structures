@@ -10,34 +10,34 @@ ll dis[N];
 bool vis[N];
 
 void addEdge(int from, int to, int cost) {
-    Next[++ne] = Head[from];
-    Head[from] = ne;
-    Cost[ne] = cost;
-    To[ne] = to;
+  Next[++ne] = Head[from];
+  Head[from] = ne;
+  Cost[ne] = cost;
+  To[ne] = to;
 }
 
 void _clear() {
-    memset(Head, 0, sizeof(Head[0]) * (n + 2));
-    ne = 0;
+  memset(Head, 0, sizeof(Head[0]) * (n + 2));
+  ne = 0;
 }
 
-void DFS(int node) 
-{
-    vis[node] = true;
-    for(int i = Head[node]; i; i = Next[i]) if(!vis[To[i]])
-        DFS(To[i]);
+void DFS(int node)  {
+  vis[node] = true;
+  for(int i = Head[node]; i; i = Next[i])
+    if(!vis[To[i]])
+      DFS(To[i]);
 }
 
-int main() 
-{
-    cin >> n >> m;
-    while(m--) {
-        cin >> u >> v;
-        addEdge(u, v);
-        addEdge(v, u);
-    }
+int main()  {
+  cin >> n >> m;
+  while(m--) {
+    cin >> u >> v;
+    addEdge(u, v);
+    addEdge(v, u);
+  }
 
-    for(int i = 1; i <= n; ++i) if(!vis[i])
-        DFS(i);
+  for(int i = 1; i <= n; ++i)
+    if(!vis[i])
+      DFS(i);
 }
 

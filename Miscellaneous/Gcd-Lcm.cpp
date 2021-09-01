@@ -1,11 +1,11 @@
-ll gcd(ll a, ll b) { // binary GCD uses about 60% fewer bit operations
+i64 gcd(i64 a, i64 b) { // binary GCD uses about 60% fewer bit operations
   if (!a) return b;
 
-  int shift = __builtin_ctz(a | b);
-  a >>= __builtin_ctz(a);
+  u64 shift = __builtin_ctzll(a | b);
+  a >>= __builtin_ctzll(a);
 
   while (b) {
-    b >>= __builtin_ctz(b);
+    b >>= __builtin_ctzll(b);
 
     if (a > b)
       swap(a, b);
@@ -14,7 +14,7 @@ ll gcd(ll a, ll b) { // binary GCD uses about 60% fewer bit operations
   return a << shift;
 }
 
-ll lcm(ll a, ll b) {
+i64 lcm(i64 a, i64 b) {
   return a / gcd(a, b) * b;
 }
 	

@@ -14,8 +14,7 @@
    -----------------------------------
 **/
 
-class point
-{
+class point {
 public :
   ld x, y;
 

@@ -234,6 +234,7 @@ void initialize()
 }
 
 void Solve() {
+  initialize();
   cin >> n;
   vector < array <ll, 2> > factors = factorize(n);
 
@@ -243,16 +244,3 @@ void Solve() {
   }
   cout << ans << endl;
 }
-
-void MultiTest(bool Tests)
-{
-  int tc = 1; (Tests) && (cin >> tc);
-  for(int i = 1; i <= tc; ++i)
-    Solve();
-}
-
-int main()
-{
-  Fast(); initialize(); MultiTest(1);
-}
-

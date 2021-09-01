@@ -14,8 +14,7 @@
 ll inversions;
 
 template <class T>
-void merge(T localArr [], int l, int mid, int r)
-{
+void merge(T localArr [], int l, int mid, int r) {
   int l_size = mid - l + 1;
   int r_size = r - mid;
 
@@ -39,8 +38,7 @@ void merge(T localArr [], int l, int mid, int r)
 }
 
 template <class T>
-void merge_sort(T localArr [], int l, int r)
-{
+void merge_sort(T localArr [], int l, int r) {
   if(r - l)
     {
       int mid = (l + r) >> 1;
@@ -51,8 +49,7 @@ void merge_sort(T localArr [], int l, int r)
 }
 
 template <class T>
-void merge_sort(T _begin, T _end)
-{
+void merge_sort(T _begin, T _end) {
   const int sz = _end - _begin;
   __typeof(*_begin) localArray[sz];
 

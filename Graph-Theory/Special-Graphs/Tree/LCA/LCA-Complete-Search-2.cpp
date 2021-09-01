@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef int64_t    ll;
-
 const int N = 1e5 + 9, M = 2e6 + 9, oo = 0x3f3f3f3f, Mod = 1e9 + 7;
 ll INF = 0x3f3f3f3f3f3f3f3f;
 
@@ -29,14 +25,14 @@ void DFS(int node, int depth = 0) {
   vis[node] = true;
   level[node] = depth;
 
-  for(int i = Head[node]; i; i = Next[i]) if(!vis[To[i]]) {
+  for(int i = Head[node]; i; i = Next[i])
+    if(!vis[To[i]]) {
       Par[To[i]] = node;
       DFS(To[i], depth + Cost[i]);
     }
 }
 
-int LCA(int u, int v)
-{
+int LCA(int u, int v) {
   if(level[u] < level[v]) swap(u, v);
   int d = level[u] - level[v];
 
@@ -45,17 +41,15 @@ int LCA(int u, int v)
 
   if(u == v) return v;
 
-  while(Par[u] ^ Par[v])
-    {
-      u = Par[u];
-      v = Par[v];
-    }
+  while(Par[u] ^ Par[v]) {
+    u = Par[u];
+    v = Par[v];
+  }
 
   return Par[v];
 }
 
-int main()
-{
+int main() {
   cin >> n;
   _clear();
 
@@ -68,10 +62,9 @@ int main()
   DFS(1);
 
   cin >> q;
-  while(q--)
-    {
-      cin >> u >> v;
-      cout <<  LCA(u, v) << endl;
-    }
+  while(q--) {
+    cin >> u >> v;
+    cout <<  LCA(u, v) << endl;
+  }
 }
 

@@ -19,8 +19,7 @@
    - O(1) auxiliary for all operations.
 **/
 
-class UnionFind
-{
+class UnionFind {
   vector <int> par;
   vector <int> siz;
   int num_sets;
@@ -30,8 +29,7 @@ public:
   UnionFind() : par(1, -1), siz(1, 1), num_sets(0), sz(0) {}
   UnionFind(int n) : par(n + 1, -1), siz(n + 1, 1), num_sets(n), sz(n) {}
 
-  int find_set(int u)
-  {
+  int find_set(int u) {
     assert(u <= sz);
 
     int leader;

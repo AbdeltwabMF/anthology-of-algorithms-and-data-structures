@@ -1,6 +1,5 @@
 template <class T, class F = function <T(const T &, const T &)> >
-class SparseTable
-{
+class SparseTable {
   int _N;
   int _LOG;
   vector <T> _A;
@@ -12,8 +11,7 @@ public :
   SparseTable() = default;
 
   template <class iter>
-  SparseTable(iter _begin, iter _end, F _func = [](T a, T b) { return a + b; }) : func(_func)
-  {
+  SparseTable(iter _begin, iter _end, F _func = [](T a, T b) { return a + b; }) : func(_func) {
     _N = distance(_begin, _end);
 
     Log.assign(_N + 1, 0);
@@ -32,28 +30,24 @@ public :
     build();
   }
 
-  void build()
-  {
+  void build() {
     for(int i = 1; i <= _N; ++i)
       ST[i][0] = _A[i];
 
-    for(int j = 1, k, d; j <= _LOG; ++j)
-      {
-	k = (1 << j);
-	d = (k >> 1);
+    for(int j = 1, k, d; j <= _LOG; ++j) {
+      k = (1 << j);
+      d = (k >> 1);
 
-	for(int i = 1; i + k - 1 <= _N; ++i)
-	  {
-	    T const & x = ST[i][j - 1];     // starting subarray at index = i     with length = 2^{j - 1}
-	    T const & y = ST[i + d][j - 1]; // starting subarray at index = i + d with length = 2^{j - 1}
+      for(int i = 1; i + k - 1 <= _N; ++i) {
+	T const & x = ST[i][j - 1];     // starting subarray at index = i     with length = 2^{j - 1}
+	T const & y = ST[i + d][j - 1]; // starting subarray at index = i + d with length = 2^{j - 1}
 
-	    ST[i][j] = func(x, y);
-	  }
+	ST[i][j] = func(x, y);
       }
+    }
   }
 
-  T query(int l, int r)
-  {
+  T query(int l, int r) {
     int d = r - l + 1;
     T ret = 0;
 

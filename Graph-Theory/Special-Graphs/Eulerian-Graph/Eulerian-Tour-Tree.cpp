@@ -1,10 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef int64_t    ll;
-
-const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f, Mod = 1e9 + 7;
-const ll INF = 0x3f3f3f3f3f3f3f3f;
-
 int Head[N], To[M], Next[M], Cost[M];
 int ne, n, m, u, v, w;
 
@@ -34,19 +27,18 @@ void _clear() {
    Last[1 .. n]       = records the index of the last  occurrence of node i in euler_tour
 **/
 
-void EulerianTour(int node, ll depth = 0)
-{
+void EulerianTour(int node, ll depth = 0) {
   euler_tour[++euler_timer] = node;
   Height[euler_timer] = depth;
   First[node] = euler_timer;
 
-  for(int i = Head[node]; i; i = Next[i]) if(First[To[i]] == 0)
-					    {
-					      EulerianTour(To[i], depth + Cost[i]);
+  for(int i = Head[node]; i; i = Next[i])
+    if(First[To[i]] == 0) {
+      EulerianTour(To[i], depth + Cost[i]);
 
-					      euler_tour[++euler_timer] = node;
-					      Height[euler_timer] = depth;
-					    }
+      euler_tour[++euler_timer] = node;
+      Height[euler_timer] = depth;
+    }
 
   Last[node] = euler_timer;
 }
@@ -58,8 +50,7 @@ void show() {
   for(int i = 1; i <= n; ++i)       cout << Last[i] << " ";      cout << endl;
 }
 
-int main()
-{
+int main() {
   cin >> n >> m;
   _clear();
 
@@ -72,4 +63,3 @@ int main()
   EulerianTour(1);
   show();
 }
-

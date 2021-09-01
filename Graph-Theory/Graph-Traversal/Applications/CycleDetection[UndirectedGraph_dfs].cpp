@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef int64_t  ll;
-
 const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f;
 ll INF = 0x3f3f3f3f3f3f3f3f;
 
@@ -10,32 +6,33 @@ ll dis[N];
 bool visited[N], hasCycle;
 
 void addEdge(int from, int to) {
-    Next[++ne] = Head[from];
-    Head[from] = ne;
-    To[ne] = to;
+  Next[++ne] = Head[from];
+  Head[from] = ne;
+  To[ne] = to;
 }
 
-void DFS(int node, int parent = -1)
-{
-    if(hasCycle |= visited[node]) return;
-    visited[node] = true;
+void DFS(int node, int parent = -1) {
+  if(hasCycle |= visited[node])
+    return;
+  visited[node] = true;
 
-    for(int i = Head[node]; i; i = Next[i]) if(To[i] != parent)
-        DFS(To[i], node);
+  for(int i = Head[node]; i; i = Next[i])
+    if(To[i] != parent)
+      DFS(To[i], node);
 }
 
-int main()
-{
-    cin >> n >> m;
-    while(m--) {
-        cin >> u >> v;
-        addEdge(u, v);
-        addEdge(v, u);
-    }
+int main() {
+  cin >> n >> m;
+  while(m--) {
+    cin >> u >> v;
+    addEdge(u, v);
+    addEdge(v, u);
+  }
 
-    for(int i = 1; i <= n; ++i) if(!visited[i])
-        DFS(i);
+  for(int i = 1; i <= n; ++i)
+    if(!visited[i])
+      DFS(i);
 
-    cout << (hasCycle ? "YES" : "NO") << endl;
+  cout << (hasCycle ? "YES" : "NO") << endl;
 }
 

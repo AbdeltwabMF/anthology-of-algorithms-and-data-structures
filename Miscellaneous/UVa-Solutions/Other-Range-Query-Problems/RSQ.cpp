@@ -1,8 +1,7 @@
 /**	https://www.spoj.com/problems/HORRIBLE/
  **/
 
-class SegmentTree
-{
+class SegmentTree {
   vector <ll> sTree;
   vector <ll> lazyTree;
   vector <int> localArr;
@@ -11,8 +10,7 @@ class SegmentTree
 
 public :
   template <class T>
-  SegmentTree(T _begin, T _end)
-  {
+  SegmentTree(T _begin, T _end) {
     NP2 = 1;
     int n = _end - _begin;
     while(NP2 < n) NP2 <<= 1;
@@ -28,8 +26,7 @@ public :
     build(1, 1, NP2);
   }
 
-  void build(int p, int l, int r)
-  {
+  void build(int p, int l, int r) {
     if(l == r) {
       sTree[p] = localArr[l];
       return;
@@ -41,8 +38,7 @@ public :
     sTree[p] = sTree[left(p)] + sTree[right(p)];
   }
 
-  void update_point(int inx, int delta)
-  {
+  void update_point(int inx, int delta) {
     inx += NP2 - 1;
     sTree[inx] += delta;
 
@@ -61,8 +57,7 @@ public :
   }
 
 private :
-  void update_range(int ul, int ur, int delta, int p, int l, int r)
-  {
+  void update_range(int ul, int ur, int delta, int p, int l, int r) {
     if(isOutside(ul, ur, l, r))
       return;
 
@@ -80,8 +75,7 @@ private :
     sTree[p] = sTree[left(p)] + sTree[right(p)];
   }
 
-  ll query(int ql, int qr, int p, int l, int r)
-  {
+  ll query(int ql, int qr, int p, int l, int r) {
     if(isOutside(ql, qr, l, r))
       return 0;
 
@@ -95,8 +89,7 @@ private :
       query(ql, qr, right(p), mid(l, r) + 1, r);
   }
 
-  void propagate(int p, int l, int r)
-  {
+  void propagate(int p, int l, int r) {
     if(lazyTree[p]) {
       sTree[left(p)]  += (mid(l, r) - l + 1) * 1ll * lazyTree[p];
       sTree[right(p)] += (r - mid(l, r)) * 1ll * lazyTree[p];

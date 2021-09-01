@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef int64_t    ll;
-
 const int N = 1e5 + 9, M = 2e5 + 9, oo = 0x3f3f3f3f, Mod = 1e9 + 7;
 const int LOG = 20;
 
@@ -27,15 +23,13 @@ int lastBit(int a) {
   return (a & -a);
 }
 
-void logCalc()
-{
+void logCalc() {
   Log[1] = 0;
   for(int i = 2; i < N; ++i)
     Log[i] = Log[i >> 1] + 1;
 }
 
-void DFS(int node, int depth = 0)
-{
+void DFS(int node, int depth = 0) {
   Level[node] = depth;
   up[node][0] = Par[node];  // Par[root] = root
 
@@ -43,14 +37,14 @@ void DFS(int node, int depth = 0)
     up[node][i] = up[up[node][i - 1]][i - 1];
   }
 
-  for(int i = Head[node]; i; i = Next[i]) if(To[i] != Par[node]) {
+  for(int i = Head[node]; i; i = Next[i])
+    if(To[i] != Par[node]) {
       Par[To[i]] = node;
       DFS(To[i], depth + 1);
     }
 }
 
-int KthAncestor(int u, int k)
-{
+int KthAncestor(int u, int k) {
   if(k > Level[u]) return -1;
 
   for(int i = lastBit(k); k; k -= lastBit(k), i = lastBit(k))
@@ -59,8 +53,7 @@ int KthAncestor(int u, int k)
   return u;
 }
 
-int LCA(int u, int v)
-{
+int LCA(int u, int v) {
   if(Level[u] < Level[v]) swap(u, v);
   int k = Level[u] - Level[v];
 
@@ -77,8 +70,7 @@ int LCA(int u, int v)
   return up[u][0];
 }
 
-int main()
-{
+int main() {
   cin >> n;
   _clear();
 
@@ -95,10 +87,9 @@ int main()
     }
 
   cin >> q;
-  while(q--)
-    {
-      cin >> u >> v;
-      cout << LCA(u, v) << endl;
-    }
+  while(q--) {
+    cin >> u >> v;
+    cout << LCA(u, v) << endl;
+  }
 }
 

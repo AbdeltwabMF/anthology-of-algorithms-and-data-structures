@@ -1,8 +1,7 @@
 /** https://www.codechef.com/problems/MULTQ3
  **/
 
-class SegmentTree
-{
+class SegmentTree {
   vector <vector <int> > sTree;
   vector <int> lazyTree;
   vector <int> localArr;
@@ -10,8 +9,7 @@ class SegmentTree
 
 public :
   template <class T>
-  SegmentTree(T _begin, T _end)
-  {
+  SegmentTree(T _begin, T _end) {
     NP2 = 1;
     int n = _end - _begin;
     while(NP2 < n) NP2 <<= 1;
@@ -27,8 +25,7 @@ public :
     build(1, 1, NP2);
   }
 
-  void build(int p, int l, int r)
-  {
+  void build(int p, int l, int r) {
     if(l == r) {
       sTree[p][localArr[l] % 3]++;
       return;
@@ -41,8 +38,7 @@ public :
       sTree[p][i] = sTree[left(p)][i] + sTree[right(p)][i];
   }
 
-  void update_point(int inx, int val)
-  {
+  void update_point(int inx, int val) {
     inx += NP2 - 1;
     sTree[inx] = {0, 0, 0};
     sTree[inx][val % 3]++;
@@ -63,8 +59,7 @@ public :
   }
 
 private :
-  void update_range(int ul, int ur, int p, int l, int r)
-  {
+  void update_range(int ul, int ur, int p, int l, int r) {
     if(isOutside(ul, ur, l, r))
       return;
 
@@ -84,8 +79,7 @@ private :
       sTree[p][i] = sTree[left(p)][i] + sTree[right(p)][i];
   }
 
-  int query(int ql, int qr, int p, int l, int r)
-  {
+  int query(int ql, int qr, int p, int l, int r) {
     if(isOutside(ql, qr, l, r))
       return 0;
 
@@ -98,8 +92,7 @@ private :
       query(ql, qr, right(p), mid(l, r) + 1, r);
   }
 
-  void propagate(int p, int l, int r)
-  {
+  void propagate(int p, int l, int r) {
     if(lazyTree[p]) {
       for(int i = 0, add = (lazyTree[p] % 3); i < add; ++i) {
 	swap(sTree[left(p)][0], sTree[left(p)][2]);

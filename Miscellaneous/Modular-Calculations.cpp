@@ -4,34 +4,32 @@
 
 // 1. Modular Exponentiation
 
-ll binExp(ll a, ll b, ll p) {
-  ll res = 1;
-  while (b) {
+i64 binExp(i64 a, i64 b, i64 p) {
+  i64 res;
+  for (res = 1; b; b >>= 1) {
     if (b & 1ll)
       res = res * a % p;
     a = a * a % p;
-    b >>= 1;
   }
   return res;
 }
 
 // 2. Modular Multiplication
 
-ll binMul(ll a, ll b, ll p) {
-  ll res = 0;
+i64 binMul(i64 a, i64 b, i64 p) {
+  i64 res;
   a %= p;
-  while (b) {
+  for (res = 0; b; b >>= 1) {
     if (b & 1ll)
       res = (res + a) % p;
     a = (a + a) % p;
-    b >>= 1;
   }
   return res;
 }
 
 // 3. Modular Multiplicative Inverse
 
-ll modInv(ll b, ll p) {
+i64 modInv(i64 b, i64 p) {
   return binExp(b, p - 2, p); // Guaranteed that p is a Prime Number
 }
 

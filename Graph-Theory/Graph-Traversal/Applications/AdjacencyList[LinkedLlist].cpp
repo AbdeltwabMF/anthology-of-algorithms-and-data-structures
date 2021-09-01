@@ -1,6 +1,8 @@
+template <class T>
 class Graph {
 public:
-  vector <int> _head, _next, _to, _cost;
+  vector <int> _head, _next, _to;
+  vector <T> _cost;
   int edge_number;
   bool isDirected;
 
@@ -14,7 +16,7 @@ public:
     edge_number = 0;
   }
 
-  void addEdge(int u, int v, int w = 0) {
+  void addEdge(int u, int v, T w = 0) {
     _next[++edge_number] = _head[u];
     _to[edge_number] = v;
     // _cost[edge_number] = w;

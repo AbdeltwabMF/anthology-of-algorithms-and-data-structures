@@ -16,18 +16,18 @@ map <char, int> inv = { {'U', 0}, {'R', 1}, {'D', 2}, {'L', 3}};
 **/
 
 string restorePath(int si, int sj, int fi, int fj) {
-    string s;
-    if(Par[ei][ej] == -1) return s;
+  string s;
+  if(Par[ei][ej] == -1) return s;
 
-    int ei = fi, ej = fj;
-    for(char i = Par[fi][fj]; (si ^ fi) || (sj ^ fj); i = Par[fi][fj]) {
-        s  += dir[inv[i] ^ 2];
-        fi += dr[inv[i]];
-        fj += dc[inv[i]];
-    }
+  int ei = fi, ej = fj;
+  for(char i = Par[fi][fj]; (si ^ fi) || (sj ^ fj); i = Par[fi][fj]) {
+    s  += dir[inv[i] ^ 2];
+    fi += dr[inv[i]];
+    fj += dc[inv[i]];
+  }
 
-    reverse(s.begin(), s.end());
-    return s;
+  reverse(s.begin(), s.end());
+  return s;
 }
 
 /** Explicit Graphs (BFS, Dijkstra or Bellman-Ford)
@@ -38,14 +38,14 @@ string restorePath(int si, int sj, int fi, int fj) {
 **/
 
 vector <int> restorePath(int dest) {
-    vector <int> path;
-    if(dis[dest] == INF) return path;
+  vector <int> path;
+  if(dis[dest] == INF) return path;
 
-    for(int i = dest; ~i; i = Par[i])
-        path.push_back(i);
+  for(int i = dest; ~i; i = Par[i])
+    path.push_back(i);
 
-    reverse(path.begin(), path.end());
-    return path;
+  reverse(path.begin(), path.end());
+  return path;
 }
 
 /** in case of Floyd-Warshall:
@@ -57,14 +57,14 @@ vector <int> restorePath(int dest) {
 **/
 
 vector <int> restorePath(int st, int tr) {
-    vector <int> path;
-    if(dis[st][tr] == INF) return path;
+  vector <int> path;
+  if(dis[st][tr] == INF) return path;
 
-    for(int i = tr; st ^ i; i = Par[st][i])
-        path.push_back(i);
+  for(int i = tr; st ^ i; i = Par[st][i])
+    path.push_back(i);
 
-    path.push_back(st);
-    reverse(path.begin(), path.end());
-    return path;
+  path.push_back(st);
+  reverse(path.begin(), path.end());
+  return path;
 }
 

@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef int64_t    ll;
-
 const int N = 1e5 + 9, M = 2e6 + 9, oo = 0x3f3f3f3f, Mod = 1e9 + 7;
 ll INF = 0x3f3f3f3f3f3f3f3f;
 
@@ -25,14 +21,14 @@ void _clear() {
 
 void DFS(int node) {
   vis[node] = true;
-  for(int i = Head[node]; i; i = Next[i]) if(!vis[To[i]]) {
+  for(int i = Head[node]; i; i = Next[i])
+    if(!vis[To[i]]) {
       Par[To[i]] = node;
       DFS(To[i]);
     }
 }
 
-int LCA(int u, int v)
-{
+int LCA(int u, int v) {
   memset(vis, false, sizeof(vis[0]) * (n + 2));
 
   while(u != -1) {
@@ -62,10 +58,9 @@ int main()
   DFS(1);
 
   cin >> q;
-  while(q--)
-    {
-      cin >> u >> v;
-      cout <<  LCA(u, v) << endl;
-    }
+  while(q--) {
+    cin >> u >> v;
+    cout <<  LCA(u, v) << endl;
+  }
 }
 
