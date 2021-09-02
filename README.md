@@ -137,12 +137,12 @@
 ---
 
 ## 9. [miscellaneous](miscellaneous)
- - [pseudo_random number generator](miscellaneous/pseudo_random_number_generator.cpp)
+ - [pseudo random number generator](miscellaneous/pseudo_random_number_generator.cpp)
  - [stress test](miscellaneous/stress_test.cpp)
- - [fast input/output methods for c++](miscellaneous/fast_io.cpp)
+ - [fast input/output](miscellaneous/fast_io.cpp)
  - [modular calculations](miscellaneous/modular_calculations.cpp)
  - [double comparison](miscellaneous/double_comparison.cpp)
- - [overloaded operators << and >> to accept an 128bit integer](miscellaneous/overloaded_operators_to_accept_128bit_integer.cpp)
+ - [overloaded operators << and >> to accept an 128bit integer (i/o)](miscellaneous/overloaded_operators_to_accept_128bit_integer.cpp)
  - [policy based data structures](miscellaneous/policy_based_data_structures.cpp)
- - [contest template c++](miscellaneous/cpp_template.cpp)
+ - [contest template - c++](miscellaneous/cpp_template.cpp)
  - [my debugging tools](miscellaneous/my_debugger.cpp)
