@@ -114,7 +114,7 @@
 
 ## 5. [string processing](string_processing)
  - [trie](string_processing/trie.cpp)
- - [knuth_morris_pratt algorithm](string_processing/knuth_morris_pratt.cpp)
+ - [knuth morris pratt algorithm (kmp)](string_processing/knuth_morris_pratt.cpp)
 
 ---
 
