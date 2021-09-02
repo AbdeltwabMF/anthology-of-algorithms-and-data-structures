@@ -146,3 +146,4 @@
  - [policy based data structures](miscellaneous/policy_based_data_structures.cpp)
  - [contest template - c++](miscellaneous/cpp_template.cpp)
  - [my debugging tools](miscellaneous/my_debugger.cpp)
+ - [Gcd and Lcm](miscellaneous/gcd_lcm.cpp)
