@@ -116,6 +116,7 @@
  - [trie](string_processing/trie.cpp)
  - [knuth morris pratt algorithm (kmp)](string_processing/knuth_morris_pratt.cpp)
  - [rabin karp](string_processing/rabin_karp.cpp)
+ - [manacher](string_processing/manacher.cpp)
 
 ---
 
