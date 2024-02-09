@@ -126,7 +126,6 @@
 
 ## 6. [geometry](geometry)
 
-- [point](geometry/point.cpp)
 - [convex hull](geometry/convex_hull.cpp)
 
 ---

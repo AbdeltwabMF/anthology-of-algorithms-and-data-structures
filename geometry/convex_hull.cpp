@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 // Problem statement: https://open.kattis.com/problems/convexhull
 
@@ -8,25 +9,42 @@ struct ivec2
 {
 	int x, y;
 
-	bool operator<(const ivec2& other) const
+	inline bool operator<(const ivec2& other) const
 	{
-    return (this->y != other.y) ? (this->y < other.y) : (this->x < other.x);
+		return (y != other.y) ? (y < other.y) : (x < other.x);
 	}
 
-	bool operator==(const ivec2& other) const
+	inline bool operator==(const ivec2& other) const
 	{
-		return (this->x == other.x) && (this->y == other.y);
+		return (x == other.x) && (y == other.y);
+	}
+
+	inline ivec2 operator-(const ivec2& other) const
+	{
+		return ivec2{x - other.x, y - other.y};
+	}
+
+	inline int64_t operator*(const ivec2& other) const
+	{
+		return (int64_t)x * other.y - (int64_t)y * other.x;
 	}
 };
 
-int8_t orientation(const ivec2& a, const ivec2& b, const ivec2& c)
+std::ostream& operator<<(std::ostream& out, const ivec2& vec)
 {
-	int area = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
-	return (area < 0) * -1 + (area > 0);
+	out << vec.x << " " << vec.y;
+	return out;
+}
+
+std::istream& operator>>(std::istream& in, ivec2& vec)
+{
+	in >> vec.x >> vec.y;
+	return in;
 }
 
 std::vector<ivec2> construct_convex_hull(std::vector<ivec2>& points)
 {
+	// lowest y-coordinate and leftmost point
 	ivec2 pivot = *std::min_element(points.begin(), points.end());
 
 	std::sort(
@@ -34,13 +52,12 @@ std::vector<ivec2> construct_convex_hull(std::vector<ivec2>& points)
 		points.end(),
 		[&pivot](const ivec2& a, const ivec2& b)
 		{
-			auto orient = orientation(pivot, a, b);
-			if (orient == 0)
-				return
-				(pivot.x - a.x) * (pivot.x - a.x) + (pivot.y - a.y) * (pivot.y - a.y) <
-				(pivot.x - b.x) * (pivot.x - b.x) + (pivot.y - b.y) * (pivot.y - b.y);
-			else
-				return orient > 0;
+			auto area = (a - pivot) * (b - pivot);
+			if (area != 0)
+				return area > 0; // positive area makes a counter-clockwise orientation
+
+			// break the tie by comparing the Manhattan distance with respect to the pivot
+			return ::abs(pivot.x - a.x) + ::abs(pivot.y - a.y) < ::abs(pivot.x - b.x) + ::abs(pivot.y - b.y);
 		}
 	);
 
@@ -49,13 +66,22 @@ std::vector<ivec2> construct_convex_hull(std::vector<ivec2>& points)
 
 	for (size_t i = 0; i < points.size(); ++i)
 	{
-		while (convex_hull.size() >= 2 && orientation(convex_hull.end()[-2], convex_hull.end()[-1], points[i]) != 1)
+		while (convex_hull.size() >= 2)
 		{
+			auto a = convex_hull.end()[-2];
+			auto b = convex_hull.end()[-1];
+			auto& c = points[i];
+
+			if ((b - a) * (c - a) > 0)
+				break;
+
+			// remove last point if it results in a clockwise orientation or if the points are collinear
 			convex_hull.pop_back();
 		}
 		convex_hull.push_back(points[i]);
 	}
 
+	// corner case: The convex hull consists of two identical points
 	if (convex_hull.size() == 2 && convex_hull[0] == convex_hull[1])
 		convex_hull.pop_back();
 
@@ -75,18 +101,13 @@ int main()
 	while (std::cin >> n && n)
 	{
 		points.resize(n);
-		ivec2 point{};
 		for (size_t i = 0; i < n; ++i)
-		{
-			std::cin >> point.x >> point.y;
-			points[i] = point;
-		}
+			std::cin >> points[i];
 
 		auto res = construct_convex_hull(points);
+
 		std::cout << res.size() << '\n';
 		for (size_t i = 0; i < res.size(); ++i)
-		{
-			std::cout << res[i].x << " " << res[i].y << '\n';
-		}
+			std::cout << res[i] << '\n';
 	}
 }
