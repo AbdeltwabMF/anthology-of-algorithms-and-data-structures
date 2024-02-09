@@ -126,7 +126,8 @@
 
 ## 6. [geometry](geometry)
 
-- [convex hull](geometry/convex_hull.cpp)
+- [types](geometry/types.h)
+- [convex hull](geometry/convex_hull.h)
 
 ---
 
