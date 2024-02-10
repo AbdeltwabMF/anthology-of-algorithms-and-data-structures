@@ -17,8 +17,6 @@ int main()
 			std::cin >> points[i];
 
 		auto polygon = geometry::convex_hull_construct(points);
-		if (polygon.size() == 2 && polygon[0] == polygon[1])
-			polygon.pop_back();
 
 		std::cout << polygon.size() << '\n';
 		for (size_t i = 0; i < polygon.size(); ++i)

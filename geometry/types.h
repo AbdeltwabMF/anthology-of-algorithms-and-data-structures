@@ -32,6 +32,11 @@ struct ivec2
 	{
 		return x * other.y - y * other.x;
 	}
+
+	inline int64_t dot(const ivec2& other) const
+	{
+		return x * other.x + y * other.y;
+	}
 };
 
 std::ostream& operator<<(std::ostream& out, const ivec2& vec)
